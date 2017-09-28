@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+.myh3{ font-size:18px; line-height:20px; color:#039;}
+.myh3 span{ color:#666; font-size:90%; padding:0 10px;}
+.top_form{ padding:5px; background-color:#C15E13;}
+.top_form_green{ padding:5px; background-color:#093;}
+.form_title{
+	color:#FFF; font-size:18px;}
+.fontdown{ font-size:80%;}
+.small_li{ padding:2px 10px; font-size:12px; }
+.pad0{ padding:0; margin:0;}
+
+.div_r{ cursor:pointer;} 
+.div_r td{ padding:5px 0 5px 3px; font-size:14px;;}
+.div_r .img{ width:24px;}
+.sl td{ background-color:#00DDDD !important;}
+.sl .img{ background:url(../images/Ok-icon-2.png) no-repeat 5px !important;}
+.fname{ min-width:170px; color:#050;}
+#fixmenu {
+	position: fixed;
+	right: 0;
+	top: 40%;
+	width: 220px;
+	margin-top: -2.5em;
+}
+#fixmenu_bottom {
+	position:fixed;
+   left:0px;
+   bottom:0px;
+   width:100%;
+}
+#fixmenu_top {
+   position:fixed;
+   left:0px;
+   top:0px;
+   width:100%;
+}
+.li_pre1 a{ background-color:#C9EDF8;}
+.li_pre1 a{ color:#333;}
+.li_pre2 a{ background-color:#F2F2F2}
+.li_pre2 a{ color:#999;}
+.li_admin a{ background-color:#FAC9CA}
+.li_admin a{ color:#333;}
+.text_gray{ color:#666 !important; }
+.center{ text-align:center!important; }
+.row_active td{ background-color:#F9FB99 !important; font-weight:bold;}
+.h3_mini{ line-height:30px;}
+
+/* Bootstrap code examples
+-------------------------------------------------- */
+
+/* Base class */
+.doc-box {
+  position: relative;
+  margin: 15px 0;
+  padding: 14px 19px 14px;
+  *padding-top: 19px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+/* Echo out a label for the example */
+
+/* Remove spacing between an example and it's code */
+.doc-box + .prettyprint {
+  margin-top: -20px;
+  padding-top: 15px;
+}
+
+/* Tweak examples
+------------------------- */
+.doc-box > p:last-child {
+  margin-bottom: 0;
+}
+.doc-box .table,
+.doc-box .progress,
+.doc-box .well,
+.doc-box .alert,
+.doc-box .hero-unit,
+.doc-box .pagination,
+.doc-box .navbar,
+.doc-box > .nav,
+.doc-box blockquote {
+  margin-bottom: 5px;
+}
+.doc-box .pagination {
+  margin-top: 0;
+}
+.table-thin{ margin:0; padding:0;}
+.table-thin td{ padding:2px 5px;}
+.al{ text-align:left;}
+.ar{ text-align:right;}
+.ac{ text-align:center;}
+.white{ color:#E4DF7E !important;}
+
+.nomal{ font-weight:normal !important;}
+.linebottom{ border-bottom: 1px solid #BBB !important;}
+.cname{ font-size:16px; }
+.coursename{ font-size:20px; margin-top:-5px; margin-bottom:8px; color:#039; }
+.coursename small{ color:#666;}
+.btext{ font-weight:bold;}
+.magin0{ margin:2px 0 0 0 !important;}
+.paddind0{ padding:2px 0 0 0 !important;}
+
+.tr_green1 td{ background-color:#E6FDE1;}
+.tr_green2 td{ background-color:#ADFDA2;}
+
+.table_head{ font-size:20px; color:#453F3F; padding:20px 0 8px 0; border-bottom:1px solid #CCC;}
+@media (max-width: 480px) {
+	.gallery {padding:2px 0 10px 2px;background:#fff;box-shadow: 0px 5px 8px rgba(0,0,0,0.70);-moz-box-shadow: 0px 5px 8px rgba(0,0,0,0.70);-webkit-box-shadow: 0px 5px 8px rgba(0,0,0,0.70)}
+}

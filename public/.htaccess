@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+	<IfModule mod_negotiation.c>
+    	Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+    #for add sub website
+        RewriteCond %{REQUEST_URI} !^/script
+        RewriteCond %{REQUEST_URI} !^/ext
+        RewriteCond %{REQUEST_URI} !^/sound
+        RewriteCond %{REQUEST_URI} !^/except
+        RewriteCond %{REQUEST_URI} !^/PHPExcel
+        RewriteCond %{REQUEST_URI} !^/catsep
+RewriteCond %{REQUEST_URI} !^/except/admin
+    #end-for add sub website
+
+    # Redirect Trailing Slashes...
+	RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+	# Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

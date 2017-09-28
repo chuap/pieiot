@@ -1,0 +1,102 @@
+body {
+	margin-top: 70px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
+        
+}
+footer {
+	margin: 50px 0;
+}
+
+/* Change the docs' brand */
+body > .navbar .brand {
+  padding-right: 0;
+  padding-left: 15px;
+  margin-left: 10px;
+	margin-top:10px;
+  float: right;
+  font-weight: bold;
+	text-align:right;
+  color:#CCC;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  /*background: url("../img/jasny-logo.png") no-repeat scroll -85px -200px transparent;*/
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+body > .navbar .brand:hover {
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+.extended-badge {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 1;
+}
+.topiccontent img{ max-width: 800px !important; }
+.topic-title a{ color:#0a7de9; font-size:18px; }
+.post-title a{ color:#F90;}
+.top-nav{ margin:00px 10px 20px 10px; }
+.top-nav ul > li > a{ color:#999; font-size:16px;}
+.top-nav ul > li > a:hover{ background-color:#FFC; color:#666;}
+.top-nav ul > li.active > a { color:#39C}
+.tab{ padding:0 5px 0 30px;}
+.tab0{ padding-left:5px !important;}			
+.tab1{ padding-left:10px;}
+.tab2{ padding-left:20px;}
+.tab3{ padding-left:30px;}
+.orange{ color:#E26910 !important; font-size:120%;}
+
+.m0{ margin:0 !important;;}
+.mb0 {margin-bottom:0px}
+.mb04{margin-bottom:4px}
+.mb1 {margin-bottom:8px}
+.mb2 {margin-bottom:15px}
+.mb3 {margin-bottom:30px}
+.mb4 {margin-bottom:40px}
+.mb5 {margin-bottom:50px}
+.mt0 {margin-top:0px}
+.mt1 {margin-top:8px}
+.mt2 {margin-top:15px}
+.mt3 {margin-top:30px}
+.mt4 {margin-top:40px}
+.mt5 {margin-top:50px}
+.ml0 {margin-left:0px}
+.ml1 {margin-left:8px}
+.ml2 {margin-left:15px}
+.ml3 {margin-left:30px}
+.ml4 {margin-left:40px}
+.ml5 {margin-left:50px}
+.mr0 {margin-right:0px}
+.mr1 {margin-right:8px}
+.mr2 {margin-right:15px}
+.mr3 {margin-right:30px}
+.mr4 {margin-right:40px}
+.mr5 {margin-right:50px}
+
+.p0{ padding:0!important;}
+.pb0 {padding-bottom:0px!important;}
+.pb1 {padding-bottom:8px!important;}
+.pb2 {padding-bottom:15px!important;}
+.pb3 {padding-bottom:30px!important;}
+.pb4 {padding-bottom:40px!important;}
+.pb5 {padding-bottom:50px!important;}
+.pt0 {padding-top:0px!important;}
+.pt1 {padding-top:8px!important;}
+.pt2 {padding-top:15px!important;}
+.pt3 {padding-top:30px!important;}
+.pt4 {padding-top:40px!important;}
+.pt5 {padding-top:50px!important;}
+.pl0 {padding-left:0px!important;}
+.pl1 {padding-left:8px!important;}
+.pl2 {padding-left:15px!important;}
+.pl3 {padding-left:30px!important;}
+.pl4 {padding-left:40px!important;}
+.pl5 {padding-left:50px!important;}
+.pr0 {padding-right:0px!important;}
+.pr1 {padding-right:8px!important;}
+.pr2 {padding-right:15px!important;}
+.pr3 {padding-right:30px!important;}
+.pr4 {padding-right:40px!important;}
+.pr5 {padding-right:50px!important;}
+
