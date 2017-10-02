@@ -3,6 +3,7 @@
 <h1>
     Reports
     <small>PieIoT.com</small>
+     <a href="{{asset("pro-0-0.newreport")}}" class="btn btn-info newproject"><i class="fa fa-plus"></i> Create new report</a> 
 </h1>
 @stop
 @section('breadcrumb')
@@ -17,11 +18,7 @@ $plist = Projects::myProjects();
 ?>
 <div class="row">  
     <div class="col-lg-12">
-        <div class="row mt0 pr2 pt0">
-           <a href="{{asset("pro-0-0.newreport")}}" class="btn btn-info newproject pull-right"><i class="fa fa-plus"></i> Create new report</a> 
-        </div>
         
-
         @if(count($plist)<1)
         <div class="p2">
             <div class="alert alert-info alert-dismissable ">
