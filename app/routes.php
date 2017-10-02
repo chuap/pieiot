@@ -30,6 +30,7 @@ if (Session::get('cat.islogin')) {
     Route::get('pie-{p}.{m}', 'HomeController@PieInfo');
     Route::get('pro-{pie}-{pro}.{m}', 'HomeController@ProInfo');
     Route::get('logout', 'SystemController@userLogout');
+	Route::get('logoutXXXXXXXX', 'SystemController@userLogout');
     
 
     
