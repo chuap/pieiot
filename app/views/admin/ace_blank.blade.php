@@ -88,7 +88,10 @@ if ("ontouchend" in document)
         <!--inline scripts related to this page-->
         <script src="{{$tp}}/assets/js/ace-elements.min.js"></script>
         <script src="{{$tp}}/assets/js/ace.min.js"></script>
-        <script src="{{$tp}}/assets/js/date-time/bootstrap-datepicker.min.js"></script>
+<!--        <script src="{{$tp}}/assets/js/date-time/bootstrap-datepicker.min.js"></script>
+        <script src="{{$tp}}/assets/js/date-time/bootstrap-timepicker.min.js"></script>-->
+        
+        <script type="text/javascript" src="{{asset('js/jquery-ui/js')}}/jquery-ui-timepicker-addon.js"></script>
         <script src="{{$tp}}/assets/js/date-time/bootstrap-timepicker.min.js"></script>
         <script src="{{$tp}}/assets/js/date-time/moment.min.js"></script>
         <script src="{{$tp}}/assets/js/date-time/daterangepicker.min.js"></script>

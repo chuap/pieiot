@@ -10,6 +10,14 @@ class HomeController extends BaseController {
             return View::make('home')->with('mn', $mn);
         }
     }
+    public function PieMain($mn = '') {
+        //echo $mn;
+        if ($mn) {
+            return View::make('pages.' . $mn)->with('mn', $mn);
+        } else{
+            return View::make('home')->with('mn', $mn);
+        }
+    }
     public function PieInfo($p,$m ) {
             return View::make('pages.pie'.$m)->with('p', $p);
 

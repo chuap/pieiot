@@ -28,6 +28,7 @@ if (Session::get('cat.islogin')) {
     });
     Route::get('admin/{p}', 'AdminController@main');
     Route::get('pie-{p}.{m}', 'HomeController@PieInfo');
+    Route::get('pie.{m}', 'HomeController@PieMain');
     Route::get('pro-{pie}-{pro}.{m}', 'HomeController@ProInfo');
     Route::get('logout', 'SystemController@userLogout');
 

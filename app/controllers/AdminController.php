@@ -62,40 +62,39 @@ class AdminController extends BaseController {
             $pie = Input::get('pie') ? Input::get('pie') : 0;
             $pid = Input::get('pid') ? Input::get('pid') : 0;
             $pname = Input::get('pname') ? Input::get('pname') : 0;
-            $pno= Input::get('pno') ? Input::get('pno') : 0;
+            $pno = Input::get('pno') ? Input::get('pno') : 0;
             $sql = "update ports set portname='$pname' where pieid='$pie' and portid='$pid' and portno='$pno'";
             $x = excsql($sql);
             $json_arr['STATUS'] = true;
             $json_arr['MSG'] = 'Success';
-        }else if ($ac == 'enabletask') {
+        } else if ($ac == 'enabletask') {
             $pieid = Input::get('pie') ? Input::get('pie') : 0;
             $taskid = Input::get('tid') ? Input::get('tid') : '';
             $sql = "update tasks set task_disable='0',synced=null,task_status='Enabling' where mid='$uid' and tid='$taskid'";
             $x = excsql($sql);
-            
+
             $json_arr['STATUS'] = true;
             $json_arr['MSG'] = 'Success';
-        }else if ($ac == 'disabletask') {
+        } else if ($ac == 'disabletask') {
             $pieid = Input::get('pie') ? Input::get('pie') : 0;
             $taskid = Input::get('tid') ? Input::get('tid') : '';
             $sql = "update tasks set task_disable='1',synced=null,task_status='Disabling' where mid='$uid' and tid='$taskid'";
             $x = excsql($sql);
-            
+
             $json_arr['STATUS'] = true;
             $json_arr['MSG'] = 'Success';
-        }else if ($ac == 'deletetask') {
+        } else if ($ac == 'deletetask') {
             $pieid = Input::get('pie') ? Input::get('pie') : 0;
             $taskid = Input::get('tid') ? Input::get('tid') : '';
             $sql = "delete from tasks where mid='$uid' and tid='$taskid' and task_disable='1' and not (synced is null)";
             $x = DB::update($sql);
-            if($x>0){
+            if ($x > 0) {
                 Ports::ckkAssignPort($pieid);
                 $json_arr['STATUS'] = true;
                 $json_arr['MSG'] = 'Success';
-            }else{
+            } else {
                 $json_arr['MSG'] = 'Can not delete task..';
             }
-            
         } else if ($ac == 'deleteproject') {
             $pro = Input::get('pro') ? Input::get('pro') : '';
             $sql = "delete from tasks where mid='$uid' and proid='$pro'";
@@ -104,6 +103,36 @@ class AdminController extends BaseController {
             $x = excsql($sql);
             $json_arr['STATUS'] = true;
             $json_arr['MSG'] = 'Success';
+        } else if ($ac == 'savereport') {
+            $rid = Input::get('rid') ? Input::get('rid') : '0';
+            $sdate = Input::get('sdate');
+            $edate = Input::get('edate');
+            $stime = Input::get('stime');
+            $etime = Input::get('etime');
+            $datasl = Input::get('datasl');
+            $re = Reports::find($rid);
+            if (!$re) {
+                $re = new Reports();
+            }
+            $re->sdate = date('Y-m-d H:i:s', strtotime("$sdate $stime"));
+            $re->edate = date('Y-m-d H:i:s', strtotime("$edate $etime"));
+            $re->rname = Input::get('rname');
+            $re->rtype = Input::get('rtype');
+            $re->datesave = $date_save;
+            $re->mid = $uid;
+            $tid='';
+            for ($i = 0; $i < $datasl; $i++) {
+                if ($i > 0) {
+                    $tid.=',';
+                }
+                $tid.="'" . Input::get('rdata_' . $i) . "'";
+            }
+            $re->tid = $tid;
+            $re->datasl = $datasl;
+
+            $re->save();
+            $json_arr['STATUS'] = true;
+            $json_arr['MSG'] = $re->sdate;
         } else if ($ac == 'pronewsave') {
             $p = Input::get('proid') ? Input::get('proid') : 0;
             $pieid = Input::get('pieid') ? Input::get('pieid') : 0;
@@ -136,10 +165,10 @@ class AdminController extends BaseController {
             if (!$tsk) {
                 $tsk = new Tasks();
             }
-            if(Input::get('ckenable')==1){
-                $tsk->task_disable=0;
-            }else{
-                $tsk->task_disable=1;
+            if (Input::get('ckenable') == 1) {
+                $tsk->task_disable = 0;
+            } else {
+                $tsk->task_disable = 1;
             }
             $tsk->taskname = Input::get('txtaskname');
             $tsk->onbit = Input::get('onbit');
@@ -175,52 +204,52 @@ class AdminController extends BaseController {
                 $tsk->tx2 = Input::get('txco2');
             } else if ($atmode == 'capture') {
                 $tsk->op1 = Input::get('ckcapture');
-                $tsk->tx1 = Tasks::ckkTime( Input::get('txcapture1'));
+                $tsk->tx1 = Tasks::ckkTime(Input::get('txcapture1'));
                 $tsk->tx2 = Input::get('txcapture2');
                 $tsk->stime = Input::get('txcapture3');
                 $tsk->etime = Input::get('txcapture4');
-            }else if ($atmode == 'temp') {
+            } else if ($atmode == 'temp') {
                 $tsk->op1 = Input::get('cktemp');
-                $tsk->tx1 = Tasks::ckkTime( Input::get('txtemp1'));
+                $tsk->tx1 = Tasks::ckkTime(Input::get('txtemp1'));
                 $tsk->tx2 = Input::get('txtemp2');
                 $tsk->stime = Input::get('txtemp3');
                 $tsk->etime = Input::get('txtemp4');
             }
             $tsk->save();
+            excsql("update alldata set dataname='" . $tsk->taskname . "' where pieid='$pieid' and tid='" . $tsk->tid . "'");
             Ports::ckkAssignPort($pieid);
             $json_arr['STATUS'] = true;
             $json_arr['MSG'] = Input::get('txtaskname');
-        }else if ($ac == 'saveuser') {
+        } else if ($ac == 'saveuser') {
             $input = Input::all();
             $p = $input['p'] ? $input['p'] : 0;
-            
+
             if ($p > 0) {
                 $obj = Staff::find($p);
-                if (($obj->uid <> $uid)&&(Session::get('cat.uclass')<>'admin')) {
+                if (($obj->uid <> $uid) && (Session::get('cat.uclass') <> 'admin')) {
                     $json_arr['MSG'] = 'คุณไม่สามารถดำเนินการในส่วนนี้ได้';
                     return json_encode($json_arr);
                 }
             } else {
-                $uname=$input['txusername'];
-                $q=excsql("select * from staff where uname='$uname'");
-                if (count($q)>0) {
+                $uname = $input['txusername'];
+                $q = excsql("select * from staff where uname='$uname'");
+                if (count($q) > 0) {
                     $json_arr['MSG'] = 'Username ซ้ำ';
                     return json_encode($json_arr);
                 }
                 $obj = new Staff();
-                $obj->uname = $uname;                
+                $obj->uname = $uname;
                 $obj->regdate = $date_save;
-               // $obj->uid = $uid;
-                
+                // $obj->uid = $uid;
             }
-            
+
             $obj->fname = $input['txfname'];
             $obj->lname = isset($input['txlname']) ? $input['txlname'] : '';
             $obj->titlename = isset($input['txtitlename']) ? $input['txtitlename'] : '';
-            
-            if(Input::get('txpwd')){
+
+            if (Input::get('txpwd')) {
                 $obj->pwd = md5("cat" . Input::get('txpwd'));
-            }else if(!$obj->pwd ){
+            } else if (!$obj->pwd) {
                 $obj->pwd = md5("cat" . $obj->uname);
             }
             //return json_encode($json_arr);
@@ -229,10 +258,10 @@ class AdminController extends BaseController {
             $obj->lon = isset($input['txlon']) ? $input['txlon'] : '';
             $obj->uclass = isset($input['txclass']) ? $input['txclass'] : '';
             $obj->placename = isset($input['txplacename']) ? $input['txplacename'] : '';
-            
-            
+
+
             $obj->save();
-            
+
             $json_arr['MSG'] = $obj->fname;
             $json_arr['STATUS'] = true;
         }
