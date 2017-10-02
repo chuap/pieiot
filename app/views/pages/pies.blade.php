@@ -44,7 +44,8 @@ $pies = Pies::listMyPie();
             </div>
             <a id="pie_f_{{$d->pieid}}" href="{{asset('pie-'.$d->pieid.'.info')}}" class="small-box-footer">
                 @if($d->lastupdate)
-                <i class="fa fa-check"></i>
+<!--                <i class="fa fa-check"></i>-->
+                <img class="w20 ml2" src="{{asset('images/loading2.gif')}}">
                 Active: {{dateth('d n ee H:i',strtotime($d->lastupdate))}} <i class="fa fa-arrow-circle-right"></i>
                 @else
                 <img class="w20 ml2" src="{{asset('images/loading2.gif')}}">

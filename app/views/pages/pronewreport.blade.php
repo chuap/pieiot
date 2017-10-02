@@ -9,7 +9,7 @@
 {{ HTML::style(asset('css/autocomplete.css'))}}
 @stop
 <?php
-$page_title = 'สร้างโครงการใหม่';
+$page_title = 'Create new Report';
 $page_icon = "icon-plus";
 $rf = Input::get('r') ? Input::get('r') : 'refresh';
 $t = Input::get('t') ? Input::get('t') : 1;
@@ -38,7 +38,7 @@ $ii = 0;
 
     <div class="box box-solid box-info">
         <div class="box-header">
-            <h3 class="box-title"><small>edit: </small> {{$page_title}}</h3>
+            <h3 class="box-title">{{$page_title}}</h3>
             <div class="box-tools pull-right">
             </div>
         </div>
@@ -123,42 +123,7 @@ $ii = 0;
             return false;
         }
     }
-    function rtype_click() {
-        var t = $("#rtype option:selected").val();
-        //alert(t)
-        if ((t == 'hrd')) {
-            $("#lbdepgroup").addClass('hidden');
-        } else {
-            $("#lbdepgroup").removeClass('hidden');
-            $("#lbdepgroup").focus();
-        }
-    }
-    function placeid_click() {
-        var t = $("#placeid option:selected").val();
-        //alert(t)
-        if ((t != 'etc')) {
-            $("#tplace").addClass('hidden');
-        } else {
-            $("#tplace").removeClass('hidden');
-            $("#tplace").focus();
-        }
-    }
-    function esent_click() {
-        var t = $("#esent option:selected").val();
-        //alert(t)
-        if ((t == '0')) {
-            $(".esent").addClass('hidden');
-        } else {
-            $(".esent").removeClass('hidden');
-            //$("#sdt1").focus();
-
-        }
-    }
-    function importmember(t) {
-        //alert(t);
-        $('#tfind').val(t);
-        findmember();
-    }
+    
 
 
 
