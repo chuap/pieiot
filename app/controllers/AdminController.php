@@ -179,6 +179,12 @@ class AdminController extends BaseController {
                 $tsk->tx2 = Input::get('txcapture2');
                 $tsk->stime = Input::get('txcapture3');
                 $tsk->etime = Input::get('txcapture4');
+            }else if ($atmode == 'temp') {
+                $tsk->op1 = Input::get('cktemp');
+                $tsk->tx1 = Tasks::ckkTime( Input::get('txtemp1'));
+                $tsk->tx2 = Input::get('txtemp2');
+                $tsk->stime = Input::get('txtemp3');
+                $tsk->etime = Input::get('txtemp4');
             }
             $tsk->save();
             Ports::ckkAssignPort($pieid);

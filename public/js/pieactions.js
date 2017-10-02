@@ -32,6 +32,7 @@ function editportname(pie, pno, pid) {
 function enabletask(tid, pie) {
     $('#tr_'+tid).removeClass('danger');
     $('.mnenable_'+tid).addClass('hidden');
+    $('.mndelete_'+tid).addClass('hidden');
     $('.sync_'+tid).html('<img class="w20" src="' + rootContext + 'images/loading2.gif" /> <small>Enabling</small>');
     $.ajax({
         url: rootContext + 'adminaction',
@@ -42,6 +43,7 @@ function enabletask(tid, pie) {
         var obj = jQuery.parseJSON(result);
         if (obj.STATUS == true) {
            $('.mndisable_'+tid).removeClass('hidden'); 
+           
         } else {
             
         }

@@ -47,6 +47,15 @@ class Tasks extends Eloquent {
         }else if ($v->mn=='image') {
             return '<a href="'.asset($v->d2).'" title="" class="p0 gallery"><img class="'.$h.'" src="'.$v->d2.'"></a>';
             
+        }else if($v->mn=='temp'){            
+            $dx='';
+            if($v->d1){
+                $dx.=''.'<span class="badge bg-yellow">'.  number_format($v->d1,2).'</span>*c';
+            }
+            if($v->d2){
+                $dx.=' '.'<span class="badge bg-info">'.  number_format($v->d2,2).'</span>%';
+            }
+            return $dx;
         } else {
             return '';
         }

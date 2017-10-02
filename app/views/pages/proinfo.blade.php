@@ -114,7 +114,7 @@ $pro = Projects::find($p);
                             <td >
                                 <span id="port_{{$port_n}}">
                                     <span class="port_{{$port_n}}">
-                                        {{Ports::decodeValue($d->portvalue)}}
+                                        {{Ports::portValue($d,'h50')}}
                                     </span>     
                                 </span>
                                 

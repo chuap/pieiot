@@ -13,10 +13,13 @@ class Ports extends Eloquent {
         return excsql("select * from modes order by mode_order");
     }
 
-    public static function updatePort($pie, $pno, $v) {
+    public static function updatePort($pie, $pno,$mn, $v,$v2) {
         $p2="'".str_replace(",","','",$pno)."'";
         $dt = date('Y-m-d H:i:s');
-        $sql = "update ports set portvalue='$v',lastupdate='$dt' where pieid='$pie' and portno in ($pno)";
+        if($mn=='temp'){
+          $v=$v.','.$v2;   
+        }
+        $sql = "update ports set portvalue='$v',porttype='$mn',lastupdate='$dt' where pieid='$pie' and portno in ($pno)";
         excsql($sql);
     }
     
@@ -57,6 +60,33 @@ class Ports extends Eloquent {
                 return $v;
             }
         }
+    }
+    public static function portValue($d,$h='h40') {
+        $v=$d->portvalue;
+        if($d->porttype=='setbit'){
+            if ($v == '1') {
+                return '<span class="badge bg-green">On</span>';
+            } else if ($v == '0') {
+                return '<span class="badge bg-red">Off</span>';
+            }
+        }else if($d->porttype=='capture'){
+            if ($v) {
+                return '<a href="'.asset($v).'" title="" class="imcolorbox gallery p0"><img class="'.$h.'" src="'.$v.'"></a>';
+            }
+        }else if($d->porttype=='temp'){
+            $tt = explode(",", $v);
+            $dx='';
+            if(isset($tt[0])){
+                $dx.=''.'<span class="badge bg-yellow">'.  number_format($tt[0],2).'</span>*c';
+            }
+            if(isset($tt[1])){
+                $dx.=' '.'<span class="badge bg-info">'.  number_format($tt[1],2).'</span>%';
+            }
+            return $dx;
+        }
+        
+        
+        
     }
 
 }

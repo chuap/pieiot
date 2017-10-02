@@ -155,12 +155,12 @@ if(!isset($mn)){$mn='';}
                         
                         <li class="{{$mn=='pies'?'active':''}}">
                             <a href="{{asset('pies')}}">
-                                <i class="fa fa-th"></i> <span>Pie Models</span> <small class="badge pull-right bg-green">new</small>
+                                <i class="fa fa-th"></i> <span>Pie Models</span> <small class="badge pull-right bg-green">{{Pies::countMyPie()}}</small>
                             </a>
                         </li>
                         <li class="{{$mn=='projects'?'active':''}}">
                             <a href="{{asset("projects")}}">
-                                <i class="fa fa-dashboard"></i> <span>My Projects</span>
+                                <i class="fa fa-dashboard"></i> <span>My Projects</span> <small class="badge pull-right bg-blue">{{Projects::countMyProject()}}</small>
                             </a>
                         </li>
                         <li class="{{$mn=='reports'?'active':''}}">
@@ -245,7 +245,7 @@ if(!isset($mn)){$mn='';}
         <script src="{{$tp}}/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>-->
 
         <!-- AdminLTE App -->
-<!--        <script src="{{$tp}}/js/AdminLTE/app.js" type="text/javascript"></script>-->
+        <script src="{{$tp}}/js/AdminLTE/app.js" type="text/javascript"></script>
         <script src="{{asset('/')}}js/piescript.js" type="text/javascript"></script>
 
         <script src="{{asset('/')}}js/totop.js"></script>  
@@ -262,7 +262,7 @@ if (x < 1000) {
 } else {
     w1 = '800';
 }
-$(".newproject").colorbox({iframe: true, width: w1, height: "90%", overlayClose: true,});
+$(".newproject").colorbox({iframe: true, width: w1, height: "90%", overlayClose: true});
 $(document).ready(function () {
 
 

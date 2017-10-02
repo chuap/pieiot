@@ -23,8 +23,7 @@ $pro = Projects::projectList($p);
     @if($pie->img)<img class="h40" src="{{asset($pie->img)}}">@endif
     {{$pie->piename}}
 
-    <img class="h30 ml2" src="{{asset('images/loading2.gif')}}">
-    <small>Connecting...</small>
+    
 </h1>
 @stop
 @section('breadcrumb')
@@ -96,7 +95,7 @@ $pro = Projects::projectList($p);
                         $pro_link = asset('pro-' . $d->proid . '.info');
                         ?>
                         <tr>
-                            <td>{{$i+1}}</td>
+                            <td class="w30">{{$i+1}}</td>
                             <td class="font16">
                                 <a href="{{$pro_link}}" class="">{{$d->proname}}</a>
                                 <p class="pt0 font12 ">{{$d->prodesc}}</p>
@@ -164,13 +163,18 @@ $pro = Projects::projectList($p);
                             <th>update</th>
                         </tr>
                         @foreach($pt as $d)
+                        <?php
+                        $pclick = "editportname('" . $d->pieid . "','" . $d->portno . "','" . $d->portid . "')";
+                        ?>
                         <tr>
                             <td>{{$d->portno}}</td>
-                            <td><a class="portname_{{$d->portid}}" href="javascript:" onclick="editportname('{{$d->pieid}}','{{$d->portno}}','{{$d->portid}}')">{{$d->portname}}</a></td>
+                            <td>
+                                <a class="portname_{{$d->portid}}" href="javascript:" onclick="{{$pclick}}">{{$d->portname}}</a>
+                            </td>
                             <td class="">
                                 <span id="port_{{$d->portno}}">
                                     <span class="port_{{$d->portno}}">
-                                        {{Ports::decodeValue($d->portvalue)}}
+                                        {{Ports::portValue($d)}}
                                     </span>
                                 </span>
                             </td>                            
@@ -180,16 +184,7 @@ $pro = Projects::projectList($p);
 
                     </tbody></table>
             </div>
-            
-
-
         </div><!-- /.box -->  
-
-
-
-
-
-
     </section><!-- /.Left col -->
 </div>
 
@@ -198,7 +193,7 @@ $pro = Projects::projectList($p);
 @section('foot')
 <script type="text/javascript">
     $(function () {
-    startMonitorData();
+        startMonitorData();
     });
     /*  */
 
@@ -206,42 +201,41 @@ $pro = Projects::projectList($p);
     function startMonitorData()
     {
         //alert('GO');
-    $.ajax({
-    url: rootContext + 'monitoraction',
+        $.ajax({
+            url: rootContext + 'monitoraction',
             type: "GET",
             datatype: "json",
             data: "ac=check_piedata&pie={{$p}}"
-    }).success(function (rt) {
+        }).success(function (rt) {
 
-    var obj = jQuery.parseJSON(rt);
-    
-    //effectvalue('time', obj.DATA.length);
-    if (obj.STATUS == true) {
-    for (var i = 0, len = obj.DATA.length; i < len; i++) {
-    effectvalue('port_' + obj.DATA[i]['portno'], obj.DATA[i]['portvalue']);
-    $('.portupdate_' + obj.DATA[i]['portno']).html(obj.DATA[i]['lastupdate']);
+            var obj = jQuery.parseJSON(rt);
+            //effectvalue('time', obj.DATA.length);
+            if (obj.STATUS == true) {
+                for (var i = 0, len = obj.DATA.length; i < len; i++) {
+                    effectvalue('port_' + obj.DATA[i]['portno'], obj.DATA[i]['portvalue']);
+                    $('.portupdate_' + obj.DATA[i]['portno']).html(obj.DATA[i]['lastupdate']);
+                }
+
+
+            } else {
+                //alertbox(obj.MSG + '');
+            }
+        });
+        setTimeout(function () {
+            startMonitorData()
+        }, 3000);
     }
 
-
-    } else {
-    //alertbox(obj.MSG + '');
-    }
-    });
-    setTimeout(function () {
-    startMonitorData()
-    }, 3000);
-    }
-
-    function effectvalue(itm, dt){
-    var x = $('.' + itm).html();
-    
-    if (x != dt){
-    $('.' + itm).css("background-color", "#FF3700");
-    $('.' + itm).fadeOut(400, function () {
-    $('.' + itm).remove();
-    $('#' + itm).html('<span class="' + itm + '">' + dt + '</span>');
-    }); }
-    $('a.gallery').colorbox({rel:'gal'});
+    function effectvalue(itm, dt) {
+        var x = $('.' + itm).html();
+        if (x != dt) {
+            $('.' + itm).css("background-color", "#FF3700");
+            $('.' + itm).fadeOut(400, function () {
+                $('.' + itm).remove();
+                $('#' + itm).html('<span class="' + itm + '">' + dt + '</span>');
+            });
+        }
+        $('a.gallery').colorbox({rel: 'gal'});
     }
 </script>
 <script src="{{asset('/')}}js/pieactions.js" type="text/javascript"></script>

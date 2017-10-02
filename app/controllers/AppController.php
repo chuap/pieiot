@@ -80,10 +80,12 @@ class AppController extends BaseController {
             $p = Input::get('id');
             $aa = Projects::getActiveTask($p, 't.*');
             $json_arr['DATA'] = $aa;
+            excsql("update pies set lastupdate='$dt' where pieid='$p'");
         } else if ($ac == 'getactivetask_update') {
             $p = Input::get('id');
             $aa = Projects::getActiveTaskUpdate($p, 't.*');
             $json_arr['DATA'] = $aa;
+            excsql("update pies set lastupdate='$dt' where pieid='$p'");
         }else if ($ac == 'gettaskinfo') {
             $p = Input::get('id');
             $pno = Input::get('pno');
@@ -101,10 +103,13 @@ class AppController extends BaseController {
             $tsk = Tasks::find($tid);
             //Ports::updatePort($p, $pno, $a);
             Logs::updateLog($p, $tid, $pno, $mn, $a, $b,$tsk->proid);
-            if ($mn == 'setbit') {
-                Ports::updatePort($p, $pno, $a);
+            if (($mn == 'setbit')) {
+                Ports::updatePort($p, $pno,$mn, $a,$b);
             } else if ($mn == 'synced') {
                 Tasks::taskSynced($tid,$a);
+            }else if($mn=='temp'){
+                DataAll::upData ($p, $tid, $pno, $tsk->taskname, $a,$b,$tsk->taskaction,$tsk->proid);
+                Ports::updatePort($p, $pno,$mn, $a,$b);
             }
 
             $json_arr['DATA'] = $a;
@@ -129,10 +134,10 @@ class AppController extends BaseController {
                         }
                         $tsk = Tasks::find($tid);
                         file_put_contents("$ph" . $fname . '.png', $bimg);
-                        Ports::updatePort($p, $pno, $ph . $fname . '.png');
+                        Ports::updatePort($p, $pno,'capture', $ph . $fname . '.png','');
                         //Logs::upLog($p, $tid, $pno, 'saveimage', $ph . $fname . '.png', '');
-                        DataAll::upData($p, $tid, $pno, $tsk->taskname, $ph . $fname . '.png',$tsk->taskaction,$tsk->proid);
-                        Logs::updateLog($p, $tid, $pno, 'image', '', $ph . $fname . '.png',$tsk->proid);
+                        DataAll::upData($p, $tid, $pno, $tsk->taskname, $ph . $fname . '.png','',$tsk->taskaction,$tsk->proid);
+                        Logs::updateLog($p, $tid, $pno, 'image', '', $ph . $fname . '.png','',$tsk->proid);
                         $json_arr['DATA'] = $fname;
                     }
                 }

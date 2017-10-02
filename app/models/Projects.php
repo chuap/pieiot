@@ -10,6 +10,11 @@ class Projects extends Eloquent {
         $mid = Session::get('cat.uid');
         return excsql("select * from projects where mid='$mid' order by lastupdate desc, proactive desc,proid");
     }
+    public static function countMyProject() {
+        $mid = Session::get('cat.uid');
+        $x= excsql("select count(*)as co from projects where mid='$mid' ");
+        return $x[0]->co;
+    }
 
     public static function projectList($p) {
         //return excsql("select * from projects where pieid='$p' order by lastupdate desc, proactive desc,proid");
@@ -54,10 +59,17 @@ class Projects extends Eloquent {
             }else{
                 $l = 'ถ่ายภาพ ทุกๆ ' . Projects::decodeMin($t->tx2)  .  '   ช่วงเวลา '  . $t->stime. ' - ' . $t->etime.  ' น.';
             }
+        }        
+        else if ($t->taskaction == 'temp') {
+            
+            if($t->op1==1){
+                $l = 'อ่านค่าอุณหภูมิและความชื้น เวลา '  .$t->tx1. ' น.';
+            }else{
+                $l = 'อ่านค่าอุณหภูมิและความชื้น ทุกๆ ' . Projects::decodeSec($t->tx2)  .  '   ช่วงเวลา '  . $t->stime. ' - ' . $t->etime.  ' น.';
+            }
         }
         return $l;
     }
-    
     public static function decodeMin($s) {
         $x = $s;
         $m = floor($x / 60);

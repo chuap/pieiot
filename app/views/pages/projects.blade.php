@@ -19,14 +19,14 @@ $plist = Projects::myProjects();
     <div class="col-lg-12">
         <div class="box">
             <div class="box-body ">
-                <a href="{{asset("pro-0-0.newproject")}}" class="btn btn-info newproject pull-right"><i class="fa fa-plus"></i> New Project</a>
+                
                 <table class="table  table-hover">
                     <thead>
                         <tr>
                             <th style="width: 10px">#</th>
                             <th>Project Name</th>
-                            <th></th>
-                            <th style="width: 80px"></th>
+                            <th ></th>
+                            <th style="width: 100px"><a href="{{asset("pro-0-0.newproject")}}" class="btn btn-info newproject "><i class="fa fa-plus"></i> New Project</a></th>
                         </tr>
                     </thead>
                     <tbody>

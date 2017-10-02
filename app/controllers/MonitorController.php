@@ -56,7 +56,17 @@ class MonitorController extends BaseController {
             $tm = date("Y-m-d H:i:s", time() - 10);
             $dt=excsql($sql="select * from ports where lastupdate >'$tm' and pieid ='$pie' order by lastupdate");
             for($i=0;$i<count($dt);$i++){
-                $dt[$i]->portvalue=Ports::decodeValue($dt[$i]->portvalue);
+                $dt[$i]->portvalue=Ports::portValue($dt[$i]);
+                //$dt[$i]->portno=Tasks::portLabel($dt[$i]);
+            } 
+            $json_arr['DATA'] =$dt;
+            $json_arr['STATUS'] = true;
+        } else if ($ac == 'check_pieactive') {
+            $uid = Session::get('cat.uid');
+            $tm = date("Y-m-d H:i:s", time() - 10);
+            $dt=excsql($sql="select * from pies where lastupdate >'$tm' and own ='$uid' order by lastupdate");
+            for($i=0;$i<count($dt);$i++){
+                //$dt[$i]->portvalue=Ports::portValue($dt[$i]);
                 //$dt[$i]->portno=Tasks::portLabel($dt[$i]);
             } 
             $json_arr['DATA'] =$dt;

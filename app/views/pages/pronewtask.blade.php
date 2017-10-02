@@ -221,6 +221,46 @@ if ($tsk) {
                                     </span>
                                 </div>
                             </div>
+                            
+                            <div class="form-inline ports md_temp "> 
+                                <label>
+                                    <input name="cktemp" {{$op1==1?'checked':''}} value="1" class="" type="radio">
+                                    <span class="lbl"> กำหนดเวลาอ่านค่า</span>
+                                </label>
+                                <span class="ml2">
+                                    <div class="input-append ">
+                                        <input id="txtemp1" name="txtemp1" type="text" value="{{$tsk?$tsk->tx1:''}}" class=" w200">                                    
+                                    </div>
+                                    <small class="pr1">(เช่น  8:30, 14:00)</small> 
+                                </span>
+                            </div>
+                            <div class="form-inline ports md_temp mt1"> 
+                                <label>
+                                    <input name="cktemp" {{$op1==2?'checked':''}} value="2" class="" type="radio">
+                                    <span class="lbl"> กำหนดช่วงความถี่ในการอ่านค่า</span>
+                                </label>
+                                <span class="ml2">
+                                    อ่านค่าทุกๆ
+                                    <div class="input-append ">
+                                        <input id="txtemp2" name="txtemp2" type="text" value="{{$tsk?$tsk->tx2:''}}" class=" w60">                                    
+                                    </div>
+                                    <small class="pr1">(วินาที)</small> 
+                                </span>
+                                <div class="input-append bootstrap-timepicker">
+                                    <input id="txtemp3" name="txtemp3" type="text" value="{{$tsk?$tsk->stime:'00:00:00'}}" class=" timepicker w60">
+                                    <span class="add-on">
+                                        <i class="icon-time"></i>
+                                    </span>
+                                </div>
+                                ถึงเวลา
+                                <div class="input-append bootstrap-timepicker">
+                                    <input id="txtemp4" name="txtemp4" type="text" value="{{$tsk?$tsk->etime:'23:59:59'}}" class=" timepicker w60">
+                                    <span class="add-on">
+                                        <i class="icon-time"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            
 
 
 

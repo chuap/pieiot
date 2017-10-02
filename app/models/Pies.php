@@ -14,6 +14,11 @@ class Pies extends Eloquent {
         $mid = Session::get('cat.uid');
         return excsql("select * from pies where own='$mid'  order by registerdate desc");
     }
+    public static function countMyPie() {
+        $mid = Session::get('cat.uid');
+        $x= excsql("select count(pieid) as co from pies where own='$mid' ");
+        return $x[0]->co;
+    }
     
     
     
