@@ -69,8 +69,8 @@ $pro = Projects::find($p);
 
                             <li><a href="#">เปิดใช้งาน</a></li>
                             <li class="divider"></li>
-                            <li><a class="newproject " href="{{asset("pro-".$pro->pieid.'-'.$pro->proid.".newproject")}}" >แก้ไข</a></li>
-                            <li><a href="javascript:" onclick="deleteproject('{{$pro->pieid}}','{{$pro->proid}}')">ลบโครงการนี้</a></li>
+                            <li><a class="newproject " href="{{asset("pro-".$pro->pieid.'-'.$pro->proid.".newproject")}}" >Edit</a></li>
+                            <li><a href="javascript:" onclick="deleteproject('{{$pro->pieid}}','{{$pro->proid}}')">Delete project</a></li>
                         </ul>
                     </div>
 

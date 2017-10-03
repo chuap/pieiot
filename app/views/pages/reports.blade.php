@@ -30,10 +30,13 @@
         @else        
         <div class="row">
             @foreach($rlist as $i=>$d)
+            <?php
+            $rlink=asset('/pie.report-info')."?rid=".$d->rid;
+            ?>
             <div class="col-md-4">
                 <div class="box box-solid">
                     <div class="box-header">
-                        <h3 class="box-title text-danger">{{$d->rname}}</h3>
+                        <h3 class="box-title text-danger"><a href="{{$rlink}}">{{$d->rname}}</a></h3>
                         <div class="box-tools pull-right">
                             <a href="{{asset("pie.newreport?rid=".$d->rid)}}" class="btn btn-default btn-sm newproject"><i class="fa fa-edit"></i></a>
                         </div>

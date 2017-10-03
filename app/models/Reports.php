@@ -27,6 +27,13 @@ class Reports extends Eloquent {
         $mid = Session::get('cat.uid');
         return excsql("select * from report_h where mid='$mid' order by rname");
     }
+    public static function listImages($r) {
+        $tid=$r->tid;
+        $sdate=$r->sdate;
+        $edate=$r->edate;
+        $sql="select * from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' and mn='capture'";
+        return excsql($sql);
+    }
     
 
 }

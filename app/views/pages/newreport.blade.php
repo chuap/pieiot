@@ -25,7 +25,7 @@ if ($re) {
     }
     $rname = $re->rname;
     $page_title = 'edit: ' . $rname;
-    $rtype = $re->rtype;
+    if(!$rtype){$rtype = $re->rtype;}
 
     $datasl = $re->datasl;
     $stime = date('H:i:s', strtotime($re->sdate));
@@ -38,7 +38,7 @@ if ($re) {
     }
     if ($step == 2) {
         $listData = Reports::listData($rtype);
-    } 
+    }
 } else {
     if (!$rtype) {
         $step = 1;
@@ -46,30 +46,33 @@ if ($re) {
         $step = 2;
         $listData = Reports::listData($rtype);
     } else {
-        $step = 3;
-
-        for ($i = 0; $i < $datasl; $i++) {
-            if ($i > 0) {
-                $tid.=',';
-            }
-            $tid.="'" . Input::get('rdata_' . $i) . "'";
-        }
-        $listData = Reports::listData($rtype, $tid);
+        $step = 3;        
+        $listData = Reports::listData($rtype);
         $rname = '';
         $sdate = '9';
-        $edate = '';
-        foreach ($listData as $i => $d) {
-            if ($i > 0) {
-                $i.=', ';
-            }
-            $rname.=$d->dataname;
-            if ($d->mind < $sdate) {
-                $sdate = $d->mind;
-            }
-            if ($d->maxd > $edate) {
-                $edate = $d->maxd;
+        $edate = '';$i=0;
+        $tid = '';
+        foreach ($listData as $j=>$d) {
+            if (Input::get('rdata_' . $j) > 0) {
+                
+                if ($i > 0) {
+                    $rname .= ', ';
+                    $tid .= ',';
+                }
+                $rname .= $d->dataname;
+                $tid .= "'" . Input::get('rdata_' . $j) . "'";
+                if ($d->mind < $sdate) {
+                    $sdate = $d->mind;
+                }
+                if ($d->maxd > $edate) {
+                    $edate = $d->maxd;
+                }
+                $i++;
             }
         }
+        
+        
+        $listData = Reports::listData($rtype,$tid);
 
         $stime = date('H:i:s', strtotime($sdate));
         $etime = date('H:i:s', strtotime($edate));
