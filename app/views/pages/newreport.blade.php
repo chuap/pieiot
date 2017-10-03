@@ -45,6 +45,7 @@ if ($re) {
     } else if (!$datasl) {
         $step = 2;
         $listData = Reports::listData($rtype);
+        
     } else {
         $step = 3;        
         $listData = Reports::listData($rtype);
@@ -80,6 +81,12 @@ if ($re) {
         $edate = date('d-m-Y', strtotime($edate));
     }
 }
+
+if($rtype){
+    $rt=Reports::rType($rtype);
+}else{
+    $rt='';
+}
 ?>
 
 @section('body')
@@ -105,13 +112,13 @@ if ($re) {
     </div>
 </div>
 @elseif($step==2)
-<div class="row-fluid">
+<div class="row-fluid ">
     <div class="span12">
-        <p class="lead">Select Data : {{$rtype}}</p>        
+        <p class="lead"><i class="{{$rt->rticon}}"></i> {{$rt->rtname}} : Select Data</p>        
     </div>
     <div>
         <form id="f1">
-            <table class="table mt0" style="border-bottom: #f4f2f2 solid 1px;">
+            <table class="table mt0 table-hover" style="border-bottom: #f4f2f2 solid 1px;">
                 <thead>
                     <tr>
                         <th class="w20">#</th>
@@ -124,7 +131,7 @@ if ($re) {
                         <td>{{$i+1}}</td>
                         <td><label>
                                 <input {{isset($datack[$d->tid])?'checked':$i==0?'checked':''}} name="rdata_{{$i}}" value="{{$d->tid}}" class="ace-checkbox-2 rdata" type="checkbox">
-                                <span class="lbl"> {{$d->dataname}}</span>
+                                <span class="lbl font120p"> {{$d->dataname}}</span>
                             </label>
                         </td>
                     </tr>
@@ -151,7 +158,7 @@ if ($re) {
 @elseif($step==3)
 <div class="row-fluid">
     <div class="span12">
-        <p class="lead">Options</p>        
+        <p class="lead"><i class="{{$rt->rticon}}"></i> {{$rname}} : <small>Options</small></p>        
     </div>
     <div>
         <form id="f1">
@@ -187,7 +194,7 @@ if ($re) {
                         <a href="{{asset('pie.newreport?step=2&rtype='.$rtype.'&rid='.$rid)}}"><i class="icon-backward"></i> Back</a>
                     </label>
                     <div class="controls">
-                        <a onclick="savereport()" class="btn_save btn btn-info "><i class="icon-save bigger-125"></i>  Create report </a>
+                        <a onclick="savereport()" class="btn_save btn btn-info "><i class="icon-save bigger-125"></i>  Save report </a>
                         <div class="hidden text-center divload pull-left">
                             <img src="{{asset('images/loading.gif')}}" style="width: 30px;">    
                             Processing...             

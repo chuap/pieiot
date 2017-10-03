@@ -7,10 +7,10 @@
 }
 body { 
     /*background:url(../images/bg_b.png) no-repeat center center fixed ;*/
-    -moz-background-size: cover;
+/*    -moz-background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover;*/
 
 } 
 .tbcenter tr th,.tbcenter tr td{ text-align: center; vertical-align: middle;} 
@@ -61,6 +61,9 @@ imgXX{ border: 1px #ffccff solid; }
 .sidebar_menu li{ list-style:none;  margin-right: 0px; margin-top: 2px;  }
 .sidebar_menu li a{ text-align: left; width: 100%; }
 .font10{font-size:10px;} .font12{font-size:12px;}.font11{font-size:11px;}.font13{font-size:13px;}.font14{font-size:14px;}.font16{font-size:16px;}.font20{font-size:20px;}
+.font25{font-size:25px;} .font30{font-size:30px;} .font40{font-size:40px;} .font50{font-size:50px;} .font80{font-size:80px;}  
+.font120p{font-size:120%;} .font150p{font-size:150%;} .font200p{font-size:200%;} .font400p{font-size:400%;} .font300p{font-size:300%;}
+.font20p{font-size:20%;} .font50p{font-size:50%;} .font70p{font-size:70%;} .font40p{font-size:40%;} .font180p{font-size:180%;}
 .hand{ cursor: pointer;};
 .carousel-topX{ top: 10px!important;  }
 .gallery { margin-bottom:15px;padding:10px 15px 5px 20px;background:#fff;box-shadow: 0px 5px 8px rgba(0,0,0,0.70);-moz-box-shadow: 0px 5px 8px rgba(0,0,0,0.70);-webkit-box-shadow: 0px 5px 8px rgba(0,0,0,0.70);
@@ -71,6 +74,7 @@ imgXX{ border: 1px #ffccff solid; }
 .text-bold{ font-weight: bold}
 .link-news{ color: #058660;}
 .trcenter td,.trcenter th,.cenmid{ text-align: center; vertical-align:middle; }
+.w50p{width: 50%;} .w30p{width: 30%;} .w60p{width: 60%;} .w80p{width: 80%;} .w90p{width: 90%;} .w100p{width: 100%;}
 .w20{width: 20px;} .w30{ width: 30px;}.w40{ width: 40px;} .w50{ width: 50px;}.w60{ width: 60px;}.w80{ width: 80px;}.w100{ width: 100px;}.w120{ width: 120px;}.w140{ width: 140px;}.w150{ width: 150px;}.w160{ width: 160px;}.w200{ width: 200px;}.w300{ width: 300px;}
 .h30{ height :30px;}.h40{ height :40px;} .h50{ height: 50px;}.h80{ height: 80px;}.h100{ height: 100px;}.h150{ height: 150px;}.h200{ height: 200px;}
 .shadow { margin-bottom:10px;background:#fff;box-shadow: 0px 3px 6px rgba(0,0,0,0.70);-moz-box-shadow: 0px 3px 6px rgba(0,0,0,0.70);-webkit-box-shadow: 0px 3px 6px rgba(0,0,0,0.70);

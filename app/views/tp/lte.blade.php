@@ -31,11 +31,13 @@ if(!isset($mn)){$mn='';}
         <link href="{{$tp}}/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="{{$tp}}/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{asset('themes/ace/assets/css/font-awesome.min.css')}}" />
         {{ HTML::style('js/jquery-ui/css/start/jquery-ui-1.10.4.custom.css')}}
         {{ HTML::style('js/colorbox/colorbox.css')}} 
 
         {{ HTML::style('css/totop.css')}} 
         {{ HTML::style('css/mod.css')}} 
+        @yield('head_meta')
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -165,7 +167,7 @@ if(!isset($mn)){$mn='';}
                         </li>
                         <li class="{{$mn=='reports'?'active':''}}">
                             <a href="{{asset("reports")}}">
-                                <i class="fa fa-bar-chart-o"></i> <span>Reports</span>
+                                <i class="fa fa-bar-chart-o"></i> <span>Reports</span> <small class="badge pull-right bg-purple">{{Reports::countMyReport()}}</small>
                             </a>
                         </li>
 

@@ -46,7 +46,7 @@ class MonitorController extends BaseController {
             $tm = date("Y-m-d H:i:s", time() - 10);
             $dt=excsql($sql="select t.* from logs t where t.datesave >'$tm' and proid ='$pro' and not (asdata is null) order by datesave");
             for($i=0;$i<count($dt);$i++){
-                $dt[$i]->d1=Tasks::valueLabel($dt[$i]);
+                $dt[$i]->d1=Tasks::valueLabel($dt[$i],'h50');
                 $dt[$i]->portno=Tasks::portLabel($dt[$i]);
             } 
             $json_arr['DATA'] =$dt;
