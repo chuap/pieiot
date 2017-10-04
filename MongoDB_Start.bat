@@ -3,6 +3,6 @@ echo %curTimestamp%
 
 git add -A
 git commit -m "%curTimestamp%"
-git push git://github.com/chuap/pieiot.git
+git push https://github.com/chuap/pieiot.git
 
 pause
