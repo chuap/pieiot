@@ -69,7 +69,7 @@ class Ports extends Eloquent {
             } else if ($v == '0') {
                 return '<span class="badge bg-red">Off</span>';
             }
-        }else if($d->porttype=='capture'){
+        }else if($d->porttype=='capture'){ 
             if ($v) {
                 return '<a href="'.asset($v).'" title="" class="imcolorbox gallery p0"><img class="'.$h.'" src="'.$v.'"></a>';
             }

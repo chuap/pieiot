@@ -157,7 +157,7 @@ if(!isset($mn)){$mn='';}
                         
                         <li class="{{$mn=='pies'?'active':''}}">
                             <a href="{{asset('pies')}}">
-                                <i class="fa fa-th"></i> <span>Pie Models</span> <small class="badge pull-right bg-green">{{Pies::countMyPie()}}</small>
+                                <i class="fa fa-th"></i> <span>Pie Nodes</span> <small class="badge pull-right bg-green">{{Pies::countMyPie()}}</small>
                             </a>
                         </li>
                         <li class="{{$mn=='projects'?'active':''}}">

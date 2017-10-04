@@ -64,7 +64,9 @@ imgXX{ border: 1px #ffccff solid; }
 .font25{font-size:25px;} .font30{font-size:30px;} .font40{font-size:40px;} .font50{font-size:50px;} .font80{font-size:80px;}  
 .font120p{font-size:120%;} .font150p{font-size:150%;} .font200p{font-size:200%;} .font400p{font-size:400%;} .font300p{font-size:300%;}
 .font20p{font-size:20%;} .font50p{font-size:50%;} .font70p{font-size:70%;} .font40p{font-size:40%;} .font180p{font-size:180%;}
+.font80p{font-size:80%;} .font90p{font-size:90%;} 
 .hand{ cursor: pointer;};
+
 .carousel-topX{ top: 10px!important;  }
 .gallery { margin-bottom:15px;padding:10px 15px 5px 20px;background:#fff;box-shadow: 0px 5px 8px rgba(0,0,0,0.70);-moz-box-shadow: 0px 5px 8px rgba(0,0,0,0.70);-webkit-box-shadow: 0px 5px 8px rgba(0,0,0,0.70);
            position: relative;}

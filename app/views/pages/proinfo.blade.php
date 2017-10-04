@@ -67,8 +67,7 @@ $pro = Projects::find($p);
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i></button>
                         <ul class="dropdown-menu pull-right" role="menu ">
 
-                            <li><a href="#">เปิดใช้งาน</a></li>
-                            <li class="divider"></li>
+                            
                             <li><a class="newproject " href="{{asset("pro-".$pro->pieid.'-'.$pro->proid.".newproject")}}" >Edit</a></li>
                             <li><a href="javascript:" onclick="deleteproject('{{$pro->pieid}}','{{$pro->proid}}')">Delete project</a></li>
                         </ul>
