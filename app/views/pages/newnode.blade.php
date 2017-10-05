@@ -17,12 +17,9 @@ $rf = Input::get('r') ? Input::get('r') : 'refresh';
 $mtype = Input::get('mtype');
 
 $listmodel = Pies::pieModel();
-
-$rid = Input::get('rid');
 $step = Input::get('step');
 //$step = 1;
 $tid = '';
-$re = Reports::find($rid);
 
 if (!$mtype) {
     $step = 1;
@@ -76,7 +73,7 @@ if (!$mtype) {
                         <a href="{{asset('pie.newnode?step=1')}}"><i class="icon-backward"></i> Back</a>
                     </label>
                     <div class="controls">
-                        <a onclick="savereport()" class="btn_save btn btn-info "><i class="icon-plus bigger-125"></i>  Create Pie Node </a>
+                        <a onclick="newpie()" class="btn_save btn btn-info "><i class="icon-plus bigger-125"></i>  Create Pie Node </a>
                         <div class="hidden text-center divload pull-left">
                             <img src="{{asset('images/loading.gif')}}" style="width: 30px;">    
                             Processing...             
@@ -124,7 +121,8 @@ if (!$mtype) {
             var obj = jQuery.parseJSON(result);
             if (obj.STATUS == true) {
                 parent.$.colorbox.close();
-                parent.location.reload();
+                //parent.location.reload();
+                parent.window.location.href = rootContext + "pie-"+obj.LASTID+'.info';
             } else {
                 alertbox(obj.MSG + '');
             }

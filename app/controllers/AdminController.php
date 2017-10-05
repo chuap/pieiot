@@ -47,7 +47,34 @@ class AdminController extends BaseController {
 
         $date_save = date('Y-m-d H:i:s');
         $json_arr['MSG'] = $ac;
-        if ($ac == 'pieeditsave') {
+        if ($ac == 'newpie') {
+            //$x = DB::update($sql);
+            $mtype = Input::get('mtype');
+            $minfo = Pies::modelInfo($mtype);
+            if (!$mtype) {
+                $json_arr['MSG'] = 'Error !!';
+                return json_encode($json_arr);
+            }
+            $pie = new Pies();
+            $pie->piename = Input::get('piename');
+            $pie->color = Input::get('piecolor');
+            $pie->piemodel = $mtype;
+            $pie->img = $minfo->img;
+            $pie->own = $uid;
+            $pie->save();
+            $pts = Ports::portModel($mtype);
+            $pieid = $pie->pieid;
+            foreach ($pts as $d) {
+                $portno = $d->portno;
+                $portname = $d->portname;
+                $porttype = $d->porttype;
+                //$modes = $d->modes;
+                $sql = "insert into ports(pieid,portno,portname,porttype,piemodel) values('$pieid','$portno','$portname','$porttype','$mtype')";
+                excsql($sql);
+            }
+            $json_arr['STATUS'] = true;
+            $json_arr['LASTID'] = $pie->pieid;
+        } else if ($ac == 'pieeditsave') {
             $p = Input::get('p') ? Input::get('p') : 0;
             $pie = Pies::find($p);
             if (!$pie) {
@@ -56,6 +83,7 @@ class AdminController extends BaseController {
             $pie->piename = Input::get('txpiename');
             $pie->desc = Input::get('txdesc');
             $pie->save();
+
             $json_arr['STATUS'] = true;
             $json_arr['MSG'] = Input::get('txpiename');
         } else if ($ac == 'editportname') {
@@ -95,6 +123,21 @@ class AdminController extends BaseController {
             } else {
                 $json_arr['MSG'] = 'Can not delete task..';
             }
+        } else if ($ac == 'deletepie') {
+            $pie = Input::get('pie') ? Input::get('pie') : '';
+            $pinfo = Pies::find($pie);
+            if ($pinfo->own == $uid) {
+                $sql = "delete from tasks where  pieid='$pie'";
+                $x = excsql($sql);
+                $sql = "delete from ports where pieid='$pie'";
+                $x = excsql($sql);
+                $sql = "delete from pies where pieid='$pie'";
+                $x = excsql($sql);
+                $json_arr['STATUS'] = true;
+                $json_arr['MSG'] = 'Success';
+            } else {
+                $json_arr['MSG'] = 'Error !!';
+            }
         } else if ($ac == 'deleteproject') {
             $pro = Input::get('pro') ? Input::get('pro') : '';
             $sql = "delete from tasks where mid='$uid' and proid='$pro'";
@@ -120,7 +163,7 @@ class AdminController extends BaseController {
             $re->rtype = Input::get('rtype');
             $re->datesave = $date_save;
             $re->mid = $uid;
-            $tid='';
+            $tid = '';
             for ($i = 0; $i < $datasl; $i++) {
                 if ($i > 0) {
                     $tid.=',';

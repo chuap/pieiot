@@ -8,10 +8,10 @@ if(!isset($mn)){$mn='';}
         <meta charset="UTF-8">
         <title>
             @section('page_title')
-            PiIoT 
+            PieIoT 
             @show
         </title>
-        <link href="{{asset('images/pie.ico')}}" rel="shortcut icon">
+        <link href="{{asset('images/pieico.ico')}}" rel="shortcut icon">
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="{{$tp}}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />

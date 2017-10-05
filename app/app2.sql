@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.9
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2017 at 11:12 AM
--- Server version: 5.5.34
--- PHP Version: 5.4.22
+-- Generation Time: Oct 05, 2017 at 06:06 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `app`
@@ -26,10 +26,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `alldata`
 --
 
-CREATE TABLE IF NOT EXISTS `alldata` (
+CREATE TABLE `alldata` (
   `pieid` bigint(20) DEFAULT NULL,
   `tid` bigint(20) DEFAULT NULL,
-  `aid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `aid` bigint(20) NOT NULL,
   `portno` varchar(50) DEFAULT NULL,
   `dataname` varchar(50) DEFAULT NULL,
   `data` varchar(80) DEFAULT NULL,
@@ -37,9 +37,8 @@ CREATE TABLE IF NOT EXISTS `alldata` (
   `mn` varchar(50) DEFAULT NULL,
   `desc` varchar(255) DEFAULT NULL,
   `datesave` varchar(20) DEFAULT NULL,
-  `proid` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`aid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2086 ;
+  `proid` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `alldata`
@@ -338,8 +337,7 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 295, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.8999996185', '49.0999984741', 'temp', NULL, '2017-10-01 17:17:50', 1),
 (1, 11, 296, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.8999996185', '49.0999984741', 'temp', NULL, '2017-10-01 17:18:01', 1),
 (1, 11, 297, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.8999996185', '48.9000015259', 'temp', NULL, '2017-10-01 17:18:10', 1),
-(1, 11, 298, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '29.0', '48.7000007629', 'temp', NULL, '2017-10-01 17:18:23', 1);
-INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
+(1, 11, 298, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '29.0', '48.7000007629', 'temp', NULL, '2017-10-01 17:18:23', 1),
 (1, 11, 299, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.8999996185', '48.4000015259', 'temp', NULL, '2017-10-01 17:18:30', 1),
 (1, 11, 300, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.8999996185', '48.4000015259', 'temp', NULL, '2017-10-01 17:18:41', 1),
 (1, 11, 301, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '29.0', '48.7000007629', 'temp', NULL, '2017-10-01 17:18:51', 1),
@@ -469,7 +467,8 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 425, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '48.2999992371', 'temp', NULL, '2017-10-01 17:41:12', 1),
 (1, 11, 426, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '48.2999992371', 'temp', NULL, '2017-10-01 17:41:23', 1),
 (1, 11, 427, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '48.4000015259', 'temp', NULL, '2017-10-01 17:41:34', 1),
-(1, 11, 428, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '48.5', 'temp', NULL, '2017-10-01 17:41:44', 1),
+(1, 11, 428, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '48.5', 'temp', NULL, '2017-10-01 17:41:44', 1);
+INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
 (1, 11, 429, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '48.5', 'temp', NULL, '2017-10-01 17:41:55', 1),
 (1, 11, 430, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '48.7000007629', 'temp', NULL, '2017-10-01 17:42:05', 1),
 (1, 11, 431, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '48.9000015259', 'temp', NULL, '2017-10-01 17:42:16', 1),
@@ -632,8 +631,7 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 588, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.2999992371', '49.4000015259', 'temp', NULL, '2017-10-01 18:11:04', 1),
 (1, 11, 589, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.2999992371', '49.4000015259', 'temp', NULL, '2017-10-01 18:11:15', 1),
 (1, 11, 590, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.2999992371', '49.4000015259', 'temp', NULL, '2017-10-01 18:11:25', 1),
-(1, 11, 591, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.2999992371', '49.5', 'temp', NULL, '2017-10-01 18:11:36', 1);
-INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
+(1, 11, 591, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.2999992371', '49.5', 'temp', NULL, '2017-10-01 18:11:36', 1),
 (1, 11, 592, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.2999992371', '49.7999992371', 'temp', NULL, '2017-10-01 18:11:46', 1),
 (1, 11, 593, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.2999992371', '49.9000015259', 'temp', NULL, '2017-10-01 18:11:57', 1),
 (1, 11, 594, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.2999992371', '50.0', 'temp', NULL, '2017-10-01 18:12:07', 1),
@@ -894,7 +892,8 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 849, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.2999992371', 'temp', NULL, '2017-10-01 19:01:54', 1),
 (1, 11, 850, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.4000015259', 'temp', NULL, '2017-10-01 19:02:04', 1),
 (1, 11, 851, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.5', 'temp', NULL, '2017-10-01 19:02:16', 1),
-(1, 11, 852, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.5', 'temp', NULL, '2017-10-01 19:02:25', 1),
+(1, 11, 852, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.5', 'temp', NULL, '2017-10-01 19:02:25', 1);
+INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
 (1, 11, 853, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.5', 'temp', NULL, '2017-10-01 19:02:36', 1),
 (1, 11, 854, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.6000003815', '52.7000007629', 'temp', NULL, '2017-10-01 19:02:46', 1),
 (1, 11, 855, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.6000003815', '52.7000007629', 'temp', NULL, '2017-10-01 19:02:57', 1),
@@ -927,8 +926,7 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 882, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.3999996185', '52.4000015259', 'temp', NULL, '2017-10-01 19:07:46', 1),
 (1, 11, 883, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.3999996185', '52.2999992371', 'temp', NULL, '2017-10-01 19:07:58', 1),
 (1, 11, 884, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.4000015259', 'temp', NULL, '2017-10-01 19:08:07', 1),
-(1, 11, 885, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.4000015259', 'temp', NULL, '2017-10-01 19:08:21', 1);
-INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
+(1, 11, 885, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.4000015259', 'temp', NULL, '2017-10-01 19:08:21', 1),
 (1, 11, 886, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.7000007629', 'temp', NULL, '2017-10-01 19:08:29', 1),
 (1, 11, 887, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '52.7000007629', 'temp', NULL, '2017-10-01 19:08:39', 1),
 (1, 11, 888, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.6000003815', '52.7000007629', 'temp', NULL, '2017-10-01 19:08:49', 1),
@@ -1222,8 +1220,7 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 1176, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.3999996185', '50.7999992371', 'temp', NULL, '2017-10-01 20:00:59', 1),
 (1, 11, 1177, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '51.0', 'temp', NULL, '2017-10-01 20:01:09', 1),
 (1, 11, 1178, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '51.0999984741', 'temp', NULL, '2017-10-01 20:01:20', 1),
-(1, 11, 1179, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '51.4000015259', 'temp', NULL, '2017-10-01 20:01:31', 1);
-INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
+(1, 11, 1179, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '51.4000015259', 'temp', NULL, '2017-10-01 20:01:31', 1),
 (1, 11, 1180, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '51.2999992371', 'temp', NULL, '2017-10-01 20:01:41', 1),
 (1, 11, 1181, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '51.2999992371', 'temp', NULL, '2017-10-01 20:01:52', 1),
 (1, 11, 1182, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '51.4000015259', 'temp', NULL, '2017-10-01 20:02:02', 1),
@@ -1319,7 +1316,8 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 1272, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '48.4000015259', 'temp', NULL, '2017-10-01 20:18:38', 1),
 (1, 11, 1273, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '48.4000015259', 'temp', NULL, '2017-10-01 20:18:48', 1),
 (1, 11, 1274, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '48.2999992371', 'temp', NULL, '2017-10-01 20:18:59', 1),
-(1, 11, 1275, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7000007629', '48.2000007629', 'temp', NULL, '2017-10-01 20:19:09', 1),
+(1, 11, 1275, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7000007629', '48.2000007629', 'temp', NULL, '2017-10-01 20:19:09', 1);
+INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
 (1, 11, 1276, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7000007629', '48.2000007629', 'temp', NULL, '2017-10-01 20:19:20', 1),
 (1, 11, 1277, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7000007629', '48.5', 'temp', NULL, '2017-10-01 20:19:30', 1),
 (1, 11, 1278, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.6000003815', '48.5', 'temp', NULL, '2017-10-01 20:19:41', 1),
@@ -1513,8 +1511,7 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 1466, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '47.2000007629', 'temp', NULL, '2017-10-01 21:14:24', 1),
 (1, 11, 1467, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '47.2000007629', 'temp', NULL, '2017-10-01 21:14:35', 1),
 (1, 11, 1468, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '47.4000015259', 'temp', NULL, '2017-10-01 21:14:45', 1),
-(1, 11, 1469, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '47.5', 'temp', NULL, '2017-10-01 21:14:56', 1);
-INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
+(1, 11, 1469, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '47.5', 'temp', NULL, '2017-10-01 21:14:56', 1),
 (1, 11, 1470, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '47.5999984741', 'temp', NULL, '2017-10-01 21:15:09', 1),
 (1, 11, 1471, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '47.5999984741', 'temp', NULL, '2017-10-01 21:15:20', 1),
 (1, 11, 1472, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.7999992371', '47.7999992371', 'temp', NULL, '2017-10-01 21:15:30', 1),
@@ -1737,7 +1734,8 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 1689, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.3999996185', '49.9000015259', 'temp', NULL, '2017-10-01 21:55:35', 1),
 (1, 11, 1690, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.3999996185', '50.0999984741', 'temp', NULL, '2017-10-01 21:55:46', 1),
 (1, 11, 1691, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '50.4000015259', 'temp', NULL, '2017-10-01 21:55:56', 1),
-(1, 11, 1692, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '50.5', 'temp', NULL, '2017-10-01 21:56:09', 1),
+(1, 11, 1692, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '50.5', 'temp', NULL, '2017-10-01 21:56:09', 1);
+INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
 (1, 11, 1693, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '50.5999984741', 'temp', NULL, '2017-10-01 21:56:20', 1),
 (1, 11, 1694, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '50.7000007629', 'temp', NULL, '2017-10-01 21:56:30', 1),
 (1, 11, 1695, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '28.5', '51.0999984741', 'temp', NULL, '2017-10-01 21:56:48', 1),
@@ -1805,8 +1803,7 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 1758, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '24.8999996185', '49.5', 'temp', NULL, '2017-10-02 11:01:53', 1),
 (1, 11, 1759, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '24.8999996185', '49.5999984741', 'temp', NULL, '2017-10-02 11:02:01', 1),
 (1, 11, 1760, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '24.8999996185', '49.5', 'temp', NULL, '2017-10-02 11:03:04', 1),
-(1, 11, 1761, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '24.8999996185', '49.5', 'temp', NULL, '2017-10-02 11:04:04', 1);
-INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
+(1, 11, 1761, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '24.8999996185', '49.5', 'temp', NULL, '2017-10-02 11:04:04', 1),
 (1, 11, 1762, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '24.8999996185', '49.5999984741', 'temp', NULL, '2017-10-02 11:04:30', 1),
 (1, 11, 1764, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '24.8999996185', '49.5', 'temp', NULL, '2017-10-02 11:04:36', 1),
 (1, 11, 1765, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '24.8999996185', '49.5', 'temp', NULL, '2017-10-02 11:04:44', 1),
@@ -2100,8 +2097,7 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 11, 2071, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '27.8999996185', '57.7999992371', 'temp', NULL, '2017-10-02 20:57:31', 1),
 (1, 11, 2072, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '27.8999996185', '56.9000015259', 'temp', NULL, '2017-10-02 20:58:34', 1),
 (1, 3, 2074, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507029491.png', '', 'capture', NULL, '2017-10-03 18:18:11', 1),
-(1, 3, 2075, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507029551.png', '', 'capture', NULL, '2017-10-03 18:19:11', 1);
-INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `data2`, `mn`, `desc`, `datesave`, `proid`) VALUES
+(1, 3, 2075, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507029551.png', '', 'capture', NULL, '2017-10-03 18:19:11', 1),
 (1, 3, 2076, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507029611.png', '', 'capture', NULL, '2017-10-03 18:20:11', 1),
 (1, 3, 2077, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507029671.png', '', 'capture', NULL, '2017-10-03 18:21:11', 1),
 (1, 3, 2078, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507029715.png', '', 'capture', NULL, '2017-10-03 18:21:55', 1),
@@ -2111,7 +2107,8 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 3, 2082, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507030819.png', '', 'capture', NULL, '2017-10-03 18:40:19', 1),
 (1, 3, 2083, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507031408.png', '', 'capture', NULL, '2017-10-03 18:50:08', 1),
 (1, 3, 2084, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507031853.png', '', 'capture', NULL, '2017-10-03 18:57:33', 1),
-(1, 3, 2085, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507031855.png', '', 'capture', NULL, '2017-10-03 18:57:35', 1);
+(1, 3, 2085, '101', 'ถ่ายรูปผักทุกวัน', 'data/1/1507031855.png', '', 'capture', NULL, '2017-10-03 18:57:35', 1),
+(1, 11, 2086, '5', 'เก็บค่าความชื้นและอุณหภูมิ', '27.2000007629', '65.3000030518', 'temp', NULL, '2017-10-05 22:39:26', 1);
 
 -- --------------------------------------------------------
 
@@ -2119,15 +2116,14 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 -- Table structure for table `appdata`
 --
 
-CREATE TABLE IF NOT EXISTS `appdata` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `appdata` (
+  `id` bigint(20) NOT NULL,
   `dt` varchar(20) DEFAULT NULL,
   `appname` varchar(50) DEFAULT NULL,
   `d1` varchar(255) DEFAULT NULL,
   `d2` varchar(255) DEFAULT NULL,
-  `d3` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14909 ;
+  `d3` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `appdata`
@@ -8404,10 +8400,9 @@ INSERT INTO `appdata` (`id`, `dt`, `appname`, `d1`, `d2`, `d3`) VALUES
 -- Table structure for table `conf`
 --
 
-CREATE TABLE IF NOT EXISTS `conf` (
+CREATE TABLE `conf` (
   `keyname` varchar(20) NOT NULL,
-  `data` varchar(50) NOT NULL,
-  PRIMARY KEY (`keyname`)
+  `data` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -8423,8 +8418,8 @@ INSERT INTO `conf` (`keyname`, `data`) VALUES
 -- Table structure for table `files_book`
 --
 
-CREATE TABLE IF NOT EXISTS `files_book` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `files_book` (
+  `id` bigint(20) NOT NULL,
   `old_name` varchar(255) DEFAULT NULL,
   `file_name` varchar(120) DEFAULT NULL,
   `file_type` varchar(30) DEFAULT NULL,
@@ -8436,9 +8431,8 @@ CREATE TABLE IF NOT EXISTS `files_book` (
   `thumb` varchar(200) DEFAULT NULL,
   `bookid` varchar(30) DEFAULT '0',
   `topdf` varchar(120) DEFAULT NULL,
-  `df` tinyint(255) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=139 ;
+  `df` tinyint(255) DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `files_book`
@@ -8459,7 +8453,7 @@ INSERT INTO `files_book` (`id`, `old_name`, `file_name`, `file_type`, `file_size
 -- Table structure for table `hrd_profile`
 --
 
-CREATE TABLE IF NOT EXISTS `hrd_profile` (
+CREATE TABLE `hrd_profile` (
   `uid` bigint(8) NOT NULL,
   `nickname` varchar(30) DEFAULT NULL,
   `avatar` varchar(80) DEFAULT NULL,
@@ -8469,8 +8463,7 @@ CREATE TABLE IF NOT EXISTS `hrd_profile` (
   `lastnotification` varchar(20) DEFAULT NULL,
   `menumin` tinyint(4) DEFAULT '0',
   `fixtop` tinyint(4) DEFAULT '0',
-  `leftright` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`uid`)
+  `leftright` tinyint(4) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -8489,12 +8482,11 @@ INSERT INTO `hrd_profile` (`uid`, `nickname`, `avatar`, `lastlogin`, `lastread`,
 -- Table structure for table `icon_set`
 --
 
-CREATE TABLE IF NOT EXISTS `icon_set` (
+CREATE TABLE `icon_set` (
   `icon_type` varchar(255) DEFAULT NULL,
   `file_name` varchar(255) DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=135 ;
+  `id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `icon_set`
@@ -8642,10 +8634,10 @@ INSERT INTO `icon_set` (`icon_type`, `file_name`, `id`) VALUES
 -- Table structure for table `logs`
 --
 
-CREATE TABLE IF NOT EXISTS `logs` (
+CREATE TABLE `logs` (
   `pieid` bigint(20) DEFAULT NULL,
   `tid` bigint(20) DEFAULT NULL,
-  `aid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `aid` bigint(20) NOT NULL,
   `portno` varchar(50) DEFAULT NULL,
   `d1` varchar(50) DEFAULT NULL,
   `d2` varchar(50) DEFAULT NULL,
@@ -8654,26 +8646,25 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `datesave` varchar(20) DEFAULT NULL,
   `proid` bigint(20) DEFAULT NULL,
   `asdata` varchar(50) DEFAULT NULL,
-  `d0` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`aid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+  `d0` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `logs`
 --
 
 INSERT INTO `logs` (`pieid`, `tid`, `aid`, `portno`, `d1`, `d2`, `mn`, `desc`, `datesave`, `proid`, `asdata`, `d0`) VALUES
-(1, 1, 1, '1', '0', '2017-10-03 22:58:12', 'setbit', NULL, '2017-10-03 22:58:13', 1, '0', '0'),
-(1, 1, 2, '1', '1', '2017-10-03 22:58:09', 'setbit', NULL, '2017-10-03 22:58:10', 1, '1', '1'),
-(1, 10, 3, '2,10', '1', '2017-10-03 22:58:08', 'setbit', NULL, '2017-10-03 22:58:10', 1, '1', '1'),
-(1, 10, 4, '2,10', '0', '2017-10-03 22:57:40', 'setbit', NULL, '2017-10-03 22:57:41', 1, '0', '0'),
-(1, 10, 5, '', '0', '2017-10-03 22:58:07', 'synced', NULL, '2017-10-03 22:58:09', 1, NULL, '0'),
-(1, 1, 6, '', '0', '2017-10-03 22:58:07', 'synced', NULL, '2017-10-03 22:58:10', 1, NULL, '0'),
-(1, 3, 7, '', '1', '2017-10-03 22:58:07', 'synced', NULL, '2017-10-03 22:58:09', 1, NULL, '1'),
-(1, 11, 8, '', '0', '2017-10-02 20:57:19', 'synced', NULL, '2017-10-02 20:57:22', 1, NULL, '0'),
-(1, 11, 11, '5', '27.8999996185', '56.9000015259', 'temp', NULL, '2017-10-02 20:58:34', 1, '27.8999996185,56.9000015259', '0'),
-(1, 3, 12, '', '0', '2017-10-03 18:57:28', 'synced', NULL, '2017-10-03 18:57:31', 1, NULL, '0'),
-(1, 11, 13, '', '1', '2017-10-03 22:58:07', 'synced', NULL, '2017-10-03 22:58:09', 1, NULL, '1'),
+(1, 1, 1, '1', '0', '2017-10-05 23:06:03', 'setbit', NULL, '2017-10-05 23:06:06', 1, '0', '0'),
+(1, 1, 2, '1', '1', '2017-10-05 23:06:06', 'setbit', NULL, '2017-10-05 23:06:09', 1, '1', '1'),
+(1, 10, 3, '2,10', '1', '2017-10-05 23:06:05', 'setbit', NULL, '2017-10-05 23:06:07', 1, '1', '1'),
+(1, 10, 4, '2,10', '0', '2017-10-05 23:05:55', 'setbit', NULL, '2017-10-05 23:05:57', 1, '0', '0'),
+(1, 10, 5, '', '0', '2017-10-05 22:53:32', 'synced', NULL, '2017-10-05 22:53:35', 1, NULL, '0'),
+(1, 1, 6, '', '0', '2017-10-05 22:53:32', 'synced', NULL, '2017-10-05 22:53:36', 1, NULL, '0'),
+(1, 3, 7, '', '1', '2017-10-05 22:53:32', 'synced', NULL, '2017-10-05 22:53:35', 1, NULL, '1'),
+(1, 11, 8, '', '0', '2017-10-05 22:39:19', 'synced', NULL, '2017-10-05 22:39:21', 1, NULL, '0'),
+(1, 11, 11, '5', '27.2000007629', '65.3000030518', 'temp', NULL, '2017-10-05 22:39:26', 1, '27.2000007629,65.3000030518', '0'),
+(1, 3, 12, '', '0', '2017-10-05 22:44:02', 'synced', NULL, '2017-10-05 22:44:05', 1, NULL, '0'),
+(1, 11, 13, '', '1', '2017-10-05 22:53:32', 'synced', NULL, '2017-10-05 22:53:35', 1, NULL, '1'),
 (1, 10, 14, '', '1', '2017-10-01 21:58:23', 'synced', NULL, '2017-10-01 21:58:24', 1, NULL, '1'),
 (1, 1, 15, '', '1', '2017-10-01 13:34:26', 'synced', NULL, '2017-10-01 13:34:26', 1, NULL, '1'),
 (1, 3, 16, '101', '', 'data/1/1507031855.png', 'image', NULL, '2017-10-03 18:57:35', 1, 'data/1/1507031855.png', '0');
@@ -8684,11 +8675,10 @@ INSERT INTO `logs` (`pieid`, `tid`, `aid`, `portno`, `d1`, `d2`, `mn`, `desc`, `
 -- Table structure for table `modes`
 --
 
-CREATE TABLE IF NOT EXISTS `modes` (
+CREATE TABLE `modes` (
   `mode_id` varchar(20) NOT NULL,
   `mode_name` varchar(255) DEFAULT NULL,
-  `mode_order` int(255) DEFAULT NULL,
-  PRIMARY KEY (`mode_id`)
+  `mode_order` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8707,7 +8697,7 @@ INSERT INTO `modes` (`mode_id`, `mode_name`, `mode_order`) VALUES
 -- Table structure for table `pies`
 --
 
-CREATE TABLE IF NOT EXISTS `pies` (
+CREATE TABLE `pies` (
   `pieid` bigint(20) NOT NULL,
   `piename` varchar(255) DEFAULT NULL,
   `piemodel` varchar(255) DEFAULT NULL,
@@ -8720,8 +8710,7 @@ CREATE TABLE IF NOT EXISTS `pies` (
   `icon` varchar(40) DEFAULT NULL,
   `desc` text,
   `img` varchar(255) DEFAULT NULL,
-  `portslist` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`pieid`)
+  `portslist` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8729,9 +8718,9 @@ CREATE TABLE IF NOT EXISTS `pies` (
 --
 
 INSERT INTO `pies` (`pieid`, `piename`, `piemodel`, `color`, `own`, `registerdate`, `lastupdate`, `newjob`, `worktype`, `icon`, `desc`, `img`, `portslist`) VALUES
-(1, 'Raspberry PI3', 'RaspPi3B', 'yellow', 1, NULL, '2017-10-03 22:58:13', NULL, NULL, 'ion-help-circled', 'ชุดดูแลสวนผัก 1', 'images/piemodel/pi3b.png', '1|4|8'),
+(1, 'Raspberry PI3', 'RaspPi3B', '#ffa621', 1, NULL, '2017-10-05 23:06:09', NULL, NULL, 'ion-help-circled', 'ชุดดูแลสวนผัก 1', 'images/piemodel/pi3b.png', '1|4|8'),
 (2, 'ESP8266 WiFi', 'ESP8266', 'green', 1, NULL, NULL, NULL, NULL, NULL, NULL, 'images/piemodel/8266.png', NULL),
-(999, 'คอมที่บ้าน', 'PC', 'blue', 1, NULL, NULL, NULL, NULL, 'ion-flag', 'คอมที่บ้าน', 'images/piemodel/pc.png', NULL);
+(10, 'Raspberry PI3x', 'RaspPi3B', '#23d94b', 1, NULL, NULL, NULL, NULL, NULL, NULL, 'images/piemodel/pi3b.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -8739,27 +8728,27 @@ INSERT INTO `pies` (`pieid`, `piename`, `piemodel`, `color`, `own`, `registerdat
 -- Table structure for table `pies_model`
 --
 
-CREATE TABLE IF NOT EXISTS `pies_model` (
+CREATE TABLE `pies_model` (
   `aid` bigint(20) DEFAULT NULL,
-  `modelname` varchar(255) DEFAULT NULL,
-  `modelid` varchar(255) NOT NULL,
+  `modelname` varchar(80) DEFAULT NULL,
+  `modelid` varchar(20) NOT NULL,
   `color` varchar(50) DEFAULT NULL,
   `icon` varchar(40) DEFAULT NULL,
   `desc` text,
   `img` varchar(255) DEFAULT NULL,
   `btn` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`modelid`)
+  `portimg` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `pies_model`
 --
 
-INSERT INTO `pies_model` (`aid`, `modelname`, `modelid`, `color`, `icon`, `desc`, `img`, `btn`) VALUES
-(4, 'Android', 'Android', NULL, NULL, NULL, 'images/piemodel/Android.png', 'btn-primary'),
-(2, 'ESP8266 WiFi', 'ESP8266', 'green', NULL, NULL, 'images/piemodel/8266.png', 'btn-success'),
-(3, 'Computer ', 'PC', 'blue', 'ion-flag', NULL, 'images/piemodel/pc.png', 'btn-warning'),
-(1, 'Raspberry PI3', 'RaspPi3B', 'yellow', 'ion-help-circled', NULL, 'images/piemodel/pi3b.png', 'btn-danger');
+INSERT INTO `pies_model` (`aid`, `modelname`, `modelid`, `color`, `icon`, `desc`, `img`, `btn`, `portimg`) VALUES
+(4, 'Android', 'Android', NULL, NULL, NULL, 'images/piemodel/Android.png', 'btn-primary', NULL),
+(2, 'ESP8266 WiFi', 'ESP8266', 'green', NULL, NULL, 'images/piemodel/8266.png', 'btn-success', NULL),
+(3, 'Computer ', 'PC', 'blue', 'ion-flag', NULL, 'images/piemodel/pc.png', 'btn-warning', NULL),
+(1, 'Raspberry PI3 B', 'RaspPi3B', 'yellow', 'ion-help-circled', NULL, 'images/piemodel/pi3b.png', 'btn-danger', 'images/ports/pi3b.png');
 
 -- --------------------------------------------------------
 
@@ -8767,44 +8756,100 @@ INSERT INTO `pies_model` (`aid`, `modelname`, `modelid`, `color`, `icon`, `desc`
 -- Table structure for table `ports`
 --
 
-CREATE TABLE IF NOT EXISTS `ports` (
+CREATE TABLE `ports` (
   `pieid` bigint(20) NOT NULL,
   `portno` int(11) DEFAULT NULL,
   `portname` varchar(255) DEFAULT NULL,
   `porttype` varchar(50) DEFAULT NULL,
   `portvalue` varchar(50) DEFAULT NULL,
   `lastupdate` varchar(20) DEFAULT NULL,
-  `portid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `portid` bigint(20) NOT NULL,
   `eb` tinyint(4) DEFAULT '1',
   `vb` tinyint(255) DEFAULT '1',
-  `modes` varchar(255) DEFAULT NULL,
   `assigned` int(11) DEFAULT NULL,
-  PRIMARY KEY (`portid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+  `piemodel` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ports`
 --
 
-INSERT INTO `ports` (`pieid`, `portno`, `portname`, `porttype`, `portvalue`, `lastupdate`, `portid`, `eb`, `vb`, `modes`, `assigned`) VALUES
-(1, 1, 'SW 1', 'setbit', '0', '2017-10-03 22:58:13', 1, 1, 1, 'md_bitin md_bitout dht md_temp', 1),
-(1, 2, 'SW 2', 'setbit', '1', '2017-10-03 22:58:10', 2, 1, 1, 'md_bitin md_bitout dht md_temp', 10),
-(1, 3, 'IO 3', 'out', '1', '2017-09-27 13:42:09', 3, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 4, 'IO 4', 'out', NULL, NULL, 4, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 5, 'Temp', 'temp', '27.8999996185,56.9000015259', '2017-10-02 20:58:34', 5, 1, 1, 'md_bitin md_bitout dht md_temp', 11),
-(1, 6, 'IO 6', 'out', NULL, NULL, 6, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 7, 'IO 7', 'out', NULL, NULL, 7, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 8, 'IO 8', 'out', NULL, NULL, 8, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 9, 'IO 9', 'out', NULL, NULL, 9, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 10, 'ไฟประตูบ้าน', 'setbit', '1', '2017-10-03 22:58:10', 10, 1, 1, 'md_bitin md_bitout dht md_temp', 10),
-(1, 11, 'IO 11', 'in', NULL, NULL, 11, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 12, 'IO 12', 'in', NULL, NULL, 12, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 13, 'IO 13', 'in', NULL, NULL, 13, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 14, 'IO 14', 'in', NULL, NULL, 14, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 15, 'IO 15', 'in', NULL, NULL, 15, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 16, 'IO 16', 'in', NULL, NULL, 16, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 17, 'IO 17', 'in', NULL, NULL, 17, 1, 1, 'md_bitin md_bitout dht md_temp', NULL),
-(1, 101, 'USB Camera', 'capture', 'data/1/1507031855.png', '2017-10-03 18:57:35', 18, 1, 1, 'md_capture', 3);
+INSERT INTO `ports` (`pieid`, `portno`, `portname`, `porttype`, `portvalue`, `lastupdate`, `portid`, `eb`, `vb`, `assigned`, `piemodel`) VALUES
+(1, 1, 'SW 1', 'setbit', '1', '2017-10-05 23:06:09', 1, 1, 1, 1, 'RaspPi3B'),
+(1, 2, 'SW 2', 'setbit', '1', '2017-10-05 23:06:07', 2, 1, 1, 10, 'RaspPi3B'),
+(1, 3, 'IO 3', 'out', '1', '2017-09-27 13:42:09', 3, 1, 1, NULL, 'RaspPi3B'),
+(1, 4, 'IO 4', 'out', NULL, NULL, 4, 1, 1, NULL, 'RaspPi3B'),
+(1, 5, 'Temp', 'temp', '27.2000007629,65.3000030518', '2017-10-05 22:39:26', 5, 1, 1, 11, 'RaspPi3B'),
+(1, 6, 'IO 6', 'out', NULL, NULL, 6, 1, 1, NULL, 'RaspPi3B'),
+(1, 7, 'IO 7', 'out', NULL, NULL, 7, 1, 1, NULL, 'RaspPi3B'),
+(1, 8, 'IO 8', 'out', NULL, NULL, 8, 1, 1, NULL, 'RaspPi3B'),
+(1, 9, 'IO 9', 'out', NULL, NULL, 9, 1, 1, NULL, 'RaspPi3B'),
+(1, 10, 'ไฟประตูบ้าน', 'setbit', '1', '2017-10-05 23:06:07', 10, 1, 1, 10, 'RaspPi3B'),
+(1, 11, 'IO 11', 'in', NULL, NULL, 11, 1, 1, NULL, 'RaspPi3B'),
+(1, 12, 'IO 12', 'in', NULL, NULL, 12, 1, 1, NULL, 'RaspPi3B'),
+(1, 13, 'IO 13', 'in', NULL, NULL, 13, 1, 1, NULL, 'RaspPi3B'),
+(1, 14, 'IO 14', 'in', NULL, NULL, 14, 1, 1, NULL, 'RaspPi3B'),
+(1, 15, 'IO 15', 'in', NULL, NULL, 15, 1, 1, NULL, 'RaspPi3B'),
+(1, 16, 'IO 16', 'in', NULL, NULL, 16, 1, 1, NULL, 'RaspPi3B'),
+(1, 17, 'IO 17', 'in', NULL, NULL, 17, 1, 1, NULL, 'RaspPi3B'),
+(1, 101, 'USB Camera', 'capture', 'data/1/1507031855.png', '2017-10-03 18:57:35', 18, 1, 1, 3, 'RaspPi3B'),
+(10, 14, 'GPIO 12', 'GPIO', NULL, NULL, 73, 1, 1, NULL, 'RaspPi3B'),
+(10, 7, 'GPIO 13', 'GPIO', NULL, NULL, 74, 1, 1, NULL, 'RaspPi3B'),
+(10, 15, 'GPIO 16', 'GPIO', NULL, NULL, 75, 1, 1, NULL, 'RaspPi3B'),
+(10, 2, 'GPIO 17', 'GPIO', NULL, NULL, 76, 1, 1, NULL, 'RaspPi3B'),
+(10, 10, 'GPIO 18', 'GPIO', NULL, NULL, 77, 1, 1, NULL, 'RaspPi3B'),
+(10, 8, 'GPIO 19', 'GPIO', NULL, NULL, 78, 1, 1, NULL, 'RaspPi3B'),
+(10, 16, 'GPIO 20', 'GPIO', NULL, NULL, 79, 1, 1, NULL, 'RaspPi3B'),
+(10, 17, 'GPIO 21', 'GPIO', NULL, NULL, 80, 1, 1, NULL, 'RaspPi3B'),
+(10, 4, 'GPIO 22', 'GPIO', NULL, NULL, 81, 1, 1, NULL, 'RaspPi3B'),
+(10, 11, 'GPIO 23', 'GPIO', NULL, NULL, 82, 1, 1, NULL, 'RaspPi3B'),
+(10, 12, 'GPIO 24', 'GPIO', NULL, NULL, 83, 1, 1, NULL, 'RaspPi3B'),
+(10, 13, 'GPIO 25', 'GPIO', NULL, NULL, 84, 1, 1, NULL, 'RaspPi3B'),
+(10, 9, 'GPIO 26', 'GPIO', NULL, NULL, 85, 1, 1, NULL, 'RaspPi3B'),
+(10, 3, 'GPIO 27', 'GPIO', NULL, NULL, 86, 1, 1, NULL, 'RaspPi3B'),
+(10, 1, 'GPIO 4', 'GPIO', NULL, NULL, 87, 1, 1, NULL, 'RaspPi3B'),
+(10, 5, 'GPIO 5', 'GPIO', NULL, NULL, 88, 1, 1, NULL, 'RaspPi3B'),
+(10, 6, 'GPIO 6', 'GPIO', NULL, NULL, 89, 1, 1, NULL, 'RaspPi3B'),
+(10, 101, 'USB Camera', 'capture', NULL, NULL, 90, 1, 1, NULL, 'RaspPi3B');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ports_model`
+--
+
+CREATE TABLE `ports_model` (
+  `portno` int(11) DEFAULT NULL,
+  `portname` varchar(255) DEFAULT NULL,
+  `porttype` varchar(50) DEFAULT NULL,
+  `modes` varchar(255) DEFAULT NULL,
+  `aid` bigint(20) NOT NULL,
+  `piemodel` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ports_model`
+--
+
+INSERT INTO `ports_model` (`portno`, `portname`, `porttype`, `modes`, `aid`, `piemodel`) VALUES
+(1, 'GPIO 4', 'GPIO', 'md_bitin md_bitout dht md_temp', 1, 'RaspPi3B'),
+(2, 'GPIO 17', 'GPIO', 'md_bitin md_bitout dht md_temp', 2, 'RaspPi3B'),
+(3, 'GPIO 27', 'GPIO', 'md_bitin md_bitout dht md_temp', 3, 'RaspPi3B'),
+(4, 'GPIO 22', 'GPIO', 'md_bitin md_bitout dht md_temp', 4, 'RaspPi3B'),
+(5, 'GPIO 5', 'GPIO', 'md_bitin md_bitout dht md_temp', 5, 'RaspPi3B'),
+(6, 'GPIO 6', 'GPIO', 'md_bitin md_bitout dht md_temp', 6, 'RaspPi3B'),
+(7, 'GPIO 13', 'GPIO', 'md_bitin md_bitout dht md_temp', 7, 'RaspPi3B'),
+(8, 'GPIO 19', 'GPIO', 'md_bitin md_bitout dht md_temp', 8, 'RaspPi3B'),
+(9, 'GPIO 26', 'GPIO', 'md_bitin md_bitout dht md_temp', 9, 'RaspPi3B'),
+(10, 'GPIO 18', 'GPIO', 'md_bitin md_bitout dht md_temp', 10, 'RaspPi3B'),
+(11, 'GPIO 23', 'GPIO', 'md_bitin md_bitout dht md_temp', 11, 'RaspPi3B'),
+(12, 'GPIO 24', 'GPIO', 'md_bitin md_bitout dht md_temp', 12, 'RaspPi3B'),
+(13, 'GPIO 25', 'GPIO', 'md_bitin md_bitout dht md_temp', 13, 'RaspPi3B'),
+(14, 'GPIO 12', 'GPIO', 'md_bitin md_bitout dht md_temp', 14, 'RaspPi3B'),
+(15, 'GPIO 16', 'GPIO', 'md_bitin md_bitout dht md_temp', 15, 'RaspPi3B'),
+(16, 'GPIO 20', 'GPIO', 'md_bitin md_bitout dht md_temp', 16, 'RaspPi3B'),
+(17, 'GPIO 21', 'GPIO', 'md_bitin md_bitout dht md_temp', 17, 'RaspPi3B'),
+(101, 'USB Camera', 'capture', 'md_capture', 18, 'RaspPi3B');
 
 -- --------------------------------------------------------
 
@@ -8812,15 +8857,14 @@ INSERT INTO `ports` (`pieid`, `portno`, `portname`, `porttype`, `portvalue`, `la
 -- Table structure for table `ports_temp`
 --
 
-CREATE TABLE IF NOT EXISTS `ports_temp` (
+CREATE TABLE `ports_temp` (
   `portno` int(11) DEFAULT NULL,
   `portname` varchar(255) DEFAULT NULL,
   `porttype` varchar(50) DEFAULT NULL,
   `df` tinyint(255) DEFAULT NULL,
-  `aid` bigint(20) NOT NULL AUTO_INCREMENT,
-  `modelname` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`aid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+  `aid` bigint(20) NOT NULL,
+  `modelname` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ports_temp`
@@ -8852,8 +8896,8 @@ INSERT INTO `ports_temp` (`portno`, `portname`, `porttype`, `df`, `aid`, `modeln
 -- Table structure for table `projects`
 --
 
-CREATE TABLE IF NOT EXISTS `projects` (
-  `proid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `projects` (
+  `proid` int(11) NOT NULL,
   `proname` varchar(255) DEFAULT NULL,
   `prodesc` text,
   `promode` varchar(20) DEFAULT NULL,
@@ -8864,16 +8908,15 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `lastupdate` varchar(20) DEFAULT NULL,
   `accst` tinyint(4) DEFAULT '0',
   `startdate` varchar(20) DEFAULT NULL,
-  `enddate` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`proid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `enddate` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`proid`, `proname`, `prodesc`, `promode`, `themename`, `proactive`, `mid`, `pieid`, `lastupdate`, `accst`, `startdate`, `enddate`) VALUES
-(1, 'My Hydroponic', 'ปลูกผักไฮโดรในบ้าน', 'fixpro', 'hydroinhome', 1, 1, 1, '2017-09-17 23:45:18', 0, NULL, NULL),
+(1, 'My Hydroponic', 'ปลูกผักไฮโดรในบ้าน', 'fixpro', 'hydroinhome', 1, 1, 1, '2017-10-05 18:42:17', 0, NULL, NULL),
 (7, 'ทดสอบ 1234567', 'Test', NULL, NULL, NULL, 1, 0, '2017-10-05 12:53:49', 0, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -8882,8 +8925,8 @@ INSERT INTO `projects` (`proid`, `proname`, `prodesc`, `promode`, `themename`, `
 -- Table structure for table `projects_d`
 --
 
-CREATE TABLE IF NOT EXISTS `projects_d` (
-  `aid` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `projects_d` (
+  `aid` bigint(20) NOT NULL,
   `proid` bigint(20) DEFAULT NULL,
   `pieid` bigint(20) DEFAULT NULL,
   `portno` bigint(20) DEFAULT NULL,
@@ -8897,9 +8940,8 @@ CREATE TABLE IF NOT EXISTS `projects_d` (
   `d4` varchar(255) DEFAULT NULL,
   `lastaccess` varchar(20) DEFAULT NULL,
   `accst` tinyint(255) DEFAULT '0',
-  `tasklock` tinyint(255) DEFAULT '0',
-  PRIMARY KEY (`aid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `tasklock` tinyint(255) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `projects_d`
@@ -8916,8 +8958,8 @@ INSERT INTO `projects_d` (`aid`, `proid`, `pieid`, `portno`, `taskname`, `stime`
 -- Table structure for table `report_h`
 --
 
-CREATE TABLE IF NOT EXISTS `report_h` (
-  `rid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `report_h` (
+  `rid` int(11) NOT NULL,
   `datesave` varchar(20) DEFAULT NULL,
   `tid` varchar(50) DEFAULT NULL,
   `rname` varchar(255) DEFAULT NULL,
@@ -8925,9 +8967,8 @@ CREATE TABLE IF NOT EXISTS `report_h` (
   `edate` varchar(20) DEFAULT NULL,
   `rtype` varchar(30) DEFAULT NULL,
   `mid` bigint(20) DEFAULT NULL,
-  `datasl` int(255) DEFAULT NULL,
-  PRIMARY KEY (`rid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `datasl` int(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `report_h`
@@ -8945,14 +8986,13 @@ INSERT INTO `report_h` (`rid`, `datesave`, `tid`, `rname`, `sdate`, `edate`, `rt
 -- Table structure for table `report_type`
 --
 
-CREATE TABLE IF NOT EXISTS `report_type` (
+CREATE TABLE `report_type` (
   `rtid` varchar(20) NOT NULL,
   `rtname` varchar(255) DEFAULT NULL,
   `rtname2` varchar(255) DEFAULT NULL,
   `rticon` varchar(50) DEFAULT NULL,
   `iorder` int(255) DEFAULT NULL,
-  `rtcolor` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`rtid`)
+  `rtcolor` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8970,7 +9010,7 @@ INSERT INTO `report_type` (`rtid`, `rtname`, `rtname2`, `rticon`, `iorder`, `rtc
 -- Table structure for table `staff`
 --
 
-CREATE TABLE IF NOT EXISTS `staff` (
+CREATE TABLE `staff` (
   `uname` varchar(20) DEFAULT NULL,
   `fname` varchar(50) DEFAULT NULL,
   `lname` varchar(50) DEFAULT NULL,
@@ -8979,25 +9019,22 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `pwdupdate` varchar(20) DEFAULT NULL,
   `email` varchar(40) DEFAULT NULL,
   `uclass` varchar(20) DEFAULT 'user',
-  `uid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` bigint(20) NOT NULL,
   `tel` varchar(30) DEFAULT NULL,
   `address` text,
   `titlename` varchar(20) DEFAULT NULL,
   `placename` varchar(255) DEFAULT NULL,
   `lat` varchar(20) DEFAULT NULL,
   `lon` varchar(20) DEFAULT NULL,
-  `lastlogin` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`uid`),
-  KEY `c` (`pwd`),
-  KEY `d` (`uname`,`pwd`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
+  `lastlogin` varchar(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `staff`
 --
 
 INSERT INTO `staff` (`uname`, `fname`, `lname`, `pwd`, `regdate`, `pwdupdate`, `email`, `uclass`, `uid`, `tel`, `address`, `titlename`, `placename`, `lat`, `lon`, `lastlogin`) VALUES
-('chuap', 'Prachuap', 'Klaithin', 'ee91218462ea92baffd1006fafdecb6d', NULL, NULL, NULL, 'admin', 1, '0909991230', 'CAT', '', 'Test', '', '', '2017-10-05 10:37:12'),
+('chuap', 'Prachuap', 'Klaithin', 'ee91218462ea92baffd1006fafdecb6d', NULL, NULL, NULL, 'admin', 1, '0909991230', 'CAT', '', 'Test', '', '', '2017-10-05 22:44:40'),
 ('aaa', 'DDDDDDD', 'aasd', 'ab68b4e4fff63352a81561ff8c0cde01', '2017-05-10 21:18:44', NULL, NULL, 'user', 53, NULL, 'aaa', '', 'asdsa', '', '', NULL),
 ('01000062', 'ประจวบ', 'ไกลถิ่น', '5bece46f1d0d7227c603d4a9d53a35e5', '2017-10-04 15:19:42', NULL, NULL, 'admin', 54, NULL, '', '', '', '', '', '2017-10-04 15:20:10');
 
@@ -9007,14 +9044,13 @@ INSERT INTO `staff` (`uname`, `fname`, `lname`, `pwd`, `regdate`, `pwdupdate`, `
 -- Table structure for table `swstatus`
 --
 
-CREATE TABLE IF NOT EXISTS `swstatus` (
+CREATE TABLE `swstatus` (
   `swname` varchar(50) NOT NULL,
   `lastOn` varchar(30) DEFAULT NULL,
   `lastOff` varchar(30) DEFAULT NULL,
   `lastStatus` varchar(30) DEFAULT NULL,
   `icon` varchar(30) NOT NULL,
-  `lb` varchar(50) NOT NULL,
-  PRIMARY KEY (`swname`)
+  `lb` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9032,8 +9068,8 @@ INSERT INTO `swstatus` (`swname`, `lastOn`, `lastOff`, `lastStatus`, `icon`, `lb
 -- Table structure for table `tasks`
 --
 
-CREATE TABLE IF NOT EXISTS `tasks` (
-  `tid` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tasks` (
+  `tid` bigint(20) NOT NULL,
   `proid` bigint(20) DEFAULT NULL,
   `pieid` bigint(20) DEFAULT NULL,
   `taskname` varchar(255) DEFAULT NULL,
@@ -9061,20 +9097,219 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `tx4` varchar(255) DEFAULT NULL,
   `tx5` varchar(255) DEFAULT NULL,
   `tx6` varchar(255) DEFAULT NULL,
-  `mid` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`tid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+  `mid` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tasks`
 --
 
 INSERT INTO `tasks` (`tid`, `proid`, `pieid`, `taskname`, `stime`, `etime`, `taskaction`, `action_ports`, `date_save`, `synced`, `task_disable`, `disabled`, `task_status`, `onbit`, `ck1`, `ck2`, `ck3`, `ck4`, `op1`, `op2`, `op3`, `op4`, `tx1`, `tx2`, `tx3`, `tx4`, `tx5`, `tx6`, `mid`) VALUES
-(1, 1, 1, 'เปิดปิดปั๊มน้ำ', '00:00:15', '23:59:59', 'bitout', '''1''', '2017-09-27 15:43:01', '2017-10-03 22:58:10', 0, NULL, 'Synced', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '3', '3', NULL, NULL, NULL, NULL, 1),
-(3, 1, 1, 'ถ่ายรูปผักทุกวัน', '00:00:00', '23:59:15', 'capture', '''101''', '2017-10-03 18:21:49', '2017-10-03 22:58:09', 1, NULL, 'Disable', 1, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, '09:30,08:30,21:07,22:49', '10', NULL, NULL, NULL, NULL, 1),
-(10, 1, 1, 'เปิดปิดไฟ', '00:00:00', '23:59:59', 'bitout', '''2'',''10''', '2017-10-01 22:07:21', '2017-10-03 22:58:09', 0, NULL, 'Synced', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '20', '10', NULL, NULL, NULL, NULL, 1),
-(11, 1, 1, 'เก็บค่าความชื้นและอุณหภูมิ', '00:00:00', '23:59:59', 'temp', '''5''', '2017-10-02 20:59:31', '2017-10-03 22:58:09', 1, NULL, 'Disable', 1, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, '00:00', '60', NULL, NULL, NULL, NULL, 1);
+(1, 1, 1, 'เปิดปิดปั๊มน้ำ', '00:00:15', '23:59:59', 'bitout', '''1''', '2017-09-27 15:43:01', '2017-10-05 22:53:36', 0, NULL, 'Synced', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '3', '3', NULL, NULL, NULL, NULL, 1),
+(3, 1, 1, 'ถ่ายรูปผักทุกวัน', '00:00:00', '23:59:15', 'capture', '''101''', '2017-10-03 18:21:49', '2017-10-05 22:53:35', 1, NULL, 'Disable', 1, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, '09:30,08:30,21:07,22:49', '10', NULL, NULL, NULL, NULL, 1),
+(10, 1, 1, 'เปิดปิดไฟ', '00:00:00', '23:59:59', 'bitout', '''2'',''10''', '2017-10-01 22:07:21', '2017-10-05 22:53:35', 0, NULL, 'Synced', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '20', '10', NULL, NULL, NULL, NULL, 1),
+(11, 1, 1, 'เก็บค่าความชื้นและอุณหภูมิ', '00:00:00', '23:59:59', 'temp', '''5''', '2017-10-02 20:59:31', '2017-10-05 22:53:35', 1, NULL, 'Disable', 1, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, '00:00', '60', NULL, NULL, NULL, NULL, 1);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `alldata`
+--
+ALTER TABLE `alldata`
+  ADD PRIMARY KEY (`aid`);
+
+--
+-- Indexes for table `appdata`
+--
+ALTER TABLE `appdata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `conf`
+--
+ALTER TABLE `conf`
+  ADD PRIMARY KEY (`keyname`);
+
+--
+-- Indexes for table `files_book`
+--
+ALTER TABLE `files_book`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hrd_profile`
+--
+ALTER TABLE `hrd_profile`
+  ADD PRIMARY KEY (`uid`);
+
+--
+-- Indexes for table `icon_set`
+--
+ALTER TABLE `icon_set`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`aid`);
+
+--
+-- Indexes for table `modes`
+--
+ALTER TABLE `modes`
+  ADD PRIMARY KEY (`mode_id`);
+
+--
+-- Indexes for table `pies`
+--
+ALTER TABLE `pies`
+  ADD PRIMARY KEY (`pieid`);
+
+--
+-- Indexes for table `pies_model`
+--
+ALTER TABLE `pies_model`
+  ADD PRIMARY KEY (`modelid`);
+
+--
+-- Indexes for table `ports`
+--
+ALTER TABLE `ports`
+  ADD PRIMARY KEY (`portid`);
+
+--
+-- Indexes for table `ports_model`
+--
+ALTER TABLE `ports_model`
+  ADD PRIMARY KEY (`aid`);
+
+--
+-- Indexes for table `ports_temp`
+--
+ALTER TABLE `ports_temp`
+  ADD PRIMARY KEY (`aid`);
+
+--
+-- Indexes for table `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`proid`);
+
+--
+-- Indexes for table `projects_d`
+--
+ALTER TABLE `projects_d`
+  ADD PRIMARY KEY (`aid`);
+
+--
+-- Indexes for table `report_h`
+--
+ALTER TABLE `report_h`
+  ADD PRIMARY KEY (`rid`);
+
+--
+-- Indexes for table `report_type`
+--
+ALTER TABLE `report_type`
+  ADD PRIMARY KEY (`rtid`);
+
+--
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`uid`),
+  ADD KEY `c` (`pwd`),
+  ADD KEY `d` (`uname`,`pwd`);
+
+--
+-- Indexes for table `swstatus`
+--
+ALTER TABLE `swstatus`
+  ADD PRIMARY KEY (`swname`);
+
+--
+-- Indexes for table `tasks`
+--
+ALTER TABLE `tasks`
+  ADD PRIMARY KEY (`tid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `alldata`
+--
+ALTER TABLE `alldata`
+  MODIFY `aid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2087;
+--
+-- AUTO_INCREMENT for table `appdata`
+--
+ALTER TABLE `appdata`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14909;
+--
+-- AUTO_INCREMENT for table `files_book`
+--
+ALTER TABLE `files_book`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+--
+-- AUTO_INCREMENT for table `icon_set`
+--
+ALTER TABLE `icon_set`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+--
+-- AUTO_INCREMENT for table `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `aid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `pies`
+--
+ALTER TABLE `pies`
+  MODIFY `pieid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `ports`
+--
+ALTER TABLE `ports`
+  MODIFY `portid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+--
+-- AUTO_INCREMENT for table `ports_model`
+--
+ALTER TABLE `ports_model`
+  MODIFY `aid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `ports_temp`
+--
+ALTER TABLE `ports_temp`
+  MODIFY `aid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `proid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `projects_d`
+--
+ALTER TABLE `projects_d`
+  MODIFY `aid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `report_h`
+--
+ALTER TABLE `report_h`
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `uid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+--
+-- AUTO_INCREMENT for table `tasks`
+--
+ALTER TABLE `tasks`
+  MODIFY `tid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -3,7 +3,7 @@
 <h1>
     Pies
     <small>PieIoT.com</small>
-    <a href="{{asset("pie.newnode")}}" class="btn btn-info newproject "><i class="fa fa-plus"></i> New Node device</a>
+    <a href="{{asset("pie.newnode")}}" class="btn btn-info newproject "><i class="fa fa-plus"></i> New Pie Node</a>
 </h1>
 @stop
 @section('breadcrumb')
@@ -25,7 +25,7 @@ $pies = Pies::listMyPie();
     ?>
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div id="pie_{{$d->pieid}}" class="small-box bg-{{$st_bg}}">
+        <div id="pie_{{$d->pieid}}" class="small-box bg-{{$st_bg}}" style="">
             <div class="inner">
                 <a href="{{asset('pie-'.$d->pieid.'.info')}}" id="pie_a_{{$d->pieid}}" class="{{$st_color}}">
 
@@ -94,6 +94,7 @@ $pies = Pies::listMyPie();
             if (obj.STATUS == true) {
                 for (var i = 0, len = obj.DATA.length; i < len; i++) {                    
                     $('#pie_' + obj.DATA[i]['pieid']).addClass('bg-'+obj.DATA[i]['color']);
+                    $('#pie_' + obj.DATA[i]['pieid']).css("background-color", obj.DATA[i]['color']);
                     $('#pie_' + obj.DATA[i]['pieid']).removeClass('bg-gray');
                     $('#pie_a_' + obj.DATA[i]['pieid']).addClass('white');
                     var t='<i class="fa fa-check"></i> ';

@@ -9,6 +9,7 @@ class Pies extends Eloquent {
     public static function pieModel() {
         return excsql("select * from pies_model order by aid");
     }
+    
     public static function modelInfo($m) {
         $x= excsql("select * from pies_model where modelid='$m' ");
         return $x[0];

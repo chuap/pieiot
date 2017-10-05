@@ -3,6 +3,8 @@
 $pie = Pies::find($p);
 $pt = Ports::portByPie($p);
 $pro = Projects::projectList($p);
+$minfo = Pies::modelInfo($pie->piemodel);
+$rlist = Reports::listReport();
 ?>
 @if(!$pie)
 @section('body')
@@ -19,11 +21,13 @@ $pro = Projects::projectList($p);
 {{$pie->piename}}
 @stop
 @section('page_header')
-<h1>
+<h1 id="lbpie_{{$p}}">
     @if($pie->img)<img class="h40" src="{{asset($pie->img)}}">@endif
+    <span class="red mr1">#{{$pie->pieid}}</span>
     {{$pie->piename}}
 
-    
+
+
 </h1>
 @stop
 @section('breadcrumb')
@@ -38,7 +42,7 @@ $pro = Projects::projectList($p);
     <!-- Left col -->
 
     <!-- right col (We are only adding the ID to make the widgets sortable)-->
-    <section class="col-lg-6 connectedSortable ui-sortable">
+    <section class="col-lg-5 connectedSortable ui-sortable">
         <!-- Map box -->
         <div class="box box-primary">
             <div class="box-header " >
@@ -52,7 +56,7 @@ $pro = Projects::projectList($p);
                             <li><a href="{{asset("pro-$p-0.newproject")}}" class="newproject"><i class="fa fa-plus"></i> New Project</a></li>
 
                             <li class="divider"></li>
-
+                            <li><a href="javascript:" onclick="deletepie('{{$p}}')">Delete Pie</a></li>
                         </ul>
                     </div>
 
@@ -79,7 +83,7 @@ $pro = Projects::projectList($p);
         <div class="box box-info">
             <div class="box-header">
                 <i class="fa fa-bullseye"></i>
-                <h3 class="box-title">Projects               
+                <h3 class="box-title"><a href="{{asset('projects')}}">Projects</a>               
                 </h3>
                 <div class="pull-right box-tools">
 
@@ -120,7 +124,7 @@ $pro = Projects::projectList($p);
         <div class="box box-danger">
             <div class="box-header">
                 <i class="fa fa-bar-chart-o"></i>
-                <h3 class="box-title">Reports               
+                <h3 class="box-title"><a href="{{asset('reports')}}">Reports</a>               
                 </h3>
                 <div class="pull-right box-tools">
 
@@ -128,8 +132,19 @@ $pro = Projects::projectList($p);
 
             </div><!-- /.box-header -->
             <div class="box-body pt0">
-                @if(0)
 
+                @if($rlist)
+                <?php
+                $t = '';
+                foreach ($rlist as $d) {
+                    $tid = $d->tid;
+                    //echo "$tid ";
+                    $x = excsql("select count(*) as co from tasks where tid in ($tid) and pieid='$p' ");
+                    if ($x[0]->co > 0) {
+                        echo '<div><a href="'.asset("pie.report-info?rid=").$d->rid.'"><i class="' . $d->rticon . '"></i> ' . $d->rname . '</a></div>';
+                    }
+                }
+                ?>
                 @else 
                 <div class="callout callout-warning">
                     <p>No Report !!</p>
@@ -144,12 +159,15 @@ $pro = Projects::projectList($p);
 
 
     </section><!-- right col -->
-    <section class="col-lg-6 "> 
+    <section class="col-lg-7 "> 
         <!-- Box (with bar chart) -->
         <div class="box box-danger" id="loading-example">
             <div class="box-header" >
                 <i class="ion ion-arrow-swap"></i>
                 <h3 class="box-title ">Ports</h3>
+                @if($minfo->portimg)
+                <a href="{{asset($minfo->portimg)}}" target="" class="imcolorbox btn btn-default mt1 pull-right btn-sm mr1"><img class="w20 " src="{{asset('images/piemodel/ic.png')}}"> Ports Info</a>
+                @endif
             </div><!-- /.box-header -->
 
 
@@ -157,17 +175,17 @@ $pro = Projects::projectList($p);
 
                 <table class="table table-striped mt0">
                     <tbody><tr>
-                            <th>No.</th>
+                            <th class="w80">Port</th>
                             <th>Portname</th>
                             <th>Data</th>
                             <th>update</th>
                         </tr>
-                        @foreach($pt as $d)
+                        @foreach($pt as $i=>$d)
                         <?php
                         $pclick = "editportname('" . $d->pieid . "','" . $d->portno . "','" . $d->portid . "')";
                         ?>
                         <tr>
-                            <td>{{$d->portno}}</td>
+                            <td class="font12">{{$d->oname}}</td>
                             <td>
                                 <a class="portname_{{$d->portid}}" href="javascript:" onclick="{{$pclick}}">{{$d->portname}}</a>
                             </td>
@@ -193,49 +211,49 @@ $pro = Projects::projectList($p);
 @section('foot')
 <script type="text/javascript">
     $(function () {
-        startMonitorData();
+    startMonitorData();
     });
     /*  */
 
 
     function startMonitorData()
     {
-        //alert('GO');
-        $.ajax({
-            url: rootContext + 'monitoraction',
+    //alert('GO');
+    $.ajax({
+    url: rootContext + 'monitoraction',
             type: "GET",
             datatype: "json",
             data: "ac=check_piedata&pie={{$p}}"
-        }).success(function (rt) {
+    }).success(function (rt) {
 
-            var obj = jQuery.parseJSON(rt);
-            //effectvalue('time', obj.DATA.length);
-            if (obj.STATUS == true) {
-                for (var i = 0, len = obj.DATA.length; i < len; i++) {
-                    effectvalue('port_' + obj.DATA[i]['portno'], obj.DATA[i]['portvalue']);
-                    $('.portupdate_' + obj.DATA[i]['portno']).html(obj.DATA[i]['lastupdate']);
-                }
+    var obj = jQuery.parseJSON(rt);
+    //effectvalue('time', obj.DATA.length);
+    if (obj.STATUS == true) {
+    for (var i = 0, len = obj.DATA.length; i < len; i++) {
+    effectvalue('port_' + obj.DATA[i]['portno'], obj.DATA[i]['portvalue']);
+    $('.portupdate_' + obj.DATA[i]['portno']).html(obj.DATA[i]['lastupdate']);
+    }
 
 
-            } else {
-                //alertbox(obj.MSG + '');
-            }
-        });
-        setTimeout(function () {
-            startMonitorData()
-        }, 3000);
+    } else {
+    //alertbox(obj.MSG + '');
+    }
+    });
+    setTimeout(function () {
+    startMonitorData()
+    }, 3000);
     }
 
     function effectvalue(itm, dt) {
-        var x = $('.' + itm).html();
-        if (x != dt) {
-            $('.' + itm).css("background-color", "#FF3700");
-            $('.' + itm).fadeOut(400, function () {
-                $('.' + itm).remove();
-                $('#' + itm).html('<span class="' + itm + '">' + dt + '</span>');
-            });
-        }
-        $('a.gallery').colorbox({rel: 'gal'});
+    var x = $('.' + itm).html();
+    if (x != dt) {
+    $('.' + itm).css("background-color", "#FF3700");
+    $('.' + itm).fadeOut(400, function () {
+    $('.' + itm).remove();
+    $('#' + itm).html('<span class="' + itm + '">' + dt + '</span>');
+    });
+    }
+    $('a.gallery').colorbox({rel: 'gal'});
     }
 </script>
 <script src="{{asset('/')}}js/pieactions.js" type="text/javascript"></script>

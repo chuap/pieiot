@@ -99,6 +99,38 @@ function deletetask(tid, pie) {
         }
     });
 }
+function deletepie(pie) {
+    bootbox.confirm({
+        title: "ยืนยันลบข้อมูล?",
+        message: "<h4>Project : " + $('#lbpie_' + pie).html() + '</h4>',
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Confirm'
+            }
+        },
+        callback: function (result) {
+            if (result == true) {
+                $.ajax({
+                    url: rootContext + 'adminaction',
+                    type: "POST",
+                    datatype: "json",
+                    data: "ac=deletepie&pie=" + pie 
+                }).success(function (result) {
+                    var obj = jQuery.parseJSON(result);
+                    if (obj.STATUS == true) {
+                        delete_tag('lbpie_' + pie)
+                        window.location.href = rootContext + "pies";
+                    } else {
+                        alertbox(obj.MSG + '');
+                    }
+                });
+            }
+        }
+    });
+}
 function deleteproject(pie, pro) {
     bootbox.confirm({
         title: "ยืนยันลบข้อมูล?",
