@@ -6,7 +6,13 @@ class Pies extends Eloquent {
     protected $primaryKey = 'pieid';
     public $timestamps = false;
 
-    
+    public static function pieModel() {
+        return excsql("select * from pies_model order by aid");
+    }
+    public static function modelInfo($m) {
+        $x= excsql("select * from pies_model where modelid='$m' ");
+        return $x[0];
+    }
     public static function listNewPie() {
         return excsql("select * from pies order by registerdate desc");
     }

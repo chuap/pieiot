@@ -262,7 +262,7 @@ var x = $(document).width();
 if (x < 1000) {
     w1 = '98%';
 } else {
-    w1 = '800';
+    w1 = '820';
 }
 $(".newproject").colorbox({iframe: true, width: w1, height: "90%", overlayClose: true});
 $(document).ready(function () {
