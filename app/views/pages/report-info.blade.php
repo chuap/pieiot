@@ -96,9 +96,21 @@ $plist = Reports::dataTable($rinfo);
     </div> 
 </div>
 
+@elseif($rinfo->rtype=='Chart')
+<?php
+$plist = Reports::dataChart($rinfo);
+?>
+
+<div class="box box-primary">
+    <div class="box-header">
+        <h3 class="box-title">Area Chart</h3>
+    </div>
+    <div class="box-body chart-responsive">
+        <div class="chart" id="revenue-chart" style="height: 300px;"></div>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
+
 @endif
-
-
 
 
 @stop
@@ -106,17 +118,52 @@ $plist = Reports::dataTable($rinfo);
 @section('foot')
 <script src="{{asset('themes/lte')}}/js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="{{asset('themes/lte')}}/js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+@if($rinfo->rtype=='Chart')
 <script type="text/javascript">
-    $(function () {
-        //$("#example1").dataTable();
-        $('#example2').dataTable({
-            "bPaginate": true,
-            "iDisplayLength": 10,
-            "bFilter": false,
-            "bSort": false,
-            "bInfo": true,
-            "bAutoWidth": false
-        });
+var cdata = [
+    {y: '2011 Q1', item1: 2666, item2: 2666},
+    {y: '2011 Q2', item1: 2778, item2: 2294},
+    {y: '2011 Q3', item1: 4912, item2: 1969},
+    {y: '2011 Q4', item1: 3767, item2: 3597},
+    {y: '2012 Q1', item1: 6810, item2: 1914},
+    {y: '2012 Q2', item1: 5670, item2: 4293},
+    {y: '2012 Q3', item1: 4820, item2: 3795},
+    {y: '2012 Q4', item1: 15073, item2: 5967},
+    {y: '2013 Q1', item1: 10687, item2: 4460},
+    {y: '2013 Q2', item1: 8432, item2: 5713}];
+var cdata2=[
+    @foreach($plist as $i=>$d)
+    @if($i<20)
+    {y: '{{$d->sdt}}', item1: {{number_format($d->data,2)}}, item2: {{number_format($d->data2,2)}} },
+    @endif
+    @endforeach
+];
+$(function () {
+    "use strict";
+
+    // AREA CHART
+    
+    var area = new Morris.Line({
+        element: 'revenue-chart',
+        resize: true,
+        data: cdata2,
+        xkey: 'y',
+        ykeys: ['item1', 'item2'],
+        labels: ['Temperature', 'Humidity'],
+        lineColors: [ '#3c8dbc','#de2828'],
+        hideHover: 'auto'
     });
+    //$("#example1").dataTable();
+    $('#example2').dataTable({
+        "bPaginate": true,
+        "iDisplayLength": 10,
+        "bFilter": false,
+        "bSort": false,
+        "bInfo": true,
+        "bAutoWidth": false
+    });
+    
+});
 </script>
+@endif
 @stop

@@ -36,13 +36,13 @@ $pies = Pies::listMyPie();
                         {{$d->piemodel}}
                     </p>
                 </a></div>
-            <div class="icon">
+            <a href="{{asset('pie-'.$d->pieid.'.info')}}" class="icon">
                 @if($d->img)
                 <img class="h50" src="{{asset($d->img)}}">
                 @else
                 <i class="ion {{$d->icon}}"> </i>
                 @endif
-            </div>
+            </a>
             <a id="pie_f_{{$d->pieid}}" href="{{asset('pie-'.$d->pieid.'.info')}}" class="small-box-footer">
                 @if($d->lastupdate)
 <!--                <i class="fa fa-check"></i>-->

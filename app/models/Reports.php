@@ -57,6 +57,13 @@ class Reports extends Eloquent {
         $sql="select * from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate'  order by datesave desc limit 0,1000";
         return excsql($sql);
     }
+    public static function dataChart($r) {
+        $tid=$r->tid;
+        $sdate=$r->sdate;
+        $edate=$r->edate;
+        $sql="select dataname,data,data2 ,SUBSTR(datesave,1,16) as sdt from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' group by sdt  order by sdt  limit 0,1000";
+        return excsql($sql);
+    }
     public static function dataDemo($r) {
         $tid=$r->tid;
         $sdate=$r->sdate;

@@ -133,19 +133,20 @@ $rlist = Reports::listReport();
             </div><!-- /.box-header -->
             <div class="box-body pt0">
 
-                @if($rlist)
+                
                 <?php
-                $t = '';
+                $t = ''; $ii=0;
                 foreach ($rlist as $d) {
                     $tid = $d->tid;
                     //echo "$tid ";
                     $x = excsql("select count(*) as co from tasks where tid in ($tid) and pieid='$p' ");
                     if ($x[0]->co > 0) {
+                        $ii++;
                         echo '<div><a href="'.asset("pie.report-info?rid=").$d->rid.'"><i class="' . $d->rticon . '"></i> ' . $d->rname . '</a></div>';
                     }
                 }
                 ?>
-                @else 
+                @if($ii<1)
                 <div class="callout callout-warning">
                     <p>No Report !!</p>
                 </div>
