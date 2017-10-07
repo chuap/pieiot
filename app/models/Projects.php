@@ -27,7 +27,7 @@ class Projects extends Eloquent {
         return excsql("select d.*,pi.piename,p.portvalue,p.lastupdate from projects_d d  left join ports p on p.pieid=d.pieid and d.portno=p.portno left join pies pi on pi.pieid=d.pieid where d.proid='$pro' order by d.portno");
     }
     public static function getTask($pro) {
-        return excsql("select d.*,pi.piename from tasks d  left join pies pi on pi.pieid=d.pieid where d.proid='$pro' order by d.taskname");
+        return excsql("select d.*,pi.piename,m.tmimg from tasks d  left join pies pi on pi.pieid=d.pieid left join task_mode m on m.tmid=d.tmid where d.proid='$pro' order by d.taskname");
     }
 
     public static function project_D($p, $pro) {
@@ -95,11 +95,11 @@ class Projects extends Eloquent {
 
     public static function getActiveTask($p, $f = 't.*') {
         //return excsql("select $f from projects_d d left join projects p on p.pieid=d.pieid  where d.pieid='$p' and p.proactive='1'  order by d.portno");
-        return excsql("select $f from tasks t left join projects p on p.pieid=t.pieid  where t.pieid='$p' and p.proactive='1'  order by t.tid");
+        return excsql("select $f from tasks t left join projects p on p.proid=t.proid  where t.pieid='$p' and p.proactive='1'  order by t.tid");
     }
     public static function getActiveTaskUpdate($p, $f = 't.*') {
         //return excsql("select $f from projects_d d left join projects p on p.pieid=d.pieid  where d.pieid='$p' and p.proactive='1'  order by d.portno");
-        return excsql("select $f from tasks t left join projects p on p.pieid=t.pieid  where t.pieid='$p' and p.proactive='1' and t.synced is null  order by t.tid");
+        return excsql("select $f from tasks t left join projects p on p.proid=t.proid  where t.pieid='$p' and p.proactive='1' and t.synced is null  order by t.tid");
     }
 
     public static function taskInfo($p, $pno, $f = 'd.*') {

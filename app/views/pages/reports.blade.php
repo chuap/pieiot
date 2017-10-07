@@ -34,9 +34,9 @@ $rlist = Reports::listReport();
             $rlink = asset('/pie.report-info') . "?rid=" . $d->rid;
             ?>
             <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
-                <div class="box box-info">
+                <div class="box box-info" style="overflow: hidden;">
                     <div class="box-header">
-                        <h3 class="box-title "> <a class="text-light-blue" href="{{$rlink}}">{{$d->rname}}</a>
+                        <h3 class="box-title" style="width: 500px;"> <a class="text-light-blue" href="{{$rlink}}">{{$d->rname}}</a>
                             <div class="font70p mt1">
                                 <span class="">{{date('d M Y H:i:s',strtotime($d->sdate))}}</span> - 
                                 <span class="">{{date('d M Y H:i:s',strtotime($d->edate))}}</span>

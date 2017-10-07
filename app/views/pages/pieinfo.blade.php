@@ -26,8 +26,6 @@ $rlist = Reports::listReport();
     <span class="red mr1">#{{$pie->pieid}}</span>
     {{$pie->piename}}
 
-
-
 </h1>
 @stop
 @section('breadcrumb')
@@ -52,7 +50,7 @@ $rlist = Reports::listReport();
 
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i></button>
                         <ul class="dropdown-menu pull-right" role="menu ">
-                            <li><a class="newproject" href="{{asset("pie-$p.edit")}}"><i class="fa fa-pencil"></i> Edit</a></li>
+                            <li><a class="newproject" href="{{asset("pie.newnode?pieid=$p")}}"><i class="fa fa-pencil"></i> Edit</a></li>
                             <li><a href="{{asset("pro-$p-0.newproject")}}" class="newproject"><i class="fa fa-plus"></i> New Project</a></li>
 
                             <li class="divider"></li>

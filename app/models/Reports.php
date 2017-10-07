@@ -48,20 +48,23 @@ class Reports extends Eloquent {
         $tid=$r->tid;
         $sdate=$r->sdate;
         $edate=$r->edate;
-        $sql="select * from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' and mn='capture' order by datesave";
+        $gby=$r->groupby;
+        $sql="select *,SUBSTR(datesave,1,$gby) as sdt from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' and mn='capture' group by sdt  order by datesave";
         return excsql($sql);
     }public static function dataTable($r) {
         $tid=$r->tid;
         $sdate=$r->sdate;
         $edate=$r->edate;
-        $sql="select * from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate'  order by datesave desc limit 0,1000";
+        $gby=$r->groupby;
+        $sql="select tid,mn,dataname,data,data2 ,SUBSTR(datesave,1,$gby) as sdt,round(AVG(data),0) as avg1,round(AVG(data2),0) as avg2  from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' group by sdt  order by datesave desc limit 0,1000";
         return excsql($sql);
     }
     public static function dataChart($r) {
         $tid=$r->tid;
         $sdate=$r->sdate;
         $edate=$r->edate;
-        $sql="select dataname,data,data2 ,SUBSTR(datesave,1,16) as sdt from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' group by sdt  order by sdt  limit 0,1000";
+        $gby=$r->groupby;
+        $sql="select dataname,data,data2 ,SUBSTR(datesave,1,$gby) as sdt,round(AVG(data),0) as avg1,round(AVG(data2),0) as avg2 from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' group by sdt  order by sdt  limit 0,1000";
         return excsql($sql);
     }
     public static function dataDemo($r) {

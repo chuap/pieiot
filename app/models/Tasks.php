@@ -9,7 +9,13 @@ class Tasks extends Eloquent {
     public static function taskInfo($p) {
         return excsql("select * from tasks where tid='$p' ");
     }
-
+    public static function tmInfo($p) {
+        $x= excsql("select * from task_mode where tmid='$p' ");
+        return $x[0];
+    }
+    public static function listMode() {
+        return excsql("select * from task_mode tm left join modes m on m.mode_id=tm.tmmode order by aid ");
+    }
     public static function actionPorts($tsk) {
         $pie = $tsk->pieid;
         $pp = $tsk->action_ports;

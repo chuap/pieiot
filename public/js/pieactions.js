@@ -99,6 +99,38 @@ function deletetask(tid, pie) {
         }
     });
 }
+function deletereport(rid) {
+    bootbox.confirm({
+        title: "ยืนยันลบข้อมูล?",
+        message: "<h4>Report : " + $('#lbreport_' + rid).html() + '</h4>',
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Confirm'
+            }
+        },
+        callback: function (result) {
+            if (result == true) {
+                $.ajax({
+                    url: rootContext + 'adminaction',
+                    type: "POST",
+                    datatype: "json",
+                    data: "ac=deletereport&rid=" + rid 
+                }).success(function (result) {
+                    var obj = jQuery.parseJSON(result);
+                    if (obj.STATUS == true) {
+                        delete_tag('lbreport' + rid)
+                        window.location.href = rootContext + "reports";
+                    } else {
+                        alertbox(obj.MSG + '');
+                    }
+                });
+            }
+        }
+    });
+}
 function deletepie(pie) {
     bootbox.confirm({
         title: "ยืนยันลบข้อมูล?",

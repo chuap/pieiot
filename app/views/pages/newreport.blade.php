@@ -17,15 +17,22 @@ $datasl = Input::get('datasl');
 $rid = Input::get('rid');
 $step = Input::get('step');
 //$step = 1;
-$tid = '';
+$tid = ''; $charttype='Line'; $groupby='10';
+ $op1=1;$op2=1;$op3=0;
 $re = Reports::find($rid);
-if ($re) {
+if ($re && !$step) {
     if (!$step) {
         $step = 3;
     }
     $rname = $re->rname;
+    $groupby = $re->groupby;
+    $op1 = $re->op1;
+    $op2 = $re->op2;
+    $op3 = $re->op3;
     $page_title = 'edit: ' . $rname;
-    if(!$rtype){$rtype = $re->rtype;}
+    if (!$rtype) {
+        $rtype = $re->rtype;
+    }
 
     $datasl = $re->datasl;
     $stime = date('H:i:s', strtotime($re->sdate));
@@ -45,17 +52,17 @@ if ($re) {
     } else if (!$datasl) {
         $step = 2;
         $listData = Reports::listData($rtype);
-        
     } else {
-        $step = 3;        
+        $step = 3;
         $listData = Reports::listData($rtype);
         $rname = '';
         $sdate = '9';
-        $edate = '';$i=0;
+        $edate = '';
+        $i = 0;
         $tid = '';
-        foreach ($listData as $j=>$d) {
+        foreach ($listData as $j => $d) {
             if (Input::get('rdata_' . $j) > 0) {
-                
+
                 if ($i > 0) {
                     $rname .= ', ';
                     $tid .= ',';
@@ -71,9 +78,9 @@ if ($re) {
                 $i++;
             }
         }
-        
-        
-        $listData = Reports::listData($rtype,$tid);
+
+
+        $listData = Reports::listData($rtype, $tid);
 
         $stime = date('H:i:s', strtotime($sdate));
         $etime = date('H:i:s', strtotime($edate));
@@ -82,10 +89,10 @@ if ($re) {
     }
 }
 
-if($rtype){
-    $rt=Reports::rType($rtype);
-}else{
-    $rt='';
+if ($rtype) {
+    $rt = Reports::rType($rtype);
+} else {
+    $rt = '';
 }
 ?>
 
@@ -190,9 +197,48 @@ if($rtype){
                     </div>
                 </div>
                 <div class="control-group mb1">
+                    <label class="control-label" for="form-field-1">Group by</label>
+                    <div class="controls">
+                        <select id="groupby" class="form-control" onchange="" name="groupby">
+                            <option {{$groupby=='20'?'selected':''}}  value="20">All Data</option>
+                            <option {{$groupby=='16'?'selected':''}}  value="16">Minute</option>
+                            <option {{$groupby=='15'?'selected':''}}  value="15">10 Minute</option>
+                            <option {{$groupby=='13'?'selected':''}} value="13">Hour</option>
+                            <option {{$groupby=='12'?'selected':''}} value="12">10 Hour</option>
+                            <option {{$groupby=='10'?'selected':''}} value="10">Day</option>
+                            <option {{$groupby=='9'?'selected':''}} value="9">10 Day</option>
+                            <option {{$groupby=='7'?'selected':''}} value="7">Month</option>                            
+                            <option {{$groupby=='4'?'selected':''}} value="4">Year</option>
+                            
+                        </select>  
+                        <span class="help-inline"></span>
+                    </div>
+                </div>
+                @if($rtype=='Chart')
+                <div class="control-group mb1">
+                    <label class="control-label" for="form-field-1">Chart Type</label>
+                    <div class="controls pt04">
+                        <label class="pull-left">
+                            <input name="barchart" {{$op1=='1'?'checked':''}}  value="1" class="ace-checkbox-2" type="checkbox">
+                            <span class="lbl"> Bar Chart</span>
+                        </label>
+                        <label class="pull-left ml1">
+                            <input name="linechart" {{$op2=='1'?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                            <span class="lbl"> Line Chart</span>
+                        </label>
+                        <label class="pull-left ml1">
+                            <input name="areachart" {{$op3=='1'?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                            <span class="lbl"> Area Chart</span>
+                        </label>
+                    </div>
+                </div>
+                @endif
+                <div class="control-group mb1">
+                    @if(!$rid)
                     <label class="control-label" for="form-field-1">
                         <a href="{{asset('pie.newreport?step=2&rtype='.$rtype.'&rid='.$rid)}}"><i class="icon-backward"></i> Back</a>
                     </label>
+                    @endif
                     <div class="controls">
                         <a onclick="savereport()" class="btn_save btn btn-info "><i class="icon-save bigger-125"></i>  Save report </a>
                         <div class="hidden text-center divload pull-left">
@@ -208,15 +254,11 @@ if($rtype){
             {{ Form::hidden('ac','savereport',array('id'=>'ac')) }}
             {{ Form::hidden('rtype',$rtype,array('id'=>'rtype')) }}
             {{ Form::hidden('datasl',$datasl,array('id'=>'datasl')) }}
-            @if($re)
+            
             @foreach ($listData as $i=>$d)
             {{ Form::hidden('rdata_'.$i,$d->tid,array('id'=>'rdata_'.$i)) }}
             @endforeach
-            @else
-            @for ($i = 0; $i < $datasl; $i++)
-            {{ Form::hidden('rdata_'.$i,Input::get('rdata_' . $i),array('id'=>'rdata_'.$i)) }}
-            @endfor
-            @endif
+            
         </form>
     </div>
 </div>

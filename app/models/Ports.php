@@ -7,7 +7,9 @@ class Ports extends Eloquent {
     public $timestamps = false;
 
     public static function portByPie($p) {
-        return excsql("select p.*,d.portname as oname,d.modes  from ports p left join ports_model d on d.portno=p.portno and d.piemodel=p.piemodel where pieid='$p' order by isnull(assigned),p.portname");
+        $sql="select p.*,d.portname as oname,d.modes  from ports p left join ports_model d on d.portno=p.portno and d.piemodel=p.piemodel where pieid='$p' order by isnull(assigned),p.portname";
+        //echo $sql;
+        return excsql($sql);
     }
     public static function allMode() {
         return excsql("select * from modes order by mode_order");

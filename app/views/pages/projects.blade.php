@@ -42,13 +42,13 @@ $plist = Projects::myProjects();
             <div class="box-body">
                 <div class="row">
                     <div class="col-lg-9 col-md-8 col-xs-8">
-                        <p class="p0 font12 ">{{$d->prodesc}}<span class="white">.</span></p>
+                        <p class="p0 font12 " style="line-height:18px;">{{$d->prodesc}}<span class="white">.</span></p>
                         @if($tk)
-                        <code>
+                        <div>
                             @foreach($tk as $i=>$d2)
-                            <span class="{{$d2->task_disable==0?'green':''}}"><i class="icon-leaf"></i> {{$d2->taskname}}</span>
+                            <button title="{{$d2->taskname}} " class="btn p04 {{$d2->task_disable==0?'btn-success':''}}"><img class="w30" src="{{asset($d2->tmimg)}}" /></button>
                             @endforeach
-                        </code>
+                        </div>
                         @else
                         <code class="red">
                             <i class="icon-info"></i> Project is empty.

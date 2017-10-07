@@ -50,27 +50,37 @@ class AdminController extends BaseController {
         if ($ac == 'newpie') {
             //$x = DB::update($sql);
             $mtype = Input::get('mtype');
+            $pid = Input::get('pieid');
             $minfo = Pies::modelInfo($mtype);
             if (!$mtype) {
                 $json_arr['MSG'] = 'Error !!';
                 return json_encode($json_arr);
             }
-            $pie = new Pies();
+            if ($pid) {
+                $pie = Pies::find($pid);
+            } else {
+                $pie = new Pies();
+                $pie->img = $minfo->img;
+            }
             $pie->piename = Input::get('piename');
-            $pie->color = Input::get('piecolor');
+            $pie->desc = Input::get('txdesc');
+            $pie->color = Input::get('piecolor') ? Input::get('piecolor') : $minfo->color;
             $pie->piemodel = $mtype;
-            $pie->img = $minfo->img;
+
             $pie->own = $uid;
+            
             $pie->save();
             $pts = Ports::portModel($mtype);
             $pieid = $pie->pieid;
-            foreach ($pts as $d) {
-                $portno = $d->portno;
-                $portname = $d->portname;
-                $porttype = $d->porttype;
-                //$modes = $d->modes;
-                $sql = "insert into ports(pieid,portno,portname,porttype,piemodel) values('$pieid','$portno','$portname','$porttype','$mtype')";
-                excsql($sql);
+            if (!$pid) {
+                foreach ($pts as $d) {
+                    $portno = $d->portno;
+                    $portname = $d->portname;
+                    $porttype = $d->porttype;
+                    //$modes = $d->modes;
+                    $sql = "insert into ports(pieid,portno,portname,porttype,piemodel) values('$pieid','$portno','$portname','$porttype','$mtype')";
+                    excsql($sql);
+                }
             }
             $json_arr['STATUS'] = true;
             $json_arr['LASTID'] = $pie->pieid;
@@ -114,7 +124,8 @@ class AdminController extends BaseController {
         } else if ($ac == 'deletetask') {
             $pieid = Input::get('pie') ? Input::get('pie') : 0;
             $taskid = Input::get('tid') ? Input::get('tid') : '';
-            $sql = "delete from tasks where mid='$uid' and tid='$taskid' and task_disable='1' and not (synced is null)";
+            //$sql = "delete from tasks where mid='$uid' and tid='$taskid' and (task_disable='1' and not (synced is null))";
+            $sql = "delete from tasks where mid='$uid' and tid='$taskid' ";
             $x = DB::update($sql);
             if ($x > 0) {
                 Ports::ckkAssignPort($pieid);
@@ -123,6 +134,13 @@ class AdminController extends BaseController {
             } else {
                 $json_arr['MSG'] = 'Can not delete task..';
             }
+        } else if ($ac == 'deletereport') {
+            $rid = Input::get('rid') ? Input::get('rid') : '';
+
+            $sql = "delete from report_h where  rid='$rid' and mid='$uid'";
+            $x = excsql($sql);
+            $json_arr['STATUS'] = true;
+            $json_arr['MSG'] = 'Success';
         } else if ($ac == 'deletepie') {
             $pie = Input::get('pie') ? Input::get('pie') : '';
             $pinfo = Pies::find($pie);
@@ -172,10 +190,16 @@ class AdminController extends BaseController {
             }
             $re->tid = $tid;
             $re->datasl = $datasl;
+            $re->groupby = Input::get('groupby');
+            if ($re->rtype == 'Chart') {
+                $re->op1 = Input::get('barchart');
+                $re->op2 = Input::get('linechart');
+                $re->op3 = Input::get('areachart');
+            }
 
             $re->save();
             $json_arr['STATUS'] = true;
-            $json_arr['MSG'] = $re->sdate;
+            $json_arr['MSG'] = $tid;
         } else if ($ac == 'pronewsave') {
             $p = Input::get('proid') ? Input::get('proid') : 0;
             $pieid = Input::get('pieid') ? Input::get('pieid') : 0;
@@ -215,6 +239,7 @@ class AdminController extends BaseController {
             }
             $tsk->taskname = Input::get('txtaskname');
             $tsk->onbit = Input::get('onbit');
+            $tsk->tmid = Input::get('tmid');
             $tsk->pieid = $pieid;
             $tsk->proid = $proid;
             $tsk->date_save = $date_save;

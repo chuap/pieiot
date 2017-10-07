@@ -23,7 +23,7 @@ $pies = Pies::listMyPie();
     $st_bg = 'gray';
     $st_color = '';
     ?>
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-3 col-xs-12 col-md-4 col-sm-6">
         <!-- small box -->
         <div id="pie_{{$d->pieid}}" class="small-box bg-{{$st_bg}}" style="">
             <div class="inner">
@@ -67,6 +67,8 @@ $pies = Pies::listMyPie();
     @endif
 
 </div>
+
+
 <div id="divckk"></div>
 @stop
 

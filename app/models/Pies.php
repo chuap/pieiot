@@ -7,7 +7,7 @@ class Pies extends Eloquent {
     public $timestamps = false;
 
     public static function pieModel() {
-        return excsql("select * from pies_model order by aid");
+        return excsql("select * from pies_model order by iorder");
     }
     
     public static function modelInfo($m) {
@@ -19,7 +19,7 @@ class Pies extends Eloquent {
     }
     public static function listMyPie() {
         $mid = Session::get('cat.uid');
-        return excsql("select * from pies where own='$mid'  order by registerdate desc");
+        return excsql("select p.*,m.btn from pies p left join pies_model m on m.modelid=p.piemodel where own='$mid'  order by registerdate desc");
     }
     public static function countMyPie() {
         $mid = Session::get('cat.uid');

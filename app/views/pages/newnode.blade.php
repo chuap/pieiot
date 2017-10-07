@@ -15,7 +15,7 @@ $page_title = 'Select Model.';
 $page_icon = "icon-plus";
 $rf = Input::get('r') ? Input::get('r') : 'refresh';
 $mtype = Input::get('mtype');
-
+$pieid = Input::get('pieid');
 $listmodel = Pies::pieModel();
 $step = Input::get('step');
 //$step = 1;
@@ -23,10 +23,22 @@ $tid = '';
 
 if (!$mtype) {
     $step = 1;
+    
 } else {
     $step = 2;
     $minfo = Pies::modelInfo($mtype);
+    $page_title ='<img class="h30" src="'.asset($minfo->img).'" /> '. $minfo->modelname;
 }
+if($pieid){
+    $pieinfo=Pies::find($pieid);
+    $step = 2;
+    $mtype=$pieinfo->piemodel;
+    $txdesc=$pieinfo->desc;
+    $piecolor=$pieinfo->color;
+    $minfo = Pies::modelInfo($mtype);
+    $page_title='<i class="icon-edit"></i> '.$pieinfo->piename.'  <small></small>';
+}
+
 ?>
 
 @section('body')
@@ -42,7 +54,7 @@ if (!$mtype) {
     <div>
         @foreach($listmodel as $d)
         <a href="{{asset('pie.newnode?step=2&mtype='.$d->modelid)}}" class="btn btn-app {{$d->btn}} no-radius" style="width: 150px;">
-            <img src="{{asset($d->img)}}" class="h50"> {{$d->modelname}}
+            <img src="{{asset($d->img)}}" class="h50"><br />{{$d->modelname}}
         </a>
         @endforeach
 
@@ -51,7 +63,7 @@ if (!$mtype) {
 @elseif($step==2)
 <div class="row-fluid">
     <div class="span12">
-        <p class="lead"><i class="icon-plus"></i> {{$minfo->modelname}}  <small></small></p>        
+        <p class="lead">{{$page_title}}</p>        
     </div>
     <div>
         <form id="f1">
@@ -63,17 +75,25 @@ if (!$mtype) {
                     </div>
                 </div>
                 <div class="control-group mb1">
-                    <label class="control-label" for="form-field-1">Color</label>
+                    <label class="control-label" for="form-field-1">Description</label>
                     <div class="controls">
-                        <input onchange="changecolor()" class="span10" id="piecolor" name="piecolor" type="text"  value="">
+                        <textarea rows="2" class="span12 limited" placeholder="" id="txdesc" name="txdesc" data-maxlength="">{{isset($txdesc)?$txdesc:''}}</textarea>
                     </div>
                 </div>
                 <div class="control-group mb1">
+                    <label class="control-label" for="form-field-1">Color</label>
+                    <div class="controls">
+                        <input onchange="changecolor()" class="span2" id="piecolor" name="piecolor" type="text"  value="{{isset($piecolor)?$piecolor:''}}">
+                    </div>
+                </div>
+                <div class="control-group mb1">
+                    @if(!$pieid)
                     <label class="control-label" for="form-field-1">
                         <a href="{{asset('pie.newnode?step=1')}}"><i class="icon-backward"></i> Back</a>
                     </label>
+                    @endif
                     <div class="controls">
-                        <a onclick="newpie()" class="btn_save btn btn-info "><i class="icon-plus bigger-125"></i>  Create Pie Node </a>
+                        <a onclick="newpie()" class="btn_save btn btn-info "><i class="icon-plus bigger-125"></i>  Save Pie Node </a>
                         <div class="hidden text-center divload pull-left">
                             <img src="{{asset('images/loading.gif')}}" style="width: 30px;">    
                             Processing...             
@@ -85,7 +105,7 @@ if (!$mtype) {
 
             {{ Form::hidden('ac','newpie',array('id'=>'ac')) }}
             {{ Form::hidden('mtype',$mtype,array('id'=>'mtype')) }}
-
+            {{ Form::hidden('pieid',$pieid,array('id'=>'pieid')) }}
         </form>
     </div>
 </div>
