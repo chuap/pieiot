@@ -185,11 +185,25 @@ $plist = Reports::dataChart($rinfo);
 
 
 <?php
+$istemp=0;
 echo 'var cdata2=[';
 foreach ($plist as $i => $d) {
-    echo "{'period': '" . $d->sdt . "', item1: " . number_format($d->avg1, 2) . ", item2: " . number_format($d->avg2, 2) . " },";
+    if($d->mn=='temp'){
+        $istemp=1;
+        echo "{'period': '" . $d->sdt . "', item1: " . number_format($d->avg1, 2) . ", item2: " . number_format($d->avg2, 2) . " },";
+    }else{
+        echo "{'period': '" . $d->sdt . "', item1: " . number_format($d->avg1, 2)  . " },";
+    }
+    
 }
 echo '];';
+if($istemp){
+    $lbdata="'item1', 'item2'";
+    $lbx="'Temperature', 'Humidity'";
+}else{
+    $lbdata="'item1'";
+    $lbx="'Value'";
+}
 ?>
 <?php if ($rinfo->op1 == 1) { ?>
                     var area = new Morris.Bar({
@@ -197,10 +211,10 @@ echo '];';
                             resize: true,
                             data: cdata2,
                             xkey: 'period',
-                            ykeys: ['item1', 'item2'],
-                            labels: ['Temperature', 'Humidity'],
+                            ykeys: [{{$lbdata}}],
+                            labels: [{{$lbx}}],
                             xLabels:'Year',
-                            xLabelAngle: 60,
+                            xLabelAngle: 20,
                             lineColors: ['#de2828', '#3c8dbc'],
                             hideHover: 'auto'
                     });
@@ -214,10 +228,10 @@ if ($rinfo->op2 == 1) {
                             resize: true,
                             data: cdata2,
                             xkey: 'period',
-                            ykeys: ['item1', 'item2'],
-                            labels: ['Temperature', 'Humidity'],
+                            ykeys: [{{$lbdata}}],
+                            labels: [{{$lbx}}],
                             xLabels:'Year',
-                            xLabelAngle: 60,
+                            xLabelAngle: 20,
                             lineColors: ['#de2828', '#3c8dbc'],
                             hideHover: 'auto'
                     });
@@ -230,10 +244,10 @@ if ($rinfo->op3 == 1) {
                             resize: true,
                             data: cdata2,
                             xkey: 'period',
-                            ykeys: ['item1', 'item2'],
-                            labels: ['Temperature', 'Humidity'],
+                            ykeys: [{{$lbdata}}],
+                            labels: [{{$lbx}}],
                             xLabels:'Year',
-                            xLabelAngle: 60,
+                            xLabelAngle: 20,
                             lineColors: ['#de2828', '#3c8dbc'],
                             hideHover: 'auto'
                     });

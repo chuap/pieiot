@@ -138,7 +138,7 @@ if ($rtype) {
                         <td>{{$i+1}}</td>
                         <td><label>
                                 <input {{isset($datack[$d->tid])?'checked':$i==0?'checked':''}} name="rdata_{{$i}}" value="{{$d->tid}}" class="ace-checkbox-2 rdata" type="checkbox">
-                                <span class="lbl font120p"> {{$d->dataname}}</span>
+                                <span class="lbl font120p"> {{$d->dataname}} / <span class="green">{{$d->piename}}</span></span>
                             </label>
                         </td>
                     </tr>

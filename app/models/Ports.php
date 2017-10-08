@@ -7,7 +7,7 @@ class Ports extends Eloquent {
     public $timestamps = false;
 
     public static function portByPie($p) {
-        $sql="select p.*,d.portname as oname,d.modes  from ports p left join ports_model d on d.portno=p.portno and d.piemodel=p.piemodel where pieid='$p' order by isnull(assigned),p.portname";
+        $sql="select p.*,d.portname as oname,d.modes,d.portname as pmname  from ports p left join ports_model d on d.portno=p.portno and d.piemodel=p.piemodel where pieid='$p' order by isnull(assigned),p.portname";
         //echo $sql;
         return excsql($sql);
     }
@@ -68,7 +68,7 @@ class Ports extends Eloquent {
     }
     public static function portValue($d,$h='h40') {
         $v=$d->portvalue;
-        if($d->porttype=='setbit'){
+        if(($d->porttype=='setbit')||($d->porttype=='bitin')){
             if ($v == '1') {
                 return '<span class="badge bg-green">On</span>';
             } else if ($v == '0') {

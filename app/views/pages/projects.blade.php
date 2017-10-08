@@ -46,7 +46,7 @@ $plist = Projects::myProjects();
                         @if($tk)
                         <div>
                             @foreach($tk as $i=>$d2)
-                            <button title="{{$d2->taskname}} " class="btn p04 {{$d2->task_disable==0?'btn-success':''}}"><img class="w30" src="{{asset($d2->tmimg)}}" /></button>
+                            <button title="{{$d2->taskname}} " class="btn p04 {{$d2->task_disable==0?'btn-info':''}} "><img class="w30" src="{{asset($d2->tmimg)}}" /></button>
                             @endforeach
                         </div>
                         @else

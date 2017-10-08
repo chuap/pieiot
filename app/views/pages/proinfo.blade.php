@@ -99,12 +99,17 @@ $pro = Projects::find($p);
                             <td><img class="w20" src="{{asset($d2->tmimg)}}" /></td>
                             <td><a id="lb_{{$d2->tid}}" class="newproject" href="{{$edit_url}}">{{$d2->taskname}}</a>
                                 <p class="hidden-xs"><small>{{Projects::taskDesc2($d2)}}</small></p>
+                                <div class="hidden-lg hidden-md hidden-sm">
+                                <div class="font10" style="color:{{$d2->picolor}} ">{{$d2->piename}}</div>
                                 @foreach (Tasks::actionPorts($d2) as $d)
-                                <div class="hidden-lg hidden-md hidden-sm font10"> {{$d->portname}}</div>
+                                <div class=" font10"> {{$d->portname}}</div>
                                 @endforeach
+                                </div>
                             </td>
                             <td class="hidden-xs">
-                                <a href="{{asset('pie-'.$d2->pieid.'.info')}}">{{$d2->piename}}</a>
+                                <div class="text-center pull-left" style=" padding: 2px; background-color: {{$d2->picolor}}; ">
+                                    <a title="{{$d2->piename}}" href="{{asset('pie-'.$d2->pieid.'.info')}}">
+                                        <img  class="w40" src="{{asset($d2->img)}}" /></a></div>
                             </td>
                             <td class="hidden-xs">
                                 @foreach (Tasks::actionPorts($d2) as $d)
@@ -141,6 +146,7 @@ $pro = Projects::find($p);
                                     <ul class="dropdown-menu pull-right" role="menu ">
                                         <li class="{{'mnenable_'.$d2->tid}} {{$d2->task_disable?'':'hidden'}}"><a class="ml04" title="Remove Task" href="javascript:" onclick="enabletask('{{$d2->tid}}','{{$d2->pieid}}')" ><i class="fa fa-check"></i> Enable</a></li>
                                         <li><a class="newproject " href="{{$edit_url}}"><i class="fa fa-edit"></i> Edit</a></li>
+                                        <li><a class="newproject " href="{{$edit_url}}"><i class="fa fa-play"></i> Task Action</a></li>
                                         <li class="divider "></li>
                                         <li class="{{'mndisable_'.$d2->tid}} {{$d2->task_disable?'hidden':''}}"><a class="ml04" title="Disable Task" href="javascript:" onclick="disabletask('{{$d2->tid}}','{{$d2->pieid}}')" ><i class="fa fa-minus-circle"></i> Disable</a></li>
                                         <li class="{{'mndelete_'.$d2->tid}} {{$dsdel?$dsdel:''}}"><a class="ml04" title="Remove Task" href="javascript:" onclick="deletetask('{{$d2->tid}}','{{$d2->pieid}}')" ><i class="fa fa-minus-circle"></i> Delete</a></li>

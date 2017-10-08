@@ -15,30 +15,7 @@ class AdminController extends BaseController {
         
     }
 
-    public function doAction() {
-        include('var/static.php');
-        $ac = Input::get('at');
-        $catid = Session::get('cat.catid');
-        $sec = Session::get('cat.section');
-        $dep = Session::get('cat.department');
-        $date_save = date('Y-m-d H:i:s');
-        $ym = date('Y-m');
-        $json_arr = array('ERROR' => 'E01', 'DATA' => '', 'ERROR_MSG' => 'ไม่สามารถดำเนินการได้!!', 'STATUS' => FALSE, 'WARNING' => '');
-
-
-        if ($ac == 'deleval') {
-            $id = Input::get('id');
-            if (in_array(Session::get('cat.uclass'), array("admin"))) {
-                excsql("delete from outsource_eval_d where hid='$id' ");
-                excsql("delete from outsource_eval_h where hid='$id' ");
-                $json_arr['STATUS'] = true;
-            }
-        } else if ($ac == 'save_form1') {
-            $json_arr['MSG'] = Input::get('tnx1') . Input::get('tnx2') . Input::get('tnx3');
-            $json_arr['STATUS'] = true;
-        }
-        return json_encode($json_arr);
-    }
+    
 
     public function doActionPost() {
         $json_arr = array('ERROR' => 'E01', 'ERROR_MSG' => 'Error!!', 'STATUS' => FALSE, 'WARNING' => '', 'MSG' => 'E', 'LASTID' => '');
@@ -264,7 +241,10 @@ class AdminController extends BaseController {
             }
             $tsk->action_ports = $t;
 
-            if ($atmode == 'bitout') {
+            if ($atmode == 'bitin') {
+                $tsk->stime = Input::get('txtime1');
+                $tsk->etime = Input::get('txtime2');
+            }else if ($atmode == 'bitout') {
                 $tsk->stime = Input::get('txtime1');
                 $tsk->etime = Input::get('txtime2');
                 $tsk->ck1 = Input::get('ckonoff');

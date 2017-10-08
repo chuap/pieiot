@@ -10,9 +10,9 @@ class Reports extends Eloquent {
         if($rtype=='Album'){
             $pa="and a.mn in('capture')";
         }else if($rtype=='Chart'){
-            $pa="and a.mn in('temp')";
+            $pa="and a.mn in('temp','bitin')";
         }else if($rtype=='Table'){
-            $pa="and a.mn in('temp','capture')";
+            $pa="and a.mn in('temp','capture','bitin')";
         }else{
             $pa='';
         }
@@ -20,7 +20,7 @@ class Reports extends Eloquent {
             $pa.=" and a.tid in($tid)";            
         }
         $mid = Session::get('cat.uid');
-        return excsql("select a.tid,a.dataname,a.mn,min(a.datesave)as mind,max(a.datesave)as maxd from alldata a left join pies p on p.pieid=a.pieid where p.own='$mid' $pa group by a.tid order by a.dataname");
+        return excsql("select a.tid,a.dataname,a.mn,min(a.datesave)as mind,max(a.datesave)as maxd,p.piename from alldata a left join pies p on p.pieid=a.pieid where p.own='$mid' $pa group by a.tid order by a.dataname");
     }
     public static function reportInfo($r) {
         
@@ -42,7 +42,7 @@ class Reports extends Eloquent {
     }
     public static function listReport() {
         $mid = Session::get('cat.uid');
-        return excsql("select * from report_h r left join report_type t on t.rtid=r.rtype where mid='$mid' order by rname");
+        return excsql("select * from report_h r left join report_type t on t.rtid=r.rtype where mid='$mid' order by sdate desc");
     }
     public static function listImages($r) {
         $tid=$r->tid;
@@ -64,14 +64,16 @@ class Reports extends Eloquent {
         $sdate=$r->sdate;
         $edate=$r->edate;
         $gby=$r->groupby;
-        $sql="select dataname,data,data2 ,SUBSTR(datesave,1,$gby) as sdt,round(AVG(data),0) as avg1,round(AVG(data2),0) as avg2 from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' group by sdt  order by sdt  limit 0,1000";
+        
+        $sql="select mn,dataname,data,data2 ,SUBSTR(datesave,1,$gby) as sdt,round(AVG(data),0) as avg1,round(AVG(data2),0) as avg2 from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' group by sdt  order by sdt  limit 0,1000";
         return excsql($sql);
     }
     public static function dataDemo($r) {
         $tid=$r->tid;
         $sdate=$r->sdate;
         $edate=$r->edate;
-        $sql="select * from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' order by datesave desc limit 0,3";
+        $gby=$r->groupby?$r->groupby:10;
+        $sql="select * from (select tid,mn,dataname,data,data2 ,SUBSTR(datesave,1,$gby) as sdt,round(AVG(data),0) as avg1,round(AVG(data2),0) as avg2  from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' group by sdt  order by datesave desc limit 0,6)as tb1 order by sdt";
         return excsql($sql);
     }
     public static function countMyReport() {

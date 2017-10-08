@@ -157,12 +157,12 @@ if(!isset($mn)){$mn='';}
                         
                         <li class="{{$mn=='pies'?'active':''}}">
                             <a href="{{asset('pies')}}">
-                                <i class="fa fa-th"></i> <span>Pie Nodes</span> <small class="badge pull-right bg-green">{{Pies::countMyPie()}}</small>
+                                <i class="fa fa-th"></i> <span>Pie Controllers</span> <small class="badge pull-right bg-green">{{Pies::countMyPie()}}</small>
                             </a>
                         </li>
                         <li class="{{$mn=='projects'?'active':''}}">
                             <a href="{{asset("projects")}}">
-                                <i class="fa fa-dashboard"></i> <span>My Projects</span> <small class="badge pull-right bg-blue">{{Projects::countMyProject()}}</small>
+                                <i class="fa fa-dashboard"></i> <span>IoT Projects</span> <small class="badge pull-right bg-blue">{{Projects::countMyProject()}}</small>
                             </a>
                         </li>
                         <li class="{{$mn=='reports'?'active':''}}">

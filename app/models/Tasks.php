@@ -43,7 +43,7 @@ class Tasks extends Eloquent {
         excsql($sql);
     }
     public static function valueLabel($v,$h='h40') {
-        if ($v->mn=='setbit') {
+        if (($v->mn=='setbit')||($v->mn=='bitin')) {
             if($v->d1){
                 return '<span class="badge bg-green">On</span>';
             }else{

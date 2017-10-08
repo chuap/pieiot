@@ -150,7 +150,9 @@ if ($tsk) {
     <div class="span12">
         <p class="lead">{{$page_title}}</p>        
     </div>
-    <div>
+</div>
+<div class="row-fluid">
+    <div class="span12 ">
         <form id="f1" onsubmit="return false;">
             <div class="form-horizontal" >
                 <div class="control-group mb1">
@@ -170,13 +172,13 @@ if ($tsk) {
                             <a data-toggle="dropdown" class=" btn btn-info btn-small dropdown-toggle">
                                 <i class="icon-plus"></i> Add Port
                             </a>
-                            <ul class="dropdown-menu dropdown-default ">
+                            <ul class="dropdown-menu dropdown-default w200 ">
                                 @foreach ($pt as $n2) 
                                 <?php
                                 $cl = 'onclick="addassign(\'' . $n2->portno . '\', \'' . $n2->portname . '\')"';
                                 ?>
                                 <li class="pl2 {{$n2->modes}} ports">
-                                    <a class="p0 m0 {{$n2->assigned?'red':''}}" href="javascript:" {{$cl}} ><i class="{{$n2->assigned?'icon-info':'icon-plus-sign'}}"></i> {{$n2->portname}}</a>
+                                    <a class="p0 m0 {{$n2->assigned?'red':''}}" href="javascript:" {{$cl}} ><i class="{{$n2->assigned?'icon-info':'icon-plus-sign'}}"></i> <small class="pull-right pr1">{{$n2->pmname}}</small> : {{$n2->portname}} </a>
                                 </li>
                                 @endforeach
                             </ul>
@@ -194,7 +196,7 @@ if ($tsk) {
                     <div class="accordion-heading">
                         <a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle ">
                             <i class="icon-bullseye"></i>
-                            Actions <span class="badge badge-important"></span>
+                            Setting <span class="badge badge-important"></span>
                         </a>
                     </div>
                     <div class="accordion-body" id="collapseOne">
@@ -205,6 +207,51 @@ if ($tsk) {
                             <div class="form-inline ports md_bitout"> 
                                 <label>
                                     ช่วงเวลาเปิด-ปิด                            
+                                </label>
+                                <span class="">
+
+                                    <div class="input-append bootstrap-timepicker">
+                                        <input id="txtime1" name="txtime1" type="text" value="{{$tsk?$tsk->stime:'00:00:00'}}" class=" timepicker" style="width: 60px;">
+                                        <span class="add-on">
+                                            <i class="icon-time"></i>
+                                        </span>
+                                    </div>
+                                    ถึงเวลา
+                                    <div class="input-append bootstrap-timepicker">
+                                        <input id="txtime2" name="txtime2" type="text" value="{{$tsk?$tsk->etime:'23:59:59'}}" class=" timepicker w60" style="width: 60px;">
+                                        <span class="add-on">
+                                            <i class="icon-time"></i>
+                                        </span>
+                                    </div>
+                                </span>
+                                <span class="">สัญญาณเมื่อ On </span>
+                                <select id="onbit" name="onbit" onchange="" class="" style="width: 90px;" >
+                                    <option {{$onbit==1?'selected':''}} value="1">1: High</option>
+                                    <option {{$onbit==0?'selected':''}} value="0">0: Low</option>                                    
+                                </select>
+                            </div>
+                            <div class="form-inline ports md_bitout mt1"> 
+                                <label>
+                                    <input name="ckonoff" {{$ck1==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> สลับการเปิดปิด</span>
+                                </label>
+                                <span class="ml2">
+                                    เปิดนาน
+                                    <div class="input-append ">
+                                        <input id="txco1" name="txco1" type="text" value="{{$tsk?$tsk->tx1:'3600'}}" class=" w50" style="width: 40px;">                                    
+                                    </div>
+                                    <small class="pr1">วินาที</small> ปิดนาน
+                                    <div class="input-append bootstrap-timepicker">
+                                        <input id="txco2" name="txco2" type="text" value="{{$tsk?$tsk->tx2:'3600'}}" class=" w50" style="width: 40px;">
+                                    </div>
+                                    <small class="pr1">วินาที</small>
+                                </span>
+                            </div>
+                            @endif
+                            @if($tmmode=='bitin')
+                            <div class="form-inline ports md_bitin"> 
+                                <label>
+                                    ช่วงเวลาตรวจจับ                            
                                 </label>
                                 <span class="ml2">
 
@@ -228,23 +275,7 @@ if ($tsk) {
                                     <option {{$onbit==0?'selected':''}} value="0">0: Low</option>                                    
                                 </select>
                             </div>
-                            <div class="form-inline ports md_bitout mt1"> 
-                                <label>
-                                    <input name="ckonoff" {{$ck1==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
-                                    <span class="lbl"> สลับการเปิดปิด</span>
-                                </label>
-                                <span class="ml2">
-                                    เปิดนาน
-                                    <div class="input-append ">
-                                        <input id="txco1" name="txco1" type="text" value="{{$tsk?$tsk->tx1:'3600'}}" class=" w50" style="width: 40px;">                                    
-                                    </div>
-                                    <small class="pr1">วินาที</small> ปิดนาน
-                                    <div class="input-append bootstrap-timepicker">
-                                        <input id="txco2" name="txco2" type="text" value="{{$tsk?$tsk->tx2:'3600'}}" class=" w50" style="width: 40px;">
-                                    </div>
-                                    <small class="pr1">วินาที</small>
-                                </span>
-                            </div>
+                            
                             @endif
                             @if($tmmode=='capture')
                             <div class="form-inline ports md_capture "> 

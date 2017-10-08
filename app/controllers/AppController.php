@@ -105,6 +105,9 @@ class AppController extends BaseController {
             Logs::updateLog($p, $tid, $pno, $mn, $a, $b,$tsk->proid);
             if (($mn == 'setbit')) {
                 Ports::updatePort($p, $pno,$mn, $a,$b);
+            }else if (($mn == 'bitin')) {
+                Ports::updatePort($p, $pno,$mn, $a,$b);
+                DataAll::upData ($p, $tid, $pno, $tsk->taskname, $a,$b,$tsk->taskaction,$tsk->proid);
             } else if ($mn == 'synced') {
                 Tasks::taskSynced($tid,$a);
             }else if($mn=='temp'){

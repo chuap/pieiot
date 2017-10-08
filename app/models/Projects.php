@@ -27,7 +27,7 @@ class Projects extends Eloquent {
         return excsql("select d.*,pi.piename,p.portvalue,p.lastupdate from projects_d d  left join ports p on p.pieid=d.pieid and d.portno=p.portno left join pies pi on pi.pieid=d.pieid where d.proid='$pro' order by d.portno");
     }
     public static function getTask($pro) {
-        return excsql("select d.*,pi.piename,m.tmimg from tasks d  left join pies pi on pi.pieid=d.pieid left join task_mode m on m.tmid=d.tmid where d.proid='$pro' order by d.taskname");
+        return excsql("select d.*,pi.piename,m.tmimg,pi.img,pi.color as picolor from tasks d  left join pies pi on pi.pieid=d.pieid left join task_mode m on m.tmid=d.tmid where d.proid='$pro' order by d.taskname");
     }
 
     public static function project_D($p, $pro) {

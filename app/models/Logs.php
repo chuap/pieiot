@@ -17,7 +17,7 @@ class Logs extends Eloquent {
         $dt = date('Y-m-d H:i:s');
         $d0=$a;
         excsql("update pies set lastupdate='$dt' where pieid='$p'");
-        if($mn=='setbit'){
+        if(($mn=='setbit')||($mn=='bitin')){
             $asdata=$a;
         }else if($mn=='image'){
             $asdata=$b;
