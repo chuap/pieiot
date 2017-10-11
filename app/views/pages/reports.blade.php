@@ -35,7 +35,7 @@ $tt1 = array();
             <?php
             $rlink = asset('/pie.report-info') . "?rid=" . $d->rid;
             ?>
-            <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4" style="min-height: 180px;">
                 <div class="box box-{{$d->rtcolor}}" style="overflow: hidden;">
                     <div class="box-header">
                         <h3 class="box-title" style="width: 500px;"> <a class="text-light-blue" href="{{$rlink}}">{{$d->rname}}</a>
