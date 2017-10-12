@@ -54,7 +54,7 @@ $tt1 = array();
 
                                     <?php
                                     $dt1 = '';
-                                    $dt2 = '';
+                                    $dt2 = ''; $dmn='';
                                     foreach (Reports::dataDemo($d)as $j => $dm) {
 
                                         if ($dt1) {
@@ -70,14 +70,15 @@ $tt1 = array();
                                                 $dt2.=number_format($dm->data2, 2);
                                             }
                                         }
+                                        $dmn=$dm->mn;
                                     }
                                     ?>
-                                    <div class="{{$dm->mn == 'temp'?'col-xs-6 col-lg-6':'col-xs-12 col-lg-12'}} ">
+                                    <div class="{{$dmn == 'temp'?'col-xs-6 col-lg-6':'col-xs-12 col-lg-12'}} ">
                                         <div class="sparkline" data-type="line" data-width="100%" data-height="60px" data-spot-Radius="3" data-highlight-Spot-Color="#f39c12" data-highlight-Line-Color="#de1b1b" data-min-Spot-Color="#f56954" data-max-Spot-Color="#00a65a" data-spot-Color="#39CCCC" data-offset="90"   data-line-Width='2' data-line-Color='red' data-fill-Color='#ebd5de'>
                                             {{$dt1}}
                                         </div>
                                     </div>
-                                    @if($dm->mn == 'temp')
+                                    @if($dmn == 'temp')
                                     <div class="col-xs-6 col-lg-6 ">
                                         <div class="sparkline" data-type="line" data-width="100%" data-height="60px" data-spot-Radius="3" data-highlight-Spot-Color="#f39c12" data-highlight-Line-Color="#222" data-min-Spot-Color="#f56954" data-max-Spot-Color="#00a65a" data-spot-Color="#39CCCC" data-offset="90"   data-line-Width='2' data-line-Color='#39CCCC' data-fill-Color='rgba(57, 204, 204, 0.08)'>
                                             {{$dt2}}
