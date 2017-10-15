@@ -154,7 +154,11 @@ if(!isset($mn)){$mn='';}
 
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
-                        
+                        <li class="{{$mn=='timeline'?'active':''}}">
+                            <a href="{{asset('timeline')}}">
+                                <i class="fa fa-clock-o"></i> <span>Timeline</span> 
+                            </a>
+                        </li>
                         <li class="{{$mn=='pies'?'active':''}}">
                             <a href="{{asset('pies')}}">
                                 <i class="fa fa-th"></i> <span>Pie Controllers</span> <small class="badge pull-right bg-green">{{Pies::countMyPie()}}</small>

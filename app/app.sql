@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2017 at 05:34 PM
+-- Generation Time: Oct 15, 2017 at 05:40 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
 
@@ -2492,7 +2492,8 @@ INSERT INTO `alldata` (`pieid`, `tid`, `aid`, `portno`, `dataname`, `data`, `dat
 (1, 20, 2466, '17', 'Sensor (On-Off)', '1', '2017-10-08 19:16:42', 'bitin', NULL, '2017-10-08 19:22:40', 1),
 (1, 20, 2467, '17', 'Sensor (On-Off)', '0', '2017-10-08 22:31:04', 'bitin', NULL, '2017-10-08 22:31:05', 1),
 (1, 20, 2468, '17', 'Sensor (On-Off)', '0', '2017-10-08 22:32:09', 'bitin', NULL, '2017-10-08 22:32:10', 1),
-(1, 20, 2469, '17', 'Sensor (On-Off)', '1', '2017-10-08 22:32:21', 'bitin', NULL, '2017-10-08 22:32:22', 1);
+(1, 20, 2469, '17', 'Sensor (On-Off)', '1', '2017-10-08 22:32:21', 'bitin', NULL, '2017-10-08 22:32:22', 1),
+(1, 20, 2470, '17', 'Sensor (On-Off)', '0', '2017-10-08 22:39:38', 'bitin', NULL, '2017-10-08 22:39:39', 1);
 
 -- --------------------------------------------------------
 
@@ -9038,17 +9039,17 @@ CREATE TABLE `logs` (
 --
 
 INSERT INTO `logs` (`pieid`, `tid`, `aid`, `portno`, `d1`, `d2`, `mn`, `desc`, `datesave`, `proid`, `asdata`, `d0`) VALUES
-(1, 1, 1, '1', '0', '2017-10-08 22:06:52', 'setbit', NULL, '2017-10-08 22:06:53', 1, '0', '0'),
-(1, 1, 2, '1', '1', '2017-10-08 22:34:27', 'setbit', NULL, '2017-10-08 22:34:28', 1, '1', '1'),
-(1, 10, 3, '2,10', '1', '2017-10-08 22:34:17', 'setbit', NULL, '2017-10-08 22:34:18', 1, '1', '1'),
-(1, 10, 4, '2,10', '0', '2017-10-08 22:34:07', 'setbit', NULL, '2017-10-08 22:34:08', 1, '0', '0'),
-(1, 10, 5, '', '0', '2017-10-08 22:31:14', 'synced', NULL, '2017-10-08 22:31:17', 1, NULL, '0'),
-(1, 1, 6, '', '0', '2017-10-08 22:31:14', 'synced', NULL, '2017-10-08 22:31:17', 1, NULL, '0'),
-(1, 3, 7, '', '1', '2017-10-08 22:31:14', 'synced', NULL, '2017-10-08 22:31:17', 1, NULL, '1'),
+(1, 1, 1, '1', '0', '2017-10-08 22:54:12', 'bitout', NULL, '2017-10-08 22:54:15', 1, '0', '0'),
+(1, 1, 2, '1', '1', '2017-10-08 22:40:50', 'bitout', NULL, '2017-10-08 22:40:51', 1, '1', '1'),
+(1, 10, 3, '2,10', '1', '2017-10-08 22:54:13', 'bitout', NULL, '2017-10-08 22:54:15', 1, '1', '1'),
+(1, 10, 4, '2,10', '0', '2017-10-08 22:53:56', 'bitout', NULL, '2017-10-08 22:53:57', 1, '0', '0'),
+(1, 10, 5, '', '0', '2017-10-08 22:54:10', 'synced', NULL, '2017-10-08 22:54:13', 1, NULL, '0'),
+(1, 1, 6, '', '0', '2017-10-08 22:54:10', 'synced', NULL, '2017-10-08 22:54:13', 1, NULL, '0'),
+(1, 3, 7, '', '1', '2017-10-08 22:54:10', 'synced', NULL, '2017-10-08 22:54:13', 1, NULL, '1'),
 (1, 11, 8, '', '0', '2017-10-08 12:55:18', 'synced', NULL, '2017-10-08 12:55:20', 1, NULL, '0'),
 (1, 11, 11, '5', '27.6000003815', '65.8000030518', 'temp', NULL, '2017-10-08 12:55:21', 1, '27.6000003815,65.8000030518', '0'),
 (1, 3, 12, '', '0', '2017-10-08 11:07:47', 'synced', NULL, '2017-10-08 11:07:50', 1, NULL, '0'),
-(1, 11, 13, '', '1', '2017-10-08 22:31:14', 'synced', NULL, '2017-10-08 22:31:17', 1, NULL, '1'),
+(1, 11, 13, '', '1', '2017-10-08 22:54:10', 'synced', NULL, '2017-10-08 22:54:13', 1, NULL, '1'),
 (1, 10, 14, '', '1', '2017-10-08 21:58:21', 'synced', NULL, '2017-10-08 21:58:24', 1, NULL, '1'),
 (1, 1, 15, '', '1', '2017-10-08 21:58:21', 'synced', NULL, '2017-10-08 21:58:24', 1, NULL, '1'),
 (1, 3, 16, '101', '', 'data/1/1507399513.png', 'image', NULL, '2017-10-08 01:05:13', 1, 'data/1/1507399513.png', '0'),
@@ -9057,23 +9058,23 @@ INSERT INTO `logs` (`pieid`, `tid`, `aid`, `portno`, `d1`, `d2`, `mn`, `desc`, `
 (1, 16, 19, '5', '28.0', '63.0', 'temp', NULL, '2017-10-07 22:09:50', 1, '28.0,63.0', '0'),
 (1, 16, 20, '', '1', '2017-10-07 22:11:00', 'synced', NULL, '2017-10-07 22:11:03', 1, NULL, '1'),
 (1, 17, 21, '', '0', '2017-10-07 23:03:21', 'synced', NULL, '2017-10-07 23:03:24', 7, NULL, '0'),
-(1, 17, 22, '11', '1', '2017-10-07 23:03:24', 'setbit', NULL, '2017-10-07 23:03:27', 7, '1', '1'),
-(1, 18, 23, '', '0', '2017-10-08 22:31:14', 'synced', NULL, '2017-10-08 22:31:18', 7, NULL, '0'),
-(1, 18, 24, '11', '1', '2017-10-08 22:34:32', 'setbit', NULL, '2017-10-08 22:34:34', 7, '1', '1'),
-(1, 18, 25, '11', '0', '2017-10-08 22:34:27', 'setbit', NULL, '2017-10-08 22:34:29', 7, '0', '0'),
+(1, 17, 22, '11', '1', '2017-10-07 23:03:24', 'bitout', NULL, '2017-10-07 23:03:27', 7, '1', '1'),
+(1, 18, 23, '', '0', '2017-10-08 22:54:10', 'synced', NULL, '2017-10-08 22:54:13', 7, NULL, '0'),
+(1, 18, 24, '11', '1', '2017-10-08 22:54:13', 'bitout', NULL, '2017-10-08 22:54:15', 7, '1', '1'),
+(1, 18, 25, '11', '0', '2017-10-08 22:54:01', 'bitout', NULL, '2017-10-08 22:54:02', 7, '0', '0'),
 (1, 18, 26, '', '1', '2017-10-07 23:10:32', 'synced', NULL, '2017-10-07 23:10:34', 7, NULL, '1'),
 (1, 17, 27, '', '1', '2017-10-07 23:06:49', 'synced', NULL, '2017-10-07 23:06:50', 7, '', '1'),
 (1, 19, 28, '', '0', '2017-10-07 23:07:35', 'synced', NULL, '2017-10-07 23:07:37', 7, '', '0'),
-(1, 19, 29, '11', '1', '2017-10-07 23:08:07', 'setbit', NULL, '2017-10-07 23:08:08', 7, '1', '1'),
-(1, 19, 30, '11', '0', '2017-10-07 23:08:17', 'setbit', NULL, '2017-10-07 23:08:18', 7, '0', '0'),
-(1, 20, 31, '', '0', '2017-10-08 22:31:14', 'synced', NULL, '2017-10-08 22:31:18', 7, NULL, '0'),
-(1, 20, 32, '11', '1', '2017-10-07 23:08:02', 'setbit', NULL, '2017-10-07 23:08:03', 7, '1', '1'),
+(1, 19, 29, '11', '1', '2017-10-07 23:08:07', 'bitout', NULL, '2017-10-07 23:08:08', 7, '1', '1'),
+(1, 19, 30, '11', '0', '2017-10-07 23:08:17', 'bitout', NULL, '2017-10-07 23:08:18', 7, '0', '0'),
+(1, 20, 31, '', '0', '2017-10-08 22:54:10', 'synced', NULL, '2017-10-08 22:54:14', 7, NULL, '0'),
+(1, 20, 32, '11', '1', '2017-10-07 23:08:02', 'bitout', NULL, '2017-10-07 23:08:03', 7, '1', '1'),
 (1, 20, 33, '', '1', '2017-10-08 14:24:45', 'synced', NULL, '2017-10-08 14:24:46', 7, NULL, '1'),
 (1, 19, 34, '', '1', '2017-10-07 23:08:17', 'synced', NULL, '2017-10-07 23:08:18', 7, '', '1'),
 (19, 21, 35, '', '0', '2017-10-07 23:53:55', 'synced', NULL, '2017-10-07 23:53:56', 7, NULL, '0'),
-(19, 21, 36, '11', '1', '2017-10-08 00:02:17', 'setbit', NULL, '2017-10-08 00:02:18', 7, '1', '1'),
-(19, 21, 37, '11', '0', '2017-10-08 00:02:12', 'setbit', NULL, '2017-10-08 00:02:13', 7, '0', '0'),
-(1, 20, 38, '17', '0', '2017-10-08 22:32:09', 'bitin', NULL, '2017-10-08 22:32:10', 1, '0', '0'),
+(19, 21, 36, '11', '1', '2017-10-08 00:02:17', 'bitout', NULL, '2017-10-08 00:02:18', 7, '1', '1'),
+(19, 21, 37, '11', '0', '2017-10-08 00:02:12', 'bitout', NULL, '2017-10-08 00:02:13', 7, '0', '0'),
+(1, 20, 38, '17', '0', '2017-10-08 22:39:38', 'bitin', NULL, '2017-10-08 22:39:39', 1, '0', '0'),
 (1, 20, 39, '17', '1', '2017-10-08 22:32:21', 'bitin', NULL, '2017-10-08 22:32:22', 1, '1', '1');
 
 -- --------------------------------------------------------
@@ -9125,7 +9126,7 @@ CREATE TABLE `pies` (
 --
 
 INSERT INTO `pies` (`pieid`, `piename`, `piemodel`, `color`, `own`, `registerdate`, `lastupdate`, `newjob`, `worktype`, `icon`, `desc`, `img`, `portslist`) VALUES
-(1, 'Raspberry PI3 B', 'RaspPi3B', '#edb240', 1, NULL, '2017-10-08 22:34:36', NULL, NULL, 'ion-help-circled', 'ชุดดูแลสวนผัก 1', 'images/piemodel/pi3b.png', '1|4|8'),
+(1, 'Raspberry PI3 B', 'RaspPi3B', '#edb240', 1, NULL, '2017-10-08 22:54:16', NULL, NULL, 'ion-help-circled', 'ชุดดูแลสวนผัก 1', 'images/piemodel/pi3b.png', '1|4|8'),
 (2, 'ESP8266 WiFi', 'ESP8266', 'green', 1, NULL, NULL, NULL, NULL, NULL, '55', 'images/piemodel/8266.png', NULL),
 (17, 'Android', 'Android', 'red', 1, NULL, NULL, NULL, NULL, NULL, '', 'images/piemodel/Android.png', NULL),
 (18, 'Computer ', 'PC', 'blue', 1, NULL, NULL, NULL, NULL, NULL, '', 'images/piemodel/pc.png', NULL),
@@ -9186,8 +9187,8 @@ CREATE TABLE `ports` (
 --
 
 INSERT INTO `ports` (`pieid`, `portno`, `portname`, `porttype`, `portvalue`, `lastupdate`, `portid`, `eb`, `vb`, `assigned`, `piemodel`) VALUES
-(1, 1, 'SW 1', 'setbit', '1', '2017-10-08 22:34:28', 1, 1, 1, 1, 'RaspPi3B'),
-(1, 2, 'SW 2', 'setbit', '1', '2017-10-08 22:34:18', 2, 1, 1, 10, 'RaspPi3B'),
+(1, 1, 'SW 1', 'setbit', '0', '2017-10-08 22:54:15', 1, 1, 1, 1, 'RaspPi3B'),
+(1, 2, 'SW 2', 'setbit', '1', '2017-10-08 22:54:15', 2, 1, 1, 10, 'RaspPi3B'),
 (1, 3, 'IO 3', 'out', '1', '2017-09-27 13:42:09', 3, 1, 1, NULL, 'RaspPi3B'),
 (1, 4, 'IO 4', 'out', NULL, NULL, 4, 1, 1, NULL, 'RaspPi3B'),
 (1, 5, 'Temp', 'temp', '27.6000003815,65.8000030518', '2017-10-08 12:55:22', 5, 1, 1, 11, 'RaspPi3B'),
@@ -9195,14 +9196,14 @@ INSERT INTO `ports` (`pieid`, `portno`, `portname`, `porttype`, `portvalue`, `la
 (1, 7, 'IO 7', 'out', NULL, NULL, 7, 1, 1, NULL, 'RaspPi3B'),
 (1, 8, 'IO 8', 'out', NULL, NULL, 8, 1, 1, NULL, 'RaspPi3B'),
 (1, 9, 'IO 9', 'out', NULL, NULL, 9, 1, 1, NULL, 'RaspPi3B'),
-(1, 10, 'ไฟประตูบ้าน', 'setbit', '1', '2017-10-08 22:34:18', 10, 1, 1, 10, 'RaspPi3B'),
-(1, 11, 'IO 11', 'setbit', '1', '2017-10-08 22:34:34', 11, 1, 1, 18, 'RaspPi3B'),
+(1, 10, 'ไฟประตูบ้าน', 'setbit', '1', '2017-10-08 22:54:15', 10, 1, 1, 10, 'RaspPi3B'),
+(1, 11, 'IO 11', 'setbit', '1', '2017-10-08 22:54:15', 11, 1, 1, 18, 'RaspPi3B'),
 (1, 12, 'IO 12', 'in', NULL, NULL, 12, 1, 1, NULL, 'RaspPi3B'),
 (1, 13, 'IO 13', 'in', NULL, NULL, 13, 1, 1, NULL, 'RaspPi3B'),
 (1, 14, 'IO 14', 'in', NULL, NULL, 14, 1, 1, NULL, 'RaspPi3B'),
 (1, 15, 'IO 15', 'in', NULL, NULL, 15, 1, 1, NULL, 'RaspPi3B'),
 (1, 16, 'IO 16', 'in', NULL, NULL, 16, 1, 1, NULL, 'RaspPi3B'),
-(1, 17, 'IO 17', 'bitin', '1', '2017-10-08 22:32:22', 17, 1, 1, 20, 'RaspPi3B'),
+(1, 17, 'IO 17', 'bitin', '0', '2017-10-08 22:39:39', 17, 1, 1, 20, 'RaspPi3B'),
 (1, 101, 'USB Camera', 'capture', 'data/1/1507399513.png', '2017-10-08 01:05:13', 18, 1, 1, 3, 'RaspPi3B'),
 (19, 101, 'Camera 1', 'capture', NULL, NULL, 19, 1, 1, NULL, 'RaspPi3B'),
 (19, 14, 'GPIO 12', 'GPIO', NULL, NULL, 20, 1, 1, NULL, 'RaspPi3B'),
@@ -9243,24 +9244,24 @@ CREATE TABLE `ports_model` (
 --
 
 INSERT INTO `ports_model` (`portno`, `portname`, `porttype`, `modes`, `aid`, `piemodel`) VALUES
-(1, 'GPIO 4', 'GPIO', 'md_bitin md_bitout dht md_temp', 1, 'RaspPi3B'),
-(2, 'GPIO 17', 'GPIO', 'md_bitin md_bitout dht md_temp', 2, 'RaspPi3B'),
-(3, 'GPIO 27', 'GPIO', 'md_bitin md_bitout dht md_temp', 3, 'RaspPi3B'),
-(4, 'GPIO 22', 'GPIO', 'md_bitin md_bitout dht md_temp', 4, 'RaspPi3B'),
-(5, 'GPIO 5', 'GPIO', 'md_bitin md_bitout dht md_temp', 5, 'RaspPi3B'),
-(6, 'GPIO 6', 'GPIO', 'md_bitin md_bitout dht md_temp', 6, 'RaspPi3B'),
-(7, 'GPIO 13', 'GPIO', 'md_bitin md_bitout dht md_temp', 7, 'RaspPi3B'),
-(8, 'GPIO 19', 'GPIO', 'md_bitin md_bitout dht md_temp', 8, 'RaspPi3B'),
-(9, 'GPIO 26', 'GPIO', 'md_bitin md_bitout dht md_temp', 9, 'RaspPi3B'),
-(10, 'GPIO 18', 'GPIO', 'md_bitin md_bitout dht md_temp', 10, 'RaspPi3B'),
-(11, 'GPIO 23', 'GPIO', 'md_bitin md_bitout dht md_temp', 11, 'RaspPi3B'),
-(12, 'GPIO 24', 'GPIO', 'md_bitin md_bitout dht md_temp', 12, 'RaspPi3B'),
-(13, 'GPIO 25', 'GPIO', 'md_bitin md_bitout dht md_temp', 13, 'RaspPi3B'),
-(14, 'GPIO 12', 'GPIO', 'md_bitin md_bitout dht md_temp', 14, 'RaspPi3B'),
-(15, 'GPIO 16', 'GPIO', 'md_bitin md_bitout dht md_temp', 15, 'RaspPi3B'),
-(16, 'GPIO 20', 'GPIO', 'md_bitin md_bitout dht md_temp', 16, 'RaspPi3B'),
-(17, 'GPIO 21', 'GPIO', 'md_bitin md_bitout dht md_temp', 17, 'RaspPi3B'),
-(101, 'Camera 1', 'capture', 'md_capture', 18, 'RaspPi3B');
+(1, 'GPIO 4', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 1, 'RaspPi3B'),
+(2, 'GPIO 17', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 2, 'RaspPi3B'),
+(3, 'GPIO 27', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 3, 'RaspPi3B'),
+(4, 'GPIO 22', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 4, 'RaspPi3B'),
+(5, 'GPIO 5', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 5, 'RaspPi3B'),
+(6, 'GPIO 6', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 6, 'RaspPi3B'),
+(7, 'GPIO 13', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 7, 'RaspPi3B'),
+(8, 'GPIO 19', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 8, 'RaspPi3B'),
+(9, 'GPIO 26', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 9, 'RaspPi3B'),
+(10, 'GPIO 18', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 10, 'RaspPi3B'),
+(11, 'GPIO 23', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 11, 'RaspPi3B'),
+(12, 'GPIO 24', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 12, 'RaspPi3B'),
+(13, 'GPIO 25', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 13, 'RaspPi3B'),
+(14, 'GPIO 12', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 14, 'RaspPi3B'),
+(15, 'GPIO 16', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 15, 'RaspPi3B'),
+(16, 'GPIO 20', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 16, 'RaspPi3B'),
+(17, 'GPIO 21', 'GPIO', 'md_bitin md_bitout dht md_temp md_motion', 17, 'RaspPi3B'),
+(101, 'Camera 1', 'capture', 'md_capture md_face', 18, 'RaspPi3B');
 
 -- --------------------------------------------------------
 
@@ -9452,7 +9453,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`uname`, `fname`, `lname`, `pwd`, `regdate`, `pwdupdate`, `email`, `uclass`, `uid`, `tel`, `address`, `titlename`, `placename`, `lat`, `lon`, `lastlogin`) VALUES
-('chuap', 'Prachuap', 'Klaithin', 'ee91218462ea92baffd1006fafdecb6d', NULL, NULL, NULL, 'admin', 1, '0909991230', 'CAT', '', 'Test', '', '', '2017-10-08 12:40:12'),
+('chuap', 'Prachuap', 'Klaithin', 'ee91218462ea92baffd1006fafdecb6d', NULL, NULL, NULL, 'admin', 1, '0909991230', 'CAT', '', 'Test', '', '', '2017-10-15 21:36:19'),
 ('aaa', 'DDDDDDD', 'aasd', 'ab68b4e4fff63352a81561ff8c0cde01', '2017-05-10 21:18:44', NULL, NULL, 'user', 53, NULL, 'aaa', '', 'asdsa', '', '', NULL),
 ('01000062', 'ประจวบ', 'ไกลถิ่น', '5bece46f1d0d7227c603d4a9d53a35e5', '2017-10-04 15:19:42', NULL, NULL, 'admin', 54, NULL, '', '', '', '', '', '2017-10-04 15:20:10');
 
@@ -9524,12 +9525,12 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`tid`, `proid`, `pieid`, `taskname`, `stime`, `etime`, `taskaction`, `action_ports`, `date_save`, `synced`, `task_disable`, `disabled`, `task_status`, `onbit`, `ck1`, `ck2`, `ck3`, `ck4`, `op1`, `op2`, `op3`, `op4`, `tx1`, `tx2`, `tx3`, `tx4`, `tx5`, `tx6`, `mid`, `tmid`) VALUES
-(1, 1, 1, 'เปิดปิดปั๊มน้ำ', '00:00:15', '22:59:59', 'bitout', '''1''', '2017-10-08 22:06:55', '2017-10-08 22:31:17', 0, NULL, 'Synced', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '3', '3', NULL, NULL, NULL, NULL, 1, 2),
-(3, 1, 1, 'ถ่ายรูปผักทุกวัน', '00:00:00', '23:59:15', 'capture', '''101''', '2017-10-03 18:21:49', '2017-10-08 22:31:17', 1, NULL, 'Disable', 1, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, '09:30,08:30,21:07,22:49', '10', NULL, NULL, NULL, NULL, 1, 4),
-(10, 1, 1, 'เปิดปิดไฟ', '00:00:00', '23:59:59', 'bitout', '''2'',''10''', '2017-10-01 22:07:21', '2017-10-08 22:31:17', 0, NULL, 'Synced', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '20', '10', NULL, NULL, NULL, NULL, 1, 1),
-(11, 1, 1, 'เก็บค่าความชื้นและอุณหภูมิ', '00:00:00', '23:59:59', 'temp', '''5''', '2017-10-02 20:59:31', '2017-10-08 22:31:17', 1, NULL, 'Disable', 1, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, '00:00', '60', NULL, NULL, NULL, NULL, 1, 3),
-(18, 7, 1, 'Lamp (On-Off)', '00:00:00', '23:59:59', 'bitout', '''11''', '2017-10-07 23:10:32', '2017-10-08 22:31:18', 0, NULL, 'Synced', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '10', '5', NULL, NULL, NULL, NULL, 1, 1),
-(20, 1, 1, 'Sensor (On-Off)', '00:00:00', '23:59:59', 'bitin', '''17''', '2017-10-08 14:51:17', '2017-10-08 22:31:18', 0, NULL, 'Synced', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 5);
+(1, 1, 1, 'เปิดปิดปั๊มน้ำ', '00:00:15', '22:40:59', 'bitout', '''1''', '2017-10-08 22:38:19', '2017-10-08 22:54:13', 0, NULL, 'Synced', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '3', '3', NULL, NULL, NULL, NULL, 1, 2),
+(3, 1, 1, 'ถ่ายรูปผักทุกวัน', '00:00:00', '23:59:15', 'capture', '''101''', '2017-10-03 18:21:49', '2017-10-08 22:54:13', 1, NULL, 'Disable', 1, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, '09:30,08:30,21:07,22:49', '10', NULL, NULL, NULL, NULL, 1, 4),
+(10, 1, 1, 'เปิดปิดไฟ', '00:00:00', '23:59:59', 'bitout', '''2'',''10''', '2017-10-01 22:07:21', '2017-10-08 22:54:13', 0, NULL, 'Synced', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '20', '10', NULL, NULL, NULL, NULL, 1, 1),
+(11, 1, 1, 'เก็บค่าความชื้นและอุณหภูมิ', '00:00:00', '23:59:59', 'temp', '''5''', '2017-10-02 20:59:31', '2017-10-08 22:54:13', 1, NULL, 'Disable', 1, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, '00:00', '60', NULL, NULL, NULL, NULL, 1, 3),
+(18, 7, 1, 'Lamp (On-Off)', '00:00:00', '23:59:59', 'bitout', '''11''', '2017-10-07 23:10:32', '2017-10-08 22:54:13', 0, NULL, 'Synced', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '10', '5', NULL, NULL, NULL, NULL, 1, 1),
+(20, 1, 1, 'Sensor (On-Off)', '00:00:00', '23:59:59', 'bitin', '''17''', '2017-10-08 14:51:17', '2017-10-08 22:54:14', 0, NULL, 'Synced', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -9554,11 +9555,17 @@ CREATE TABLE `task_mode` (
 --
 
 INSERT INTO `task_mode` (`tmid`, `tmname`, `tmcolor`, `tmicon`, `tmmode`, `tmimg`, `aid`, `btn`, `datatype`) VALUES
-(1, 'Lamp (On-Off)', NULL, NULL, 'bitout', 'images/iconset/lamp.png', 1, 'btn-warning', 'Output'),
-(2, 'Plug (On-Off)', NULL, NULL, 'bitout', 'images/iconset/plug.png', 2, 'btn-success', 'Output'),
-(3, 'Temp & Humidity', NULL, NULL, 'temp', 'images/iconset/temp.png', 3, 'btn-danger', 'Input'),
-(4, 'Capture Image', NULL, NULL, 'capture', 'images/iconset/image.png', 4, 'btn-primary', 'Input'),
-(5, 'Sensor (On-Off)', NULL, NULL, 'bitin', 'images/iconset/onoff.png', 5, NULL, 'Input');
+(1, 'Lamp Control', 'bg-yellow', 'icon-sun', 'bitout', 'images/iconset/lamp.png', 1, 'btn-warning', 'Output'),
+(2, 'Plug Control', 'bg-purple', 'icon-off', 'bitout', 'images/iconset/plug.png', 2, 'btn-success', 'Output'),
+(3, 'Temp & Humidity', 'bg-green', 'icon-tint', 'temp', 'images/iconset/temp.png', 3, 'btn-danger', 'Input'),
+(4, 'Capture Image', 'bg-aqua', 'icon-camera', 'capture', 'images/iconset/image.png', 4, 'btn-primary', 'Input'),
+(5, 'Sensor (On-Off)', 'bg-blue', 'icon-retweet', 'bitin', 'images/iconset/onoff.png', 5, NULL, 'Input'),
+(6, 'Face Detection', NULL, 'icon-male', 'face', 'images/iconset/face2.png', 6, 'btn-warning', 'Input'),
+(7, 'Motion Detection', NULL, NULL, 'motion', 'images/iconset/motion.png', 7, 'btn-success', 'Input'),
+(8, 'Smoke & Gas', NULL, NULL, 'smoke', 'images/iconset/smoke.png', 8, 'btn-info', 'Input'),
+(9, 'PH (Liquid)', NULL, NULL, 'ph', 'images/iconset/ph.png', 9, 'btn-danger', 'Input'),
+(10, 'Light Sensor', NULL, NULL, 'light', 'images/iconset/sun.png', 10, 'btn-primary', 'Input'),
+(11, 'Soil Moisture', NULL, NULL, 'soil', 'images/iconset/soil.png', 11, 'btn-warning', 'Input');
 
 --
 -- Indexes for dumped tables
@@ -9700,7 +9707,7 @@ ALTER TABLE `task_mode`
 -- AUTO_INCREMENT for table `alldata`
 --
 ALTER TABLE `alldata`
-  MODIFY `aid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2470;
+  MODIFY `aid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2471;
 --
 -- AUTO_INCREMENT for table `appdata`
 --
@@ -9770,7 +9777,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `task_mode`
 --
 ALTER TABLE `task_mode`
-  MODIFY `tmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `tmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

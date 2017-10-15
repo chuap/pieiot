@@ -43,7 +43,7 @@ class Tasks extends Eloquent {
         excsql($sql);
     }
     public static function valueLabel($v,$h='h40') {
-        if (($v->mn=='setbit')||($v->mn=='bitin')) {
+        if (($v->mn=='bitout')||($v->mn=='bitin')) {
             if($v->d1){
                 return '<span class="badge bg-green">On</span>';
             }else{
@@ -51,7 +51,7 @@ class Tasks extends Eloquent {
             }
             
         }else if ($v->mn=='image') {
-            return '<a href="'.asset($v->d2).'" title="" class="p0 gallery"><img class="'.$h.'" src="'.$v->d2.'"></a>';
+            return '<a href="'.asset($v->d2).'" title="" class="p0 gallery imcolorbox "><img class="'.$h.'" src="'.$v->d2.'"></a>';
             
         }else if($v->mn=='temp'){            
             $dx='';
@@ -62,6 +62,8 @@ class Tasks extends Eloquent {
                 $dx.=' '.'<span class="badge bg-info">'.  number_format($v->d2,2).'</span>%';
             }
             return $dx;
+        }else if($v->mn=='synced'){  
+            return 'Task synced. ';
         } else {
             return '';
         }

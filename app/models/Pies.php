@@ -27,8 +27,36 @@ class Pies extends Eloquent {
         return $x[0]->co;
     }
     
-    
-    
+    public static function timeLine_h() {
+        $mid = Session::get('cat.uid');
+        $sql="select substr(l.datesave,1,10)as dt, tid from logs l left join pies ps on ps.pieid=l.pieid  where ps.own='$mid' group by dt order by dt desc";
+        return excsql($sql); 
+    }
+    public static function timeLine_t($dt) {
+        $mid = Session::get('cat.uid');
+        $sql="select l.mn,t.*,l.tid,p.proname ,max(datesave)as dt,tm.tmname,tm.tmicon,tm.tmcolor,tm.tmimg,ps.piename from logs l "
+                . "left join tasks t on t.tid=l.tid left join task_mode tm on tm.tmmode=t.taskaction "
+                . "left join pies ps on ps.pieid=l.pieid left join projects p on p.proid=l.proid "
+                . "where l.datesave like '$dt%' and ps.own='$mid' group by l.tid order by dt desc";
+        //echo $sql;
+        return excsql($sql); 
+    }
+    public static function timeLine_dXX() {
+        $mid = Session::get('cat.uid');
+        $sql="select substr(l.datesave,1,10)as dt,d0,d1,d2,mn,p.proname, t.taskname,tm.tmname,t.date_save,ps.own from logs l 
+left join projects p on p.proid=l.proid left join tasks t on t.tid=l.tid 
+left join task_mode tm on tm.tmmode=t.taskaction left join pies ps on ps.pieid=t.pieid
+where ps.own='$mid'
+order by dt desc,t.date_save desc";
+        return excsql($sql); 
+    }
+    public static function timeLine_d($tid,$dt) {
+        $mid = Session::get('cat.uid');
+        $sql="select * from logs l where l.tid='$tid' and l.datesave like '$dt%'
+order by l.datesave desc";
+        //echo $sql;
+        return excsql($sql); 
+    }
     
    
 

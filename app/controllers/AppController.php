@@ -103,7 +103,7 @@ class AppController extends BaseController {
             $tsk = Tasks::find($tid);
             //Ports::updatePort($p, $pno, $a);
             Logs::updateLog($p, $tid, $pno, $mn, $a, $b,$tsk->proid);
-            if (($mn == 'setbit')) {
+            if (($mn == 'bitout')) {
                 Ports::updatePort($p, $pno,$mn, $a,$b);
             }else if (($mn == 'bitin')) {
                 Ports::updatePort($p, $pno,$mn, $a,$b);

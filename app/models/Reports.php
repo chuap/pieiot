@@ -84,7 +84,7 @@ class Reports extends Eloquent {
     public static function portValue($d,$h='h40') {
         $v=$d->data;
         $v2=$d->data2;
-        if($d->mn=='setbit'){
+        if($d->mn=='bitout'){
             if ($v == '1') {
                 return '<span class="badge bg-green">On</span>';
             } else if ($v == '0') {

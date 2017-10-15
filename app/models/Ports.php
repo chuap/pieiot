@@ -68,7 +68,7 @@ class Ports extends Eloquent {
     }
     public static function portValue($d,$h='h40') {
         $v=$d->portvalue;
-        if(($d->porttype=='setbit')||($d->porttype=='bitin')){
+        if(($d->porttype=='bitout')||($d->porttype=='bitin')){
             if ($v == '1') {
                 return '<span class="badge bg-green">On</span>';
             } else if ($v == '0') {
