@@ -41,7 +41,8 @@ $plist = Pies::timeLine_h();
                 @endif
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{date('H:i:s',strtotime($d2->dt))}}</span>
-                    <h3 class="timeline-header"> <a href="{{asset("pro-".$d2->proid.".info")}}">{{$d2->taskname}}</a> <a class="red" href="{{asset('pie-'.$d2->pieid.'.info')}}">{{$d2->piename}}</a> </h3>
+                    <h3 class="timeline-header"> <a href="{{asset("pro-".$d2->proid.".info")}}">{{$d2->taskname}}</a> 
+                    <a class="grey" href="{{asset('pie-'.$d2->pieid.'.info')}}">{{$d2->piename}}</a> </h3>
                     <div class="timeline-body">
                         <div class="mb1">{{Projects::taskDesc2($d2)}}</div>
                         <div class="row">

@@ -184,7 +184,9 @@ class AdminController extends BaseController {
             $pro = Projects::find($p);
             if (!$pro) {
                 $pro = new Projects();
+                $pro->protype = Input::get('mtype');
             }
+            
             $pro->proname = Input::get('txproname');
             $pro->prodesc = Input::get('txprodesc');
             $pro->pieid = $pieid;

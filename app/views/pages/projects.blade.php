@@ -1,9 +1,11 @@
 @extends('tp/lte') 
 @section('page_header')
 <h1>
+    
     My Projects
     <small>PieIoT.com</small>
-    <a href="{{asset("pro-0-0.newproject")}}" class="btn btn-info newproject "><i class="fa fa-plus"></i> New Project</a>
+    
+    <a href="{{asset("pie.newproject")}}" class="btn btn-warning newproject "><i class="fa fa-plus"></i> New Project</a>
 </h1>
 @stop
 @section('breadcrumb')
@@ -23,9 +25,9 @@ $plist = Projects::myProjects();
     $tk = Projects::getTask($d->proid);
     ?>
     <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="box box-success ">
+        <div class="box box-{{$d->tycolor}} ">
             <div class="box-header p0">
-                <h3 class="box-title pb0"><a id="lbpro_{{$d->proid}}" href="{{$pro_link}}">{{$d->proname}}</a></h3>
+                <h3 class="box-title pb0"><i class="red {{$d->tyicon}}"></i> <a id="lbpro_{{$d->proid}}" href="{{$pro_link}}">{{$d->proname}}</a></h3>
                 <div class="box-tools pull-right">
                     <div class="btn-group">
                         <button class="btn  btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>

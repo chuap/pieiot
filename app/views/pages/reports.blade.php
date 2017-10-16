@@ -3,7 +3,7 @@
 <h1>
     Reports
     <small>PieIoT.com</small>
-    <a href="{{asset("pie.newreport")}}" class="btn btn-info newproject"><i class="fa fa-plus"></i> Create new report</a> 
+    <a href="{{asset("pie.newreport")}}" class="btn btn-success newproject"><i class="fa fa-plus"></i> Create new report</a> 
 </h1>
 @stop
 @section('breadcrumb')
