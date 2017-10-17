@@ -265,6 +265,14 @@ class AdminController extends BaseController {
                 $tsk->stime = Input::get('txtemp3');
                 $tsk->etime = Input::get('txtemp4');
             }
+            $tsk->acport = Input::get('acport') ? Input::get('acport') : '';
+            $tsk->ckport = Input::get('ckport') ? Input::get('ckport') : 0;
+            $tsk->ckmail = Input::get('ckmail') ? Input::get('ckmail') : 0;
+            $tsk->ckweb = Input::get('ckweb') ? Input::get('ckweb') : 0;
+            $tsk->acdata = Input::get('acdata') ? Input::get('acdata') : '';
+            $tsk->actime = Input::get('actime') ? Input::get('actime') : '';
+            $tsk->acmail = Input::get('acmail') ? Input::get('acmail') : '';
+            $tsk->acurl = Input::get('acurl') ? Input::get('acurl') : '';
             $tsk->save();
             excsql("update alldata set dataname='" . $tsk->taskname . "' where pieid='$pieid' and tid='" . $tsk->tid . "'");
             Ports::ckkAssignPort($pieid);

@@ -196,6 +196,31 @@ function timepost_shot($dt2,$dt1='') {
         return "$xx ปี";
     }
 }
+function timepost_en($dt2,$dt1='') {
+    if(!$dt1){$dt1 = date('Y-m-d H:i:s');}
+    // $x = ((strtotime($dt2) + 86400) - strtotime($dt1));  // 1 day = 60*60*24
+
+    $x = strtotime($dt1) - strtotime($dt2);
+    //return $dt2;
+    if ($x < 60) {
+        return "$x sec.";
+    } else if ($x < 3600) {
+        $xx = number_format($x / (60 ), 0);
+        return "$xx minute";
+    } else if ($x < 86400) {
+        $xx = number_format($x / (60 * 60), 0);
+        return "$xx hour";
+    } else if ($x < 5184000) {
+        $xx = number_format($x / (60 * 60 * 24), 0);
+        return "$xx day";
+    }else if ($x < (5184000*12)) {
+        $xx = number_format($x / (60 * 60 * 24 * 30), 0);
+        return "$xx month";
+    }else {
+        $xx = number_format($x / (60 * 60 * 24 * 365), 0);
+        return "$xx year";
+    }
+}
 function newicon($dt2,$dt3) {
     $dt1 = date('Y-m-d H:i:s');
     $x = strtotime($dt1) - strtotime($dt2);

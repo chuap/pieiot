@@ -11,6 +11,15 @@ class Ports extends Eloquent {
         //echo $sql;
         return excsql($sql);
     }
+    public static function portTimeline() {
+        $mid = Session::get('cat.uid');
+        $sql="select p.*,pi.piename,d.portname as oname,d.modes,d.portname as pmname  from ports p "
+                . "left join ports_model d on d.portno=p.portno and d.piemodel=p.piemodel "
+                . "left join pies pi on pi.pieid=p.pieid  "
+                . "where pi.own='$mid' and not(p.lastupdate is null) order by p.lastupdate  desc,p.portname limit 100";
+        //echo $sql;
+        return excsql($sql);
+    }
     public static function allMode() {
         return excsql("select * from modes order by mode_order");
     }

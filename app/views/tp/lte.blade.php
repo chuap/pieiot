@@ -156,7 +156,7 @@ if(!isset($mn)){$mn='';}
                     <ul class="sidebar-menu">
                         <li class="{{$mn=='timeline'?'active':''}}">
                             <a href="{{asset('timeline')}}">
-                                <i class="fa fa-clock-o"></i> <span>Timeline</span> 
+                                <i class="fa fa-laptop"></i> <span>Summary</span> 
                             </a>
                         </li>
                         <li class="{{$mn=='pies'?'active':''}}">

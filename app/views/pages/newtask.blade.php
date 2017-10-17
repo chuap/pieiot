@@ -8,7 +8,9 @@
 {{ HTML::script(asset('ckeditor/ckeditor.js'))}}
 {{ HTML::style(asset('css/autocomplete.css'))}}
 <link rel="stylesheet" href="{{asset('themes/ace/assets/css/colorpicker.css')}}" />
-
+<style>
+    input{ color: #000 importance;}
+</style>
 @stop
 <?php
 $page_title = '1. Select your IoT device.';
@@ -24,6 +26,9 @@ $pinfo = Projects::find($proid);
 $tid = Input::get('tid') ? Input::get('tid') : '';
 $tsk = Tasks::find($tid);
 $act = '';
+$ckport = 0;
+$ckmail = 0;
+$ckweb = 0; $acport='';
 $taskname = '';
 if ($tsk) {
     $step = 3;
@@ -41,6 +46,10 @@ if ($tsk) {
     $op3 = $tsk->op3;
     $op4 = $tsk->op4;
     $op5 = $tsk->op5;
+    $acport=$tsk->acport;
+    $ckport = $tsk->ckport;
+    $ckweb = $tsk->ckweb;
+    $ckmail = $tsk->ckmail;
     //$page_title = ' ' . $pinfo->proname . ' : ' . 'Edit';
     $page_icon = "icon-pencil";
     //$new_data = explode("|", $pinfo->portslist);
@@ -158,7 +167,7 @@ if ($tsk) {
                 <div class="control-group mb1">
                     <label class="control-label" for="form-field-1">Task name</label>
                     <div class="controls">
-                        <input class="span9" id="txtaskname" name="txtaskname" type="text"  value="{{$taskname}}">
+                        <input class="span9 blue" id="txtaskname" name="txtaskname" type="text"  value="{{$taskname}}">
                         <label  class="inline">
                             <input name="ckenable" {{$ckdisable==0?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
                             <span class="lbl"> Enable</span>
@@ -174,9 +183,9 @@ if ($tsk) {
                             </a>
                             <ul class="dropdown-menu dropdown-default w200 ">
                                 @foreach ($pt as $n2) 
-                                <?php
-                                $cl = 'onclick="addassign(\'' . $n2->portno . '\', \'' . $n2->portname . '\')"';
-                                ?>
+<?php
+$cl = 'onclick="addassign(\'' . $n2->portno . '\', \'' . $n2->portname . '\')"';
+?>
                                 <li class="pl2 {{$n2->modes}} ports">
                                     <a class="p0 m0 {{$n2->assigned?'red':''}}" href="javascript:" {{$cl}} ><i class="{{$n2->assigned?'icon-info':'icon-plus-sign'}}"></i> <small class="pull-right pr1">{{$n2->pmname}}</small> : {{$n2->portname}} </a>
                                 </li>
@@ -191,15 +200,10 @@ if ($tsk) {
             </div>
             <div id="divaction_ports" class="clearfix mb0 p04 {{$p1}}">{{$tx}}</div>
             <input id="tmaxaction_ports" name="tmaxaction_ports" type="hidden" value="{{$maxi}}">
-            <div id="accordion2" class="accordion  inp ">
+            <div id="accordion2" class="accordion  inp mb0 ">
                 <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle ">
-                            <i class="icon-bullseye"></i>
-                            Setting <span class="badge badge-important"></span>
-                        </a>
-                    </div>
-                    <div class="accordion-body" id="collapseOne">
+
+                    <div class="accordion-body" id="collapseOne" style="background-color: #f9f5e3;">
 
                         <div class="accordion-inner clearfix">
 
@@ -275,7 +279,7 @@ if ($tsk) {
                                     <option {{$onbit==0?'selected':''}} value="0">0: Low</option>                                    
                                 </select>
                             </div>
-                            
+
                             @endif
                             @if($tmmode=='capture')
                             <div class="form-inline ports md_capture "> 
@@ -357,9 +361,71 @@ if ($tsk) {
                                 </div>
                             </div>
                             @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="accordion3 mt0" class="  ">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a href="#collapse3" data-parent="#accordion3" data-toggle="collapse" class="accordion-toggle ">
+                            <i class="icon-bullseye"></i>
+                            Actions after effect.<span class="badge badge-important"></span>
+                        </a>
+                    </div>
+                    <div class="accordion-body" id="collapse3">
+                        <div class="accordion-inner clearfix">
 
+                            <div class="form-inline" > 
+                                <label>
+                                    <input id="ckport" name="ckport" {{$ckport==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> ส่งข้อมูลไปยัง Port</span>                          
+                                </label>
+                                <span class="ml2">
 
+                                    <div class="input-append ">                                        
+                                        <select id="acport" name="acport" style="width: 150px;">                                            
+                                            <option value=""></option>
+                                            @foreach ($pt as $n2)
+                                            <option {{$acport==$n2->portno?'selected':''}} value="{{$n2->portno}}">{{$n2->portname}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    ข้อมูล:
+                                    <div class="input-append bootstrap-timepicker">
+                                        <input id="acdata" name="acdata" type="text" value="{{$tsk?$tsk->acdat?$tsk->acdat:'1':'1'}}" class=" w50" style="width: 40px;">
+                                    </div>
+                                    เป็นเวลา:
+                                    <div class="input-append bootstrap-timepicker">
+                                        <input id="actime" name="actime" type="text" value="{{$tsk?$tsk->actime:''}}" class=" w50" style="width: 40px;">
+                                    </div>
+                                    <small class="pr1">วินาที</small>
+                                </span>                                
+                            </div>
+                            <div class="form-inline " style="background-color: #eff0f0;"> 
+                                <label>
+                                    <input id="ckmail" name="ckmail"  {{$ckmail==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> แจ้งข้อมูลไปยัง e-mail</span>                          
+                                </label>
+                                <span class="ml2">                                    
+                                    <div class="input-append ">
+                                        <input id="acmail"  name="acmail" placeholder="e-mail address" type="text" value="{{$tsk?$tsk->acmail:''}}" class="" style="width: 200px;">                                    
+                                    </div>                                    
+                                </span>                                
+                            </div>
 
+                            <div class="form-inline " > 
+                                <label>
+                                    <input id="ckweb" name="ckweb"  {{$ckweb==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> เรียก web service</span>                          
+                                </label>
+                                <span class="ml2">
+                                    <div class="input-append ">
+                                        <input id="acurl" name="acurl" type="text" placeholder="URL" value="{{$tsk?$tsk->acurl:''}}" class="" style="width: 300px;">                                    
+                                    </div>
+
+                                </span>                                
+                            </div>
 
                         </div>
                     </div>
