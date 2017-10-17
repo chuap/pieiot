@@ -18,7 +18,7 @@ Route::post('ac', 'AppController@doActionPost');
 //Route::get('hrdlogin', 'SystemController@hrdLogin');
 if (Session::get('cat.islogin')) {
     Route::get('/', function() {
-        return View::make('pages.pies');
+        return View::make('pages.timeline');
     });
     Route::get('view', function() {
         return View::make('view');

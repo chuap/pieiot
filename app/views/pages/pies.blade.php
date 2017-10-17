@@ -3,7 +3,7 @@
 <h1>
     Pies
     <small>PieIoT.com</small>
-    <a href="{{asset("pie.newnode")}}" class="btn btn-info newproject "><i class="fa fa-plus"></i> New Pie Node</a>
+    <a href="{{asset("pie.newnode")}}" class="btn btn-info newproject "><i class="fa fa-plus"></i> New controller</a>
 </h1>
 @stop
 @section('breadcrumb')

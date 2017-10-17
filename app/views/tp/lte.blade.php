@@ -174,6 +174,11 @@ if(!isset($mn)){$mn='';}
                                 <i class="fa fa-bar-chart-o"></i> <span>Reports</span> <small class="badge pull-right bg-purple">{{Reports::countMyReport()}}</small>
                             </a>
                         </li>
+                        <li class="{{$mn=='estimation'?'active':''}}">
+                            <a href="{{asset("estimation")}}">
+                                <i class="fa fa-random"></i> <span>Estimation</span> 
+                            </a>
+                        </li>
 
                         
                         <li class="treeview {{$mn=='setup'?'active':''}}">

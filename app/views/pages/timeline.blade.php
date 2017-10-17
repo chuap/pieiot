@@ -18,6 +18,15 @@ $plist = Pies::timeLine_h();
 $pt = Ports::portTimeline();
 ?>
 <!-- row -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="callout callout-info">
+            <a href="{{asset('pies')}}" class="btn bg-blue btn-social"><i class="fa fa-th"></i> <span>Controllers</span> <small class="badge pull-right bg-green">{{Pies::countMyPie()}}</small></a>
+            <a href="{{asset('projects')}}" class="btn bg-maroon btn-social"><i class="fa fa-dashboard"></i> <span>Projects</span> <small class="badge pull-right bg-blue">{{Projects::countMyProject()}}</small></a>
+            <a href="{{asset('reports')}}" class="btn bg-green btn-social"><i class="fa fa-bar-chart-o"></i> <span>Reports</span> <small class="badge pull-right bg-purple">{{Reports::countMyReport()}}</small></a>
+        </div>
+    </div>
+</div>
 <div class="row">                        
     <div class="col-md-7">
         <div class="box box-info" id="loading-example">
