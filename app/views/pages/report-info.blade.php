@@ -56,8 +56,8 @@ $plist = Reports::listImages($rinfo);
     @if((file_exists($d->data))||1)
     <div class="col-md-3 col-sm-4 col-xs-6 col-lg-2">
         <div class="box box-solid">
-            <div class="p1">
-                <a class="imcolorbox " rel="A" href="{{asset($d->data)}}"><img style="width: 100%" src="{{asset($d->data)}}"></a>
+            <div class="p1 text-center">
+                <a class="imcolorbox " rel="A" href="{{asset($d->data)}}"><img style="{{$d->mn=='face'?'height:100px;':'width: 100%;'}} " src="{{asset($d->data)}}"></a>
             </div>
             <div class="bg-gray p04">
                 <i class="fa fa-camera"></i> <small>{{$d->sdt}}</small>

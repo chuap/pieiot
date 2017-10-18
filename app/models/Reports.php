@@ -8,7 +8,7 @@ class Reports extends Eloquent {
 
     public static function listData($rtype,$tid='') {
         if($rtype=='Album'){
-            $pa="and a.mn in('capture')";
+            $pa="and a.mn in('capture','face')";
         }else if($rtype=='Chart'){
             $pa="and a.mn in('temp','bitin')";
         }else if($rtype=='Table'){
@@ -49,7 +49,7 @@ class Reports extends Eloquent {
         $sdate=$r->sdate;
         $edate=$r->edate;
         $gby=$r->groupby;
-        $sql="select *,SUBSTR(datesave,1,$gby) as sdt from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' and mn='capture' group by sdt  order by datesave";
+        $sql="select *,SUBSTR(datesave,1,$gby) as sdt from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' and mn in('capture','face') group by sdt  order by datesave";
         return excsql($sql);
     }public static function dataTable($r) {
         $tid=$r->tid;

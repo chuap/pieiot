@@ -79,6 +79,10 @@ class Projects extends Eloquent {
             } else {
                 $l = 'อ่านค่าอุณหภูมิและความชื้น ทุกๆ ' . Projects::decodeSec($t->tx2) . '   ช่วงเวลา ' . $t->stime . ' - ' . $t->etime . ' น.';
             }
+        }else if ($t->taskaction == 'bitin') {
+            $l = 'อ่านค่าช่วงเวลา ' . $t->stime . ' - ' . $t->etime . ' น.';
+        }else if ($t->taskaction == 'face') {
+            $l = 'ตรวจจับใบหน้าเวลา ' . $t->stime . ' - ' . $t->etime . ' น.';
         }
         return $l;
     }

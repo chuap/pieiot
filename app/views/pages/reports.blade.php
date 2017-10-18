@@ -93,6 +93,8 @@ $tt1 = array();
 
                                             @if($dm->mn=='capture')
                                             <img title="{{$dm->sdt}}" style="width: 100%;" src="{{asset($dm->data)}}">
+                                            @elseif($dm->mn=='face')
+                                            <img title="{{$dm->sdt}}" style="height:56px; " src="{{asset($dm->data)}}">
                                             @elseif ($dm->mn=='temp')
                                             <div class="font11">
                                                 T: <span class="label label-danger">{{number_format($dm->data,1)}}</span> *C 
