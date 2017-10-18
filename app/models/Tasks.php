@@ -50,7 +50,7 @@ class Tasks extends Eloquent {
                 return '<span class="badge bg-red">Off</span>';
             }
             
-        }else if ($v->mn=='image') {
+        }else if (($v->mn=='image')or($v->mn=='face')) {
             return '<a href="'.asset($v->d2).'" title="" class="p0 gallery imcolorbox "><img class="'.$h.'" src="'.$v->d2.'"></a>';
             
         }else if($v->mn=='temp'){            

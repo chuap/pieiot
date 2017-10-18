@@ -13,6 +13,8 @@ class Reports extends Eloquent {
             $pa="and a.mn in('temp','bitin')";
         }else if($rtype=='Table'){
             $pa="and a.mn in('temp','capture','bitin')";
+        }else if($rtype=='FaceR'){
+            $pa="and a.mn in('face')";
         }else{
             $pa='';
         }

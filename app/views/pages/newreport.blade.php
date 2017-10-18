@@ -116,6 +116,9 @@ if ($rtype) {
         <a href="{{asset('pie.newreport?step=2&rtype=Table&rid='.$rid)}}" class="btn btn-app w160 btn-success no-radius" style="width: 150px;">
             <i class="icon-table bigger-230"></i>Data Table
         </a>
+        <a href="{{asset('pie.newreport?step=2&rtype=FaceR&rid='.$rid)}}" class="btn btn-app w160 btn-info no-radius" style="width: 150px;">
+            <i class="icon-smile bigger-230"></i>Face recognition
+        </a>
     </div>
 </div>
 @elseif($step==2)
