@@ -246,6 +246,9 @@ class AdminController extends BaseController {
             if ($atmode == 'bitin') {
                 $tsk->stime = Input::get('txtime1');
                 $tsk->etime = Input::get('txtime2');
+            }else if ($atmode == 'face') {
+                $tsk->stime = Input::get('txtime1');
+                $tsk->etime = Input::get('txtime2');
             }else if ($atmode == 'bitout') {
                 $tsk->stime = Input::get('txtime1');
                 $tsk->etime = Input::get('txtime2');

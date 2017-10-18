@@ -281,6 +281,31 @@ $cl = 'onclick="addassign(\'' . $n2->portno . '\', \'' . $n2->portname . '\')"';
                             </div>
 
                             @endif
+                            @if($tmmode=='face')
+                            <div class="form-inline ports md_face"> 
+                                <label>
+                                    ช่วงเวลาตรวจจับ                            
+                                </label>
+                                <span class="ml2">
+
+                                    <div class="input-append bootstrap-timepicker">
+                                        <input id="txtime1" name="txtime1" type="text" value="{{$tsk?$tsk->stime:'00:00:00'}}" class=" timepicker" style="width: 60px;">
+                                        <span class="add-on">
+                                            <i class="icon-time"></i>
+                                        </span>
+                                    </div>
+                                    ถึงเวลา
+                                    <div class="input-append bootstrap-timepicker">
+                                        <input id="txtime2" name="txtime2" type="text" value="{{$tsk?$tsk->etime:'23:59:59'}}" class=" timepicker w60" style="width: 60px;">
+                                        <span class="add-on">
+                                            <i class="icon-time"></i>
+                                        </span>
+                                    </div>
+                                </span>
+                                
+                            </div>
+
+                            @endif
                             @if($tmmode=='capture')
                             <div class="form-inline ports md_capture "> 
                                 <label>
