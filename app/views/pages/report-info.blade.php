@@ -9,6 +9,7 @@ foreach ($listData as $d) {
 ?>
 @section('head_meta')
 <link href="{{asset('themes/lte')}}/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+
 @stop
 @section('page_header')
 <h1>

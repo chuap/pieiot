@@ -12,7 +12,7 @@ class Logs extends Eloquent {
         $sql = "insert into logs (datesave,pieid,tid,portno,mn,d1,d2,proid,asdata,d0) values('$dt','$p','$tid','$pno','$mn','$a','$b','$pro','$asdata',$d0)";
         $x = excsql($sql);
     }
-
+                          
     public static function updateLog($p, $tid, $pno, $mn, $a, $b,$pro,$asdata=null) {
         $dt = date('Y-m-d H:i:s');
         $d0=$a;

@@ -22,9 +22,9 @@ $rlist = Reports::listReport();
 @stop
 @section('page_header')
 <h1 id="lbpie_{{$p}}">
-    @if($pie->img)<img class="h40" src="{{asset($pie->img)}}">@endif
-    <span class="red mr1">#{{$pie->pieid}}</span>
+    @if($pie->img)<img class="h40" src="{{asset($pie->img)}}">@endif    
     {{$pie->piename}}
+    <span class="red mr1 font14">#{{$pie->pieid}}</span>
 
 </h1>
 @stop

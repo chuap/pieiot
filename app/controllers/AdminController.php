@@ -28,7 +28,16 @@ class AdminController extends BaseController {
             //$x = DB::update($sql);
             $mtype = Input::get('mtype');
             $pid = Input::get('pieid');
+            $pidtx = Input::get('pieidtx');
             $minfo = Pies::modelInfo($mtype);
+            if ($pid != $pidtx) {
+                $x=Pies::checkPieID($pidtx);
+                if($x>0){
+                   $json_arr['MSG'] = ' Duplicate Node ID !!';
+                    return json_encode($json_arr); 
+                }                
+            }
+            
             if (!$mtype) {
                 $json_arr['MSG'] = 'Error !!';
                 return json_encode($json_arr);
@@ -39,6 +48,7 @@ class AdminController extends BaseController {
                 $pie = new Pies();
                 $pie->img = $minfo->img;
             }
+            $pie->pieid=$pidtx;
             $pie->piename = Input::get('piename');
             $pie->desc = Input::get('txdesc');
             $pie->color = Input::get('piecolor') ? Input::get('piecolor') : $minfo->color;
@@ -48,7 +58,7 @@ class AdminController extends BaseController {
             
             $pie->save();
             $pts = Ports::portModel($mtype);
-            $pieid = $pie->pieid;
+            $pieid = $pidtx;
             if (!$pid) {
                 foreach ($pts as $d) {
                     $portno = $d->portno;
@@ -60,7 +70,7 @@ class AdminController extends BaseController {
                 }
             }
             $json_arr['STATUS'] = true;
-            $json_arr['LASTID'] = $pie->pieid;
+            $json_arr['LASTID'] = $pidtx;
         } else if ($ac == 'pieeditsave') {
             $p = Input::get('p') ? Input::get('p') : 0;
             $pie = Pies::find($p);

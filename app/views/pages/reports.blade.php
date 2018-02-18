@@ -17,6 +17,15 @@
 $rlist = Reports::listReport();
 $cco = 0;
 $tt1 = array();
+
+
+//$sql = "SELECT min(d2) as d2,min(d3)as d3  FROM appdata where d1='Capture' and (mid(d2,9,2)in('08','09','12')) GROUP BY mid(d2,1,8) ORDER BY d2";
+//$q = excsql($sql);
+//foreach ($q as $r) {
+//    $d = (object) $r;
+//    DataAll::upData('1', '3', '101', 'ถ่ายรูปผักทุกวัน', 'data/rasp/'.$d->d2. '.png','','capture','1',$d->d3);
+//    //echo 'XX<img src="' . asset('data/rasp/'.$d->d2) . '.png" >';
+//}
 ?>
 <div class="row">  
     <div class="col-lg-12">
@@ -54,7 +63,8 @@ $tt1 = array();
 
                                     <?php
                                     $dt1 = '';
-                                    $dt2 = ''; $dmn='';
+                                    $dt2 = '';
+                                    $dmn = '';
                                     foreach (Reports::dataDemo($d)as $j => $dm) {
 
                                         if ($dt1) {
@@ -70,7 +80,7 @@ $tt1 = array();
                                                 $dt2.=number_format($dm->data2, 2);
                                             }
                                         }
-                                        $dmn=$dm->mn;
+                                        $dmn = $dm->mn;
                                     }
                                     ?>
                                     <div class="{{$dmn == 'temp'?'col-xs-6 col-lg-6':'col-xs-12 col-lg-12'}} ">

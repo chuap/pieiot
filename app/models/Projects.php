@@ -101,9 +101,9 @@ class Projects extends Eloquent {
         $x = $s % 3600;
         $h = floor($s / 3600);
         $m = floor($x / 60);
-        if ($s > 3600) {
+        if ($s >= 3600) {
             return "<span class='label label-default'>$h.$m." . ($x % 60) . '</span> ช.ม.';
-        } else if ($s > 60) {
+        } else if ($s >= 60) {
             return "<span class='label label-default'>$m." . ($x % 60) . '</span> นาที';
         } else {
             return "<span class='label label-default'>$s" . '</span> วินาที';
@@ -113,6 +113,10 @@ class Projects extends Eloquent {
     public static function getActiveTask($p, $f = 't.*') {
         //return excsql("select $f from projects_d d left join projects p on p.pieid=d.pieid  where d.pieid='$p' and p.proactive='1'  order by d.portno");
         return excsql("select $f from tasks t left join projects p on p.proid=t.proid  where t.pieid='$p' and p.proactive='1'  order by t.tid");
+    }
+    public static function getActiveTaskMcu($p, $f = 't.*',$tid=0) {
+        //return excsql("select $f from projects_d d left join projects p on p.pieid=d.pieid  where d.pieid='$p' and p.proactive='1'  order by d.portno");
+        return excsql("select $f from tasks t left join projects p on p.proid=t.proid  where t.pieid='$p' and p.proactive='1'  order by t.tid limit $tid,1");
     }
 
     public static function getActiveTaskUpdate($p, $f = 't.*') {

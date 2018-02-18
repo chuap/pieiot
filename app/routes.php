@@ -15,6 +15,7 @@ Route::get('login', function() {
 });
 Route::get('ac', 'AppController@doActionPost');
 Route::post('ac', 'AppController@doActionPost');
+Route::get('mcu', 'McuController@doActionPost');
 //Route::get('hrdlogin', 'SystemController@hrdLogin');
 if (Session::get('cat.islogin')) {
     Route::get('/', function() {

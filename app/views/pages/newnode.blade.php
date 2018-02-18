@@ -20,19 +20,22 @@ $listmodel = Pies::pieModel();
 $step = Input::get('step');
 //$step = 1;
 $tid = '';
-
+$pieidtx='';
 if (!$mtype) {
     $step = 1;
     
 } else {
     $step = 2;
     $minfo = Pies::modelInfo($mtype);
+    $piename=$minfo->modelname;
     $page_title ='<img class="h30" src="'.asset($minfo->img).'" /> '. $minfo->modelname;
 }
 if($pieid){
     $pieinfo=Pies::find($pieid);
     $step = 2;
     $mtype=$pieinfo->piemodel;
+    $piename=$pieinfo->piename;
+    $pieidtx=$pieinfo->pieid;
     $txdesc=$pieinfo->desc;
     $piecolor=$pieinfo->color;
     $minfo = Pies::modelInfo($mtype);
@@ -71,7 +74,13 @@ if($pieid){
                 <div class="control-group mb1">
                     <label class="control-label" for="form-field-1">Node name</label>
                     <div class="controls">
-                        <input class="span10" id="piename" name="piename" type="text"  value="{{$minfo->modelname}}">
+                        <input class="span10" id="piename" name="piename" type="text"  value="{{$piename}}">
+                    </div>
+                </div>
+                <div class="control-group mb1">
+                    <label class="control-label" for="form-field-1">Node ID</label>
+                    <div class="controls">
+                        <input class="span10" id="pieidtx" name="pieidtx" type="text"  value="{{$pieidtx}}">
                     </div>
                 </div>
                 <div class="control-group mb1">
@@ -125,7 +134,10 @@ if($pieid){
     function newpie() {
 //        alertbox($("#f1").serialize());
 //        return false;
-        if (ckktext('#piename', 'Please enter "Pie name"')) {
+        if (ckktext('#piename', 'Please enter "Node name"')) {
+            return false;
+        }
+        if (ckktext('#pieidtx', 'Please enter "Node ID"')) {
             return false;
         }
 

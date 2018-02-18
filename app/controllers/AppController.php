@@ -140,7 +140,7 @@ class AppController extends BaseController {
                         Ports::updatePort($p, $pno,'capture', $ph . $fname . '.png','');
                         //Logs::upLog($p, $tid, $pno, 'saveimage', $ph . $fname . '.png', '');
                         DataAll::upData($p, $tid, $pno, $tsk->taskname, $ph . $fname . '.png','',$tsk->taskaction,$tsk->proid);
-                        Logs::updateLog($p, $tid, $pno, 'image', '', $ph . $fname . '.png','',$tsk->proid);
+                        Logs::updateLog($p, $tid, $pno, 'image', '', $ph . $fname . '.png',$tsk->proid);
                         $json_arr['DATA'] = $fname;
                     }
                 }

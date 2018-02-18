@@ -30,6 +30,7 @@ $pro = Projects::find($p);
     <li class="active">{{$pro->proname}}</li>
 </ol>
 @stop
+
 @section('body')
 <style>
     /*    .tb1{ background-color: #ffe6eb;}*/
@@ -51,15 +52,15 @@ $pro = Projects::find($p);
                 </h3>
                 <div class="pull-right box-tools">
                     <a href="{{asset('pie.newtask?proid='.$pro->proid)}}" class="btn btn-warning white newproject" ><i class="fa fa-plus-circle"></i> Task</a>
-<!--                    <div class="btn-group">
-
-                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus-circle"></i> Task</button>
-                        <ul class="dropdown-menu pull-right" role="menu ">                            
-                            @foreach(Pies::listMyPie() as $m)
-                            <li><a href="{{asset("pro-".$m->pieid.'-'.$pro->proid.".newtask")}}" class="newproject">{{$m->piename}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>-->
+                    <!--                    <div class="btn-group">
+                    
+                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus-circle"></i> Task</button>
+                                            <ul class="dropdown-menu pull-right" role="menu ">                            
+                                                @foreach(Pies::listMyPie() as $m)
+                                                <li><a href="{{asset("pro-".$m->pieid.'-'.$pro->proid.".newtask")}}" class="newproject">{{$m->piename}}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </div>-->
                     <a href="{{asset("pro-".$pro->pieid.'-'.$pro->proid.".newproject")}}" class="newproject btn bg-light-blue "><i class="fa fa-pencil"></i> Edit</a>
 
                     <div class="btn-group">
@@ -67,7 +68,7 @@ $pro = Projects::find($p);
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i></button>
                         <ul class="dropdown-menu pull-right" role="menu ">
 
-                            
+
                             <li><a class="newproject " href="{{asset("pro-".$pro->pieid.'-'.$pro->proid.".newproject")}}" >Edit</a></li>
                             <li><a href="javascript:" onclick="deleteproject('{{$pro->pieid}}','{{$pro->proid}}')">Delete project</a></li>
                         </ul>
@@ -77,7 +78,7 @@ $pro = Projects::find($p);
 
             </div><!-- /.box-header -->
             <div class="box-body pt0">
-
+                @if($pro->protype=='fix')
                 <table class="table table-hover tb1">
                     <tbody><tr>
                             <th style="width: 10px">#</th>
@@ -90,7 +91,7 @@ $pro = Projects::find($p);
                         </tr>
                         @foreach(Projects::getTask($p) as $i=>$d2)
                         <?php
-                        $edit_url = asset("pie.newtask?proid="  . $d2->proid . "&tid=" . $d2->tid);
+                        $edit_url = asset("pie.newtask?proid=" . $d2->proid . "&tid=" . $d2->tid);
                         //$edit_url = asset("pro-" . $d2->pieid . '-' . $d2->proid . ".newtask?tid=" . $d2->tid);
                         $port_n = str_replace("'", "", $d2->action_ports);
                         $port_n = str_replace(",", "_", $port_n);
@@ -100,10 +101,10 @@ $pro = Projects::find($p);
                             <td><a id="lb_{{$d2->tid}}" class="newproject" href="{{$edit_url}}">{{$d2->taskname}}</a>
                                 <p class="hidden-xs"><small>{{Projects::taskDesc2($d2)}}</small></p>
                                 <div class="hidden-lg hidden-md hidden-sm">
-                                <div class="font10" style="color:{{$d2->picolor}} ">{{$d2->piename}}</div>
-                                @foreach (Tasks::actionPorts($d2) as $d)
-                                <div class=" font10"> {{$d->portname}}</div>
-                                @endforeach
+                                    <div class="font10" style="color:{{$d2->picolor}} ">{{$d2->piename}}</div>
+                                    @foreach (Tasks::actionPorts($d2) as $d)
+                                    <div class=" font10"> {{$d->portname}}</div>
+                                    @endforeach
                                 </div>
                             </td>
                             <td class="hidden-xs">
@@ -122,7 +123,7 @@ $pro = Projects::find($p);
                                         {{Ports::portValue($d,'h50')}}
                                     </span>     
                                 </span>
-                                
+
                             </td>
                             <td><div id="sync_{{$d2->tid}}">
                                     <span class="sync_{{$d2->tid}}">
@@ -134,11 +135,11 @@ $pro = Projects::find($p);
                             <td>
                                 <div class="btn-group">
                                     <?php
-                                    if ($d2->task_disable ) {
+                                    if ($d2->task_disable) {
                                         $dsdel = '';
-                                    } else if($d2->synced==null){
+                                    } else if ($d2->synced == null) {
                                         $dsdel = '';
-                                    }else {
+                                    } else {
                                         $dsdel = 'hidden';
                                     }
                                     ?>
@@ -159,7 +160,9 @@ $pro = Projects::find($p);
                         </tr>
                         @endforeach
                     </tbody></table>
-
+                @elseif($pro->protype=='flow')
+                <div id="drawing" style="margin:30px auto; width:900px;"></div>
+                @endif
 
             </div><!-- /.box-body -->
         </div>
@@ -174,7 +177,126 @@ $pro = Projects::find($p);
 @stop
 @endif
 @section('foot')
+@if($pro->protype=='flow')
+@section('head_meta')
+<script src="{{asset('js/svg')}}/jquery.scrollTo.min.js"></script>
+<script src="{{asset('js/svg')}}/svg.min.js"></script>
+<script src="{{asset('js/svg')}}/flowsvg.min.js"></script>
+@stop
+<script>
+///////////////////// start flow chart ////////////////////////////////////////////////////////////
+                                            flowSVG.draw(SVG('drawing').size(900, 1100));
+                                            flowSVG.config({
+                                            interactive: true,
+                                                    showButtons: true,
+                                                    connectorLength: 60,
+                                                    scrollto: true
+                                            });
+                                            flowSVG.shapes(
+                                            [
+                                            {
+                                            label: 'knowPolicy',
+                                                    type: 'decision',
+                                                    text: [
+                                                            'Condition l ?'
+                                                    ],
+                                                    yes: 'hasOAPolicy',
+                                                    no: 'checkPolicy'
+                                            },
+                                            {
+                                            label: 'hasOAPolicy',
+                                                    type: 'decision',
+                                                    text: [
+                                                            'Condition 2 ?'
+                                                    ],
+                                                    yes: 'CCOffered',
+                                                    no: 'canWrap'
+                                            },
+                                            {
+                                            label: 'CCOffered',
+                                                    type: 'decision',
+                                                    text: [
+                                                            'Condition 3 ?'
+                                                    ],
+                                                    yes: 'canComply',
+                                                    no:'checkGreen'
+                                            },
+                                            {
+                                            label: 'canComply',
+                                                    type: 'finish',
+                                                    text: [
+                                                            'Finish'
+                                                    ]
+                                            },
+                                            {
+                                            label: 'canWrap',
+                                                    type: 'decision',
+                                                    text: [
+                                                            'Condition 2.1 ?'
+                                                    ],
+                                                    yes: 'checkTimeLimits',
+                                                    no: 'doNotComply'
+                                            },
+                                            {
+                                            label: 'doNotComply',
+                                                    type: 'finish',
+                                                    text: [
+                                                            'finish'
+                                                    ]
+                                            },
+                                            {
+                                            label: 'checkGreen',
+                                                    type: 'process',
+                                                    text: [
+                                                            'Process 2'
+                                                    ],
+                                                    next: 'journalAllows',
+                                            },
+                                            {
+                                            label: 'journalAllows',
+                                                    type: 'decision',
+                                                    text: ['Condition 5 ?'],
+                                                    yes: 'checkTimeLimits',
+                                                    no: 'cannotComply',
+                                                    orient: {
+                                                    yes:'r',
+                                                            no: 'b'
+                                                    }
 
+                                            },
+                                            {
+                                            label: 'checkTimeLimits',
+                                                    type: 'process',
+                                                    text: [
+                                                            'Process 3'
+                                                    ],
+                                                    next: 'depositInWrap'
+                                            },
+                                            {
+                                            label: 'cannotComply',
+                                                    type: 'finish',
+                                                    text: [
+                                                            'Finish'
+                                                    ]
+                                            },
+                                            {
+                                            label: 'depositInWrap',
+                                                    type: 'finish',
+                                                    text: [
+                                                            'Finish'
+                                                    ]
+                                            },
+                                            {
+                                            label: 'checkPolicy',
+                                                    type: 'process',
+                                                    text: [
+                                                            'Process 1 '
+                                                    ],
+                                                    
+                                                    next: 'hasOAPolicy'
+                                            }
+                                            ]);</script>
+@endif
 <script type="text/javascript">
     $(function () {
     startMonitor();
@@ -223,7 +345,7 @@ $pro = Projects::find($p);
     //effectvalue('time', obj.DATA.length);
     if (obj.STATUS == true) {
     for (var i = 0, len = obj.DATA.length; i < len; i++) {
-    effectvalue(obj.DATA[i]['tid']+'_port_' + obj.DATA[i]['portno'], obj.DATA[i]['d1']);
+    effectvalue(obj.DATA[i]['tid'] + '_port_' + obj.DATA[i]['portno'], obj.DATA[i]['d1']);
     $('.taskupdate_' + obj.DATA[i]['tid']).html(obj.DATA[i]['datesave']);
     }
 

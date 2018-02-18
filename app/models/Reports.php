@@ -51,7 +51,7 @@ class Reports extends Eloquent {
         $sdate=$r->sdate;
         $edate=$r->edate;
         $gby=$r->groupby;
-        $sql="select *,SUBSTR(datesave,1,$gby) as sdt from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' and mn in('capture','face') group by sdt  order by datesave";
+        $sql="select *,SUBSTR(datesave,1,$gby) as sdt from alldata where tid in ($tid) and datesave >= '$sdate' and datesave <= '$edate' and mn in('capture','face') group by sdt  order by datesave desc";
         return excsql($sql);
     }public static function dataTable($r) {
         $tid=$r->tid;
