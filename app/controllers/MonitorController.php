@@ -63,7 +63,7 @@ class MonitorController extends BaseController {
             $json_arr['STATUS'] = true;
         } else if ($ac == 'check_pieactive') {
             $uid = Session::get('cat.uid');
-            $tm = date("Y-m-d H:i:s", time() - 10);
+            $tm = date("Y-m-d H:i:s", time() - 40);
             $dt=excsql($sql="select * from pies where lastupdate >'$tm' and own ='$uid' order by lastupdate");
             for($i=0;$i<count($dt);$i++){
                 //$dt[$i]->portvalue=Ports::portValue($dt[$i]);
