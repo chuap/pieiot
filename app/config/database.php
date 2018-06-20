@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'app',
+			'database'  => 'mbnacth_pie',
 			'username'  => 'root',
 			'password'  => '277419',
 			'charset'   => 'utf8',
