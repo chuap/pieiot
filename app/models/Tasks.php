@@ -32,7 +32,7 @@ class Tasks extends Eloquent {
         
         
     }
-    public static function taskSynced($tid,$a) {
+    public static function taskSynced($tid,$a='') {
         $dt = date('Y-m-d H:i:s');
         if($a){
             $d="Disable";

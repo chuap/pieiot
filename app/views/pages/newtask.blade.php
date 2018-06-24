@@ -46,6 +46,13 @@ if ($tsk) {
     $op3 = $tsk->op3;
     $op4 = $tsk->op4;
     $op5 = $tsk->op5;
+    $ckd1 = $tsk->ckd1;
+    $ckd2 = $tsk->ckd2;
+    $ckd3 = $tsk->ckd3;
+    $ckd4 = $tsk->ckd4;
+    $ckd5 = $tsk->ckd5;
+    $ckd6 = $tsk->ckd6;
+    $ckd7 = $tsk->ckd7;
     $acport=$tsk->acport;
     $ckport = $tsk->ckport;
     $ckweb = $tsk->ckweb;
@@ -56,6 +63,7 @@ if ($tsk) {
     $i = 0;
 } else {
     //$page_title = ' ' . $pinfo->proname . ' : ' . 'New Task';
+    $ckd1 = '1';$ckd2 = '1';$ckd3 = '1';$ckd4 = '1';$ckd5 = '1';$ckd6 = '1';$ckd7 = '1';
     $ck1 = '';
     $ck2 = '';
     $ck3 = '';
@@ -234,6 +242,7 @@ $cl = 'onclick="addassign(\'' . $n2->portno . '\', \'' . $n2->portname . '\')"';
                                     <option {{$onbit==0?'selected':''}} value="0">0: Low</option>                                    
                                 </select>
                             </div>
+                            
                             <div class="form-inline ports md_bitout mt1"> 
                                 <label>
                                     <input name="ckonoff" {{$ck1==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
@@ -250,6 +259,36 @@ $cl = 'onclick="addassign(\'' . $n2->portno . '\', \'' . $n2->portname . '\')"';
                                     </div>
                                     <small class="pr1">วินาที</small>
                                 </span>
+                            </div>
+                            <div class="form-inline ports md_bitout mt1"> 
+                                <label>
+                                    <input name="ckd1" {{$ckd1==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> จันทร์</span>
+                                </label>
+                                <label>
+                                    <input name="ckd2" {{$ckd2==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> อังคาร</span>
+                                </label>
+                                <label>
+                                    <input name="ckd3" {{$ckd3==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> พุธ</span>
+                                </label>
+                                <label>
+                                    <input name="ckd4" {{$ckd4==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> พฤหัสฯ</span>
+                                </label>
+                                <label>
+                                    <input name="ckd5" {{$ckd5==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> ศุกร์</span>
+                                </label>
+                                <label>
+                                    <input name="ckd6" {{$ckd6==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> เสาร์</span>
+                                </label>
+                                <label>
+                                    <input name="ckd7" {{$ckd7==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> อาทิตย์</span>
+                                </label>
                             </div>
                             @endif
                             @if($tmmode=='bitin')
@@ -278,6 +317,36 @@ $cl = 'onclick="addassign(\'' . $n2->portno . '\', \'' . $n2->portname . '\')"';
                                     <option {{$onbit==1?'selected':''}} value="1">1: High</option>
                                     <option {{$onbit==0?'selected':''}} value="0">0: Low</option>                                    
                                 </select>
+                            </div>
+                            <div class="form-inline ports md_bitin mt1"> 
+                                <label>
+                                    <input name="ckd1" {{$ckd1==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> จันทร์</span>
+                                </label>
+                                <label>
+                                    <input name="ckd2" {{$ckd2==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> อังคาร</span>
+                                </label>
+                                <label>
+                                    <input name="ckd3" {{$ckd3==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> พุธ</span>
+                                </label>
+                                <label>
+                                    <input name="ckd4" {{$ckd4==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> พฤหัสฯ</span>
+                                </label>
+                                <label>
+                                    <input name="ckd5" {{$ckd5==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> ศุกร์</span>
+                                </label>
+                                <label>
+                                    <input name="ckd6" {{$ckd6==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> เสาร์</span>
+                                </label>
+                                <label>
+                                    <input name="ckd7" {{$ckd7==1?'checked':''}} value="1" class="ace-checkbox-2" type="checkbox">
+                                    <span class="lbl"> อาทิตย์</span>
+                                </label>
                             </div>
 
                             @endif

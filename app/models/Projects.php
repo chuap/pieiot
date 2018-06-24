@@ -116,7 +116,9 @@ class Projects extends Eloquent {
     }
     public static function getActiveTaskMcu($p, $f = 't.*',$tid=0) {
         //return excsql("select $f from projects_d d left join projects p on p.pieid=d.pieid  where d.pieid='$p' and p.proactive='1'  order by d.portno");
-        return excsql("select $f from tasks t left join projects p on p.proid=t.proid  where t.pieid='$p' and p.proactive='1'  order by t.tid limit $tid,1");
+        $sql="select $f from tasks t left join projects p on p.proid=t.proid  where t.pieid='$p' and p.proactive='1'  order by t.tid limit $tid,1";
+        //echo $sql;
+        return excsql($sql);
     }
 
     public static function getActiveTaskUpdate($p, $f = 't.*') {

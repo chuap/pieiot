@@ -44,6 +44,7 @@ class McuController extends BaseController {
             $json_arr['DATA'] = count($aa);
             excsql("update pies set lastupdate='$dt' where pieid='$p'");
         } else if ($ac == 'gettaskinfo') {
+            $json_arr['DATA']="Test";
             $p = Input::get('id');
             $t = Input::get('tid');
             $aa = Projects::getActiveTaskMcu($p, 't.*', $t);
@@ -66,12 +67,36 @@ class McuController extends BaseController {
                 $json_arr['op1'] = (int)$d->op2;
                 $json_arr['tx1'] = (int)$d->tx1;
                 $json_arr['tx2'] = (int)$d->tx2;
+                $json_arr['tid'] = (int)$d->tid;
             } else {
                 $json_arr['DATA'] = 0;
             }
 
             excsql("update pies set lastupdate='$dt' where pieid='$p'");
-        } else if ($ac == 'getactivetask') {
+        } else if ($ac == 'savedata') {
+            $p = Input::get('id');
+            $tid = Input::get('tid');
+            $mn = Input::get('mn');
+            $pno = Input::get('pno');
+            $a = Input::get('a');
+            $b = Input::get('b');
+            $tsk = Tasks::find($tid);
+            //Ports::updatePort($p, $pno, $a);
+            Logs::updateLog($p, $tid, $pno, $mn, $a, $b, $tsk->proid);
+            if (($mn == 'bitout')) {
+                Ports::updatePort($p, $pno, $mn, $a, $b);
+            } else if (($mn == 'bitin')) {
+                Ports::updatePort($p, $pno, $mn, $a, $b);
+                DataAll::upData($p, $tid, $pno, $tsk->taskname, $a, $b, $tsk->taskaction, $tsk->proid);
+            } else if ($mn == 'synced') {
+                Tasks::taskSynced($tid, $a);
+            } else if ($mn == 'temp') {
+                DataAll::upData($p, $tid, $pno, $tsk->taskname, $a, $b, $tsk->taskaction, $tsk->proid);
+                Ports::updatePort($p, $pno, $mn, $a, $b);
+            }
+
+            $json_arr['DATA'] = $a;
+        }else if ($ac == 'getactivetask') {
             $p = Input::get('id');
             $aa = Projects::getActiveTask($p, 't.*');
             $json_arr['DATA'] = $aa;
@@ -81,7 +106,7 @@ class McuController extends BaseController {
             $aa = Projects::getActiveTaskUpdate($p, 't.*');
             $json_arr['DATA'] = $aa;
             excsql("update pies set lastupdate='$dt' where pieid='$p'");
-        } else if ($ac == 'gettaskinfo') {
+        } else if ($ac == 'gettaskinfoX') {
             $p = Input::get('id');
             $pno = Input::get('pno');
             $aa = Projects::taskInfo($p, $pno);
